@@ -24,3 +24,9 @@ hs_err_pid*
 
 #Database properties
 *.properties
+
+build/
+/.settings/
+# Eclipse project files
+.classpath
+.project
