@@ -3,7 +3,8 @@
 <head>
 <title>Insert title here</title>
 </head>
-<body>该文件不存在
+<body>
+   该文件不存在
 </body>
 </html>
-<jsp:forward page="/queryEmp.jsp" />
+<jsp:forward page="/queryEmp.jsp"/>

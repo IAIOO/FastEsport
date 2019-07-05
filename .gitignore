@@ -30,4 +30,7 @@ build/
 # Eclipse project files
 .classpath
 .project
+<<<<<<< HEAD
 /bin/
+=======
+>>>>>>> branch 'master' of https://github.com/IAIOO/FastEsport.git
