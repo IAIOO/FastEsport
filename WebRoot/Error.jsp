@@ -178,7 +178,7 @@ H2 EM {
 	</P>
 	<DL class=texts>
 		<DT>
-			<STRONG>休息一下，玩玩这个游戏。</STRONG>
+			<STRONG>休息一下，玩下这个游戏。</STRONG>
 		</DT>
 		<DD>
 			<UL>
