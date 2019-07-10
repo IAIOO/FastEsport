@@ -18,27 +18,27 @@ public class Tools
 
 	public static void main(String[] args) 
 	{
-		try 
-		{
-			String aab103=Tools.getEmpNumber();
-			System.out.println(aab103);
-		}
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
+//		try 
+//		{
+//			String aab103=Tools.getEmpNumber();
+//			System.out.println(aab103);
+//		}
+//		catch (Exception e) 
+//		{
+//			e.printStackTrace();
+//		}
 	}
 	private Tools() {}
 
 	
 	/**
-	 * 获取员工流水号
+	 * 获取用户流水号
 	 * @return  String number="yyyy"+4位流水码
 	 * @throws Exception
 	 */
-	public static String getEmpNumber()throws Exception
+	public static String getUserNumber()throws Exception
 	{
-		return Tools.getCurrentYear()+Tools.getFormatNumber("E");
+		return Tools.getCurrentYear()+Tools.getFormatNumber("U");
 	}
 	
 	private static final String baseCode1="0000";
@@ -61,7 +61,7 @@ public class Tools
 	}
 	
 	/**
-	 * 获取员工编号的尾码
+	 * 获取用户编号的尾码
 	 * @param firstName
 	 * @return
 	 * @throws Exception

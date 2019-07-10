@@ -33,6 +33,44 @@ public abstract class ControllerSupport implements BaseController
 	/*****************************************
 	 * 	        子类业务流程封装
 	 *****************************************/
+	protected final void loginout()throws Exception {
+		this.attribute.clear();
+	}
+	
+//	/**
+//	 * 验证验证码
+//	 */
+//	protected final void verify()throws Exception {
+//		String vcode = this.dto.get("vcode").toString();
+//		String vscode = this.dto.get("vscode").toString();
+//		if(vscode.equals(vcode)) {
+//			this.saveAttribute("msg", "验证码正确");
+//		}else {
+//			this.saveAttribute("msg", "验证码错误");
+//		}
+//	}
+//	
+	/**
+	 * 用户登录查询
+	 * @throws Exception
+	 */
+	protected final void login()throws Exception
+	{
+		Map<String,String> ins=this.services.findById();
+		if(ins!=null)
+		{
+			if(!(ins.get("aab104").equals(dto.get("aab104")))) {
+				this.saveAttribute("msg", "用户名或密码错误");
+			}
+			this.saveAttribute("username", dto.get("aab102"));
+		}
+		else
+		{
+			this.saveAttribute("msg", "用户不存在");
+		}	
+	}
+	
+	
 	/**
 	 * 数据批量查询
 	 * @throws Exception
