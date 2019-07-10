@@ -31,7 +31,12 @@ public class BaseServlet extends HttpServlet
      		String baseName=uri.substring(uri.lastIndexOf("/")+1).replace(".html", "");
      		
      		//定义变量,描述所有业务控制器的基础包名称
-     		String basePackageName="com.neusoft.web.impl.";
+     		String basePackageName = null;
+			if (baseName.substring(0, 4).equals("user")) {
+				basePackageName = "com.neusoft.web.impl.user.";
+			} else {
+				basePackageName = "com.neusoft.web.impl.";
+			}
      		//获取控制器的前缀名
      		String controllerFirstName=baseName.substring(0,1).toUpperCase()+baseName.substring(1);
      		
