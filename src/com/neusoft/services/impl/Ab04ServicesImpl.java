@@ -8,20 +8,6 @@ import java.util.Map;
 import static com.neusoft.system.tools.Tools.calculate;
 
 public class Ab04ServicesImpl extends JdbcServicesSupport {
-
-
-
-    public boolean update(String utype) throws Exception{
-        if(utype.equalsIgnoreCase("addGamble")){
-            return this.addGamble();
-        }else if(utype.equalsIgnoreCase("modifyGamble")){
-            return this.modifyGamble();
-        }
-        else {
-            throw new Exception("在类[ Af04ServicesImpl ]中进行了未定义的动作调用,动作名称是  \"+utype");
-        }
-    }
-
     
     int pkAaf201=1;//赛程表主键值
     public boolean addGamble() throws Exception{
