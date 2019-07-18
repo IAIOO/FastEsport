@@ -8,7 +8,7 @@ public class Ac04AddEmpServlet extends Ac04ControllerSupport
 	@Override
 	public String execute() throws Exception 
 	{
-		this.update("addEmp", "");
+		this.update("addEmp", "±¨Ãû");
 		return "ac04AddEmp";
 	}
 

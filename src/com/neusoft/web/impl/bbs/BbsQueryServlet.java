@@ -1,6 +1,8 @@
 package com.neusoft.web.impl.bbs;
 
-public class BbsQueryServlet extends BbsControllerSupport {
+import com.neusoft.web.impl.controllersupport.Ab02ControllerSupport;
+
+public class BbsQueryServlet extends Ab02ControllerSupport {
 
 	@Override
 	public String execute() throws Exception {

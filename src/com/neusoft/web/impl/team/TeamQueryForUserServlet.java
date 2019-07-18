@@ -1,6 +1,8 @@
 package com.neusoft.web.impl.team;
 
-public class TeamQueryForUserServlet extends TeamControllerSupport {
+import com.neusoft.web.impl.controllersupport.Ac01ControllerSupport;
+
+public class TeamQueryForUserServlet extends Ac01ControllerSupport {
 
 	@Override
 	public String execute() throws Exception {
