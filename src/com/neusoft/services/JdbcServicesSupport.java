@@ -578,6 +578,54 @@ public abstract class JdbcServicesSupport  implements BaseServices
 		}
    }	
 
+   /**
+    * 动态单一条件查询
+    * @param sql
+    * @param user
+    * @return
+    * @throws Exception
+    */
+   protected final List<Map<String,String>> queryForList_2(final String sql,final String[] user)throws Exception{
+       PreparedStatement pstm=null;
+       ResultSet rs=null;
+       try{
+           pstm=DBUtils.prepareStatement(sql.toString());
+
+           List<Map<String,String>> rows=new ArrayList<>();
+           for(int i=0;i<user.length;i++){
+               pstm.setObject(1,user[i]);
+               //执行
+               rs=pstm.executeQuery();
+
+               ResultSetMetaData rsmd=rs.getMetaData();
+               Map<String,String> ins=null;
+               //查询的列数
+               int count=rsmd.getColumnCount();
+               //计算安全的初始容量
+               int initSize=((int)(count/0.75))+1;
+
+               while(rs.next())
+               {
+                   //实例化当前行数据的承载容器
+                   ins=new HashMap<>(initSize);
+                   //循环当前行的所有列
+                   for(int j=1;j<=count;j++)
+                   {
+                       //完成列级映射
+                       ins.put(rsmd.getColumnLabel(j).toLowerCase(),rs.getString(j));
+                   }
+                   //向list中放入当前行数据
+                   rows.add(ins);
+               }
+           }
+           return rows;
+       }
+       finally
+       {
+           DBUtils.close(rs);
+           DBUtils.close(pstm);
+       }
+   }
    
    /**************************************************************
     * 	                       以下为单一表非事务更新方法
@@ -612,4 +660,52 @@ public abstract class JdbcServicesSupport  implements BaseServices
 			DBUtils.close(pstm);
 		}
 	}
+	
+	
+	//结束竞猜时，将竞猜结果发放给到个人竞猜信息表中（ab05）
+		protected final boolean executeEndGamble(final String sql,final Object args,int[] results,String[] rows)throws Exception
+	    {
+	        //1.定义jdbc接口变量
+	        PreparedStatement pstm=null;
+	        try{
+	            //编译sql
+	            pstm=DBUtils.prepareStatement(sql);
+	            //循环主键数组
+
+	            for(int i=0;i<results.length;i++){
+	                pstm.setObject(1,results[i]);
+	                pstm.setObject(2,rows[i]);
+	                pstm.setObject(3,args);
+	                //将准备好的SQL语句放入缓冲区
+	                pstm.addBatch();
+	            }
+	            return this.executeBatchTransaction(pstm);
+	        }
+	        finally {
+	            DBUtils.close(pstm);
+	        }
+	    }
+
+	    //结束竞猜之后，给每个用户结账
+	    protected final boolean executeModifyAb01(final String sql,int[] results,String[] rows)throws Exception
+	    {
+	        //1.定义jdbc接口变量
+	        PreparedStatement pstm=null;
+	        try{
+	            //编译sql
+	            pstm=DBUtils.prepareStatement(sql);
+	            //循环主键数组
+
+	            for(int i=0;i<results.length;i++){
+	                pstm.setObject(1,results[i]);
+	                pstm.setObject(2,rows[i]);
+	                //将准备好的SQL语句放入缓冲区
+	                pstm.addBatch();
+	            }
+	            return this.executeBatchTransaction(pstm);
+	        }
+	        finally {
+	            DBUtils.close(pstm);
+	        }
+	    }
 }
