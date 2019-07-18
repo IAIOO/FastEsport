@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.neusoft.services.BaseServices;
+import com.neusoft.system.tools.PageBean;
+import com.neusoft.system.tools.Tools;
 
 public abstract class ControllerSupport implements BaseController
 {
@@ -33,23 +35,80 @@ public abstract class ControllerSupport implements BaseController
 	/*****************************************
 	 * 	        子类业务流程封装
 	 *****************************************/
+	
+	protected void showTeam()throws Exception
+    {
+    	Map<String, String> ins = this.services.findById();
+    	
+    	this.saveAttribute("ins", ins);
+    }
+	
+	/**
+	 * 回帖操作
+	 * @param methodName
+	 * @throws Exception
+	 */
+	protected final void retPost(String methodName)throws Exception
+	{
+		this.executeUpdateMethod(methodName);
+		this.saveAttribute("aab201", this.dto.get("aab204"));
+	}
+	
+	/**
+	 * 批量查询*2
+	 * @throws Exception
+	 */
+	protected final void queryTwo()throws Exception
+	{
+		List<Map<String,String>> rows=this.services.queryTwo();
+		if(rows.size()>0)
+		{
+			this.saveAttribute("rows", rows);
+		}
+		else
+		{
+			this.saveAttribute("msg", "没有符合条件的数据!");
+		}	
+	}
+	
+	/**
+	 * 实现分页查询
+	 * @throws Exception
+	 */
+	protected final void getPage()throws Exception {
+		Object now = this.dto.get("now");
+		PageBean<Map<String,String>> pageBean = new PageBean<>();
+		int count = this.services.queryCount();
+		pageBean.setRows(count);
+		if (now!=null){
+            pageBean.setPageNo(Integer.valueOf(now.toString()));
+        }
+		int first = (pageBean.getPageNo()-1)*pageBean.getPageSize();
+		int end = pageBean.getPageSize();
+		this.dto.put("first", first);
+		this.dto.put("end", end);
+		List<Map<String,String>> rows=this.services.queryForPage();
+		if(rows.size()>0)
+		{
+			pageBean.setLists(rows);
+			this.saveAttribute("rows", rows);
+			this.saveAttribute("pageBean", pageBean);
+		}
+		else
+		{
+			this.saveAttribute("msg", "没有符合条件的数据!");
+		}	
+	}
+	
+	/**
+	 * 退出登录
+	 * @throws Exception
+	 */
 	protected final void loginout()throws Exception {
 		this.attribute.clear();
 	}
 	
-//	/**
-//	 * 验证验证码
-//	 */
-//	protected final void verify()throws Exception {
-//		String vcode = this.dto.get("vcode").toString();
-//		String vscode = this.dto.get("vscode").toString();
-//		if(vscode.equals(vcode)) {
-//			this.saveAttribute("msg", "验证码正确");
-//		}else {
-//			this.saveAttribute("msg", "验证码错误");
-//		}
-//	}
-//	
+	
 	/**
 	 * 用户登录查询
 	 * @throws Exception
@@ -59,10 +118,32 @@ public abstract class ControllerSupport implements BaseController
 		Map<String,String> ins=this.services.findById();
 		if(ins!=null)
 		{
-			if(!(ins.get("aab104").equals(dto.get("aab104")))) {
+			if(!(ins.get("aab104").equals(Tools.getMd5(this.dto.get("aab104"))))) {
 				this.saveAttribute("msg", "用户名或密码错误");
 			}
-			this.saveAttribute("username", dto.get("aab102"));
+			this.saveAttribute("aab101", ins.get("aab101"));
+			this.saveAttribute("aab102", this.dto.get("aab102"));
+		}
+		else
+		{
+			this.saveAttribute("msg", "用户不存在");
+		}	
+	}
+	
+	
+	/**
+	 * 管理员登录查询
+	 * @throws Exception
+	 */
+	protected final void adminLogin()throws Exception
+	{
+		Map<String,String> ins=this.services.findById();
+		if(ins!=null)
+		{
+			if(!(ins.get("aad103").equals(dto.get("aad103")))) {
+				this.saveAttribute("msg", "用户名或密码错误");
+			}
+			this.saveAttribute("name", dto.get("aad102"));
 		}
 		else
 		{
@@ -95,6 +176,19 @@ public abstract class ControllerSupport implements BaseController
 	protected final void savePageInstance()throws Exception
 	{
 		Map<String,String> ins=this.services.findById();
+		if(ins!=null)
+		{
+			this.saveAttribute("ins",  ins);
+		}
+		else
+		{
+			this.saveAttribute("msg", "提示:该数据已删除或禁止访问!");
+		}	
+	}
+	
+	protected final void savePageInstance1()throws Exception
+	{
+		Map<String,String> ins=this.services.findById1();
 		if(ins!=null)
 		{
 			this.saveAttribute("ins",  ins);

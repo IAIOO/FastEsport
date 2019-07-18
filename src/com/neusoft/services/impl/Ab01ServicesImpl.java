@@ -1,5 +1,7 @@
 package com.neusoft.services.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
@@ -7,11 +9,85 @@ import com.neusoft.system.tools.Tools;
 
 public class Ab01ServicesImpl extends JdbcServicesSupport 
 {
+	
 	/**
-	 * 用户登录时查询该用户密码
+	 * 分页查询
+	 */
+	@Override
+	public List<Map<String, String>> queryForPage()throws Exception{
+		Object aab102=this.get("aab102");     //选手名  模糊查询
+ 		Object aab109=this.get("aab109");     //游戏类型
+ 		Object aab103=this.get("aab103");     //选手编号
+ 		Object first=this.get("first");
+ 		Object end=this.get("end");
+ 		
+ 		StringBuilder sql = new StringBuilder()
+ 				 .append("select b.aab102,b.aab107,b.aab109,c.aac103")
+ 				 .append("  from ab01 b,ac01 c")
+ 				 .append(" where b.aac101=c.aac101")
+ 				 .append("   and b.aab108='1'")
+ 				 ;
+ 		
+ 		List<Object> paramList = new ArrayList<>();
+ 		
+ 		if(this.isNotNull(aab102)) {
+ 			sql.append(" and b.aab102 like ?");
+ 			paramList.add("%" + aab102 + "%");
+ 		}
+ 		if(this.isNotNull(aab109)) {
+ 			sql.append(" and b.aab109=?");
+ 			paramList.add(aab109);
+ 		}
+ 		if(this.isNotNull(aab103)) {
+ 			sql.append(" and b.aab103=?");
+ 			paramList.add(aab103);
+ 		}
+ 		sql.append(" limit ?,?");
+ 		paramList.add(first);
+ 		paramList.add(end);
+ 		return this.queryForList(sql.toString(), paramList.toArray());
+	}
+	
+	
+	/**
+	 * 查询符合条件的数据总数
+	 * @return
+	 * @throws Exception
+	 */
+	public int queryCount()throws Exception {
+		Object aab102=this.get("aab102");     //选手名  模糊查询
+ 		Object aab109=this.get("aab109");     //游戏类型
+ 		Object aab103=this.get("aab103");     //选手编号
+ 		
+		StringBuilder sql = new StringBuilder().append("select * from ab01 where aab108=1");
+		
+		List<Object> paramList = new ArrayList<>();
+ 		
+ 		if(this.isNotNull(aab102)) {
+ 			sql.append(" and aab102 like ?");
+ 			paramList.add("%" + aab102 + "%");
+ 		}
+ 		if(this.isNotNull(aab109)) {
+ 			sql.append(" and aab109=?");
+ 			paramList.add(aab109);
+ 		}
+ 		if(this.isNotNull(aab103)) {
+ 			sql.append(" and aab103=?");
+ 			paramList.add(aab103);
+ 		}
+ 		
+		if(paramList.size() == 0) {
+			return this.queryForList(sql.toString(), null).size();
+		}
+		return this.queryForList(sql.toString(),paramList.toArray()).size();
+	}
+	
+	
+	/**
+	 * 用户登录时查询该用户密码,同时查询用户序列号
 	 */
 	public Map<String,String> findById()throws Exception{
-		String sql = "select aab104 from ab01 where aab102 = ?";
+		String sql = "select aab101,aab104 from ab01 where aab102 = ?";
 		Object aab102 = this.get("aab102");
 		return this.queryForMap(sql, aab102);
 	}
@@ -26,16 +102,17 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
 		this.put("aab103", aab103);
 		StringBuilder sql = new StringBuilder()
 				.append("insert into ab01(aab102,aab103,aab104,aab105,aab106,")
-				.append("				  aab107)")
+				.append("				  aab107,aab109)")
 				.append("	      values(?,?,?,?,?,")
-				.append("				 ?)")
+				.append("				 ?,?)")
 				;
 		Object args[] = { this.get("aab102"),
 						  aab103,
-						  this.get("aab104a"),
+						  Tools.getMd5(this.get("aab104a")),
 						  this.get("aab105"),
 						  this.get("aab106"),
-						  new java.util.Date()
+						  new java.util.Date(),
+						  0
 						  };
 		return this.executeUpdate(sql.toString(), args) > 0;
 	

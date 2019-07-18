@@ -1,6 +1,8 @@
 package com.neusoft.web.impl;
 
-public final class QueryEmpServlet extends EmpControllerSupport 
+import com.neusoft.web.impl.controllersupport.Ac04ControllerSupport;
+
+public final class QueryEmpServlet extends Ac04ControllerSupport 
 {
 	@Override
 	public String execute() throws Exception 

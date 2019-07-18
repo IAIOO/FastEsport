@@ -88,6 +88,37 @@ public abstract class JdbcServicesSupport  implements BaseServices
    /**************************************************************
     * 	                       以下为多表级联与混合事务的实现方式
     **************************************************************/
+    
+	protected final boolean batchInsert_game(final String sql, final Object[] args, final Object[] idRows)
+			throws Exception {
+		//1.定义JDBC接口变量
+		PreparedStatement pstm = null;
+		try {
+		//编译SQL语句
+			pstm = DBUtils.prepareStatement(sql);
+		//参数赋值---set列表数据项赋值
+			pstm.setObject(1, args[0]);
+			pstm.setObject(2, args[1]);
+		//循环主键数组
+
+			for (int i = 0; i < idRows.length; i = i + 2) {
+				pstm.setObject(3, idRows[i]);
+				pstm.setObject(4, idRows[i + 1]);
+		//将准备好的SQL语句放入缓冲区
+				pstm.addBatch();
+			}
+//		for(Object id:idRows)
+//		{
+//		//主键列赋值
+//		pstm.setObject(2, id);
+//		//将准备好的SQL语句放入缓冲区
+//		pstm.addBatch();
+//		}
+			return this.executeBatchTransaction(pstm);
+		} finally {
+			DBUtils.close(pstm);
+		}
+	}
 	
 	protected final boolean executeTransaction()throws Exception
 	{

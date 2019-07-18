@@ -1,13 +1,10 @@
 package com.neusoft.web.impl.user;
 
-public class UserAddServlet extends UserControllerSupport {
+import com.neusoft.web.impl.controllersupport.Ab01ControllerSupport;
+
+public class UserAddServlet extends Ab01ControllerSupport {
 	@Override
 	public String execute() throws Exception {
-//		this.verify();//判断验证码
-//		if(this.getAttribute().get("msg").equals("验证码错误")) {
-//			this.saveAttribute("error", this.getAttribute().get("msg"));
-//			return "register";
-//		}
 		this.savePageInstance();//判断用户名是否已存在
 		if(this.getAttribute().containsKey("ins")) {
 			this.saveAttribute("error", "该用户名已被注册");

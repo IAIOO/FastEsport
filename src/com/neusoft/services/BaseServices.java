@@ -16,10 +16,29 @@ public interface BaseServices
      {
     	 return null;
      }
+     
+     default Map<String,String> findById1()throws Exception
+     {
+    	 return null;
+     }
 
      
      default List<Map<String,String>> query()throws Exception
      {
     	 return null;
+     }
+     
+     default List<Map<String,String>> queryTwo()throws Exception
+     {
+    	 return null;
+     }
+     
+     default List<Map<String,String>> queryForPage()throws Exception
+     {
+    	 return null;
+     }
+     
+     default int queryCount()throws Exception {
+    	 return 0;
      }
 }

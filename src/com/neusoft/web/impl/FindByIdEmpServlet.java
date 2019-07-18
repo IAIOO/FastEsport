@@ -1,13 +1,16 @@
 package com.neusoft.web.impl;
 
-public class FindByIdEmpServlet extends EmpControllerSupport 
+import com.neusoft.web.impl.controllersupport.Af01ControllerSupport;
+
+public class FindByIdEmpServlet extends Af01ControllerSupport 
 {
 
 	@Override
 	public String execute() throws Exception 
 	{
 		this.savePageInstance();
-		return "addEmp";
+		//return "af01AddEmp";
+		return "af01ModifyEmp";
 	}
 
 }

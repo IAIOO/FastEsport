@@ -1,6 +1,8 @@
 package com.neusoft.web.impl.user;
 
-public class UserLoginoutServlet extends UserControllerSupport {
+import com.neusoft.web.impl.controllersupport.Ab01ControllerSupport;
+
+public class UserLoginoutServlet extends Ab01ControllerSupport {
 
 	@Override
 	public String execute() throws Exception {

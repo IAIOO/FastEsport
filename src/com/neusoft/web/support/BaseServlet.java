@@ -34,7 +34,17 @@ public class BaseServlet extends HttpServlet
      		String basePackageName = null;
 			if (baseName.substring(0, 4).equals("user")) {
 				basePackageName = "com.neusoft.web.impl.user.";
-			} else {
+			}
+			else if(baseName.substring(0, 5).equals("match")) {
+				basePackageName = "com.neusoft.web.impl.match.";
+			}
+			else if(baseName.substring(0, 4).equals("team")) {
+				basePackageName = "com.neusoft.web.impl.team.";
+			}
+			else if(baseName.substring(0, 3).equals("bbs")) {
+				basePackageName = "com.neusoft.web.impl.bbs.";
+			}
+			else {
 				basePackageName = "com.neusoft.web.impl.";
 			}
      		//获取控制器的前缀名

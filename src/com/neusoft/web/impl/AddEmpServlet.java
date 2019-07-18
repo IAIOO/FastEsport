@@ -1,12 +1,14 @@
 package com.neusoft.web.impl;
 
-public class AddEmpServlet extends EmpControllerSupport 
+import com.neusoft.web.impl.controllersupport.Ac04ControllerSupport;
+
+public class AddEmpServlet extends Ac04ControllerSupport 
 {
 
 	@Override
 	public String execute() throws Exception 
 	{
-		this.update("addEmp", "添加", "添加成功,该员工编号是:", "aab103");
+		this.update("addEmp", "注册");
 		return "addEmp";
 	}
 
