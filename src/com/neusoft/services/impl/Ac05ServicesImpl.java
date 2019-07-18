@@ -9,14 +9,6 @@ import java.util.Map;
 
 public class Ac05ServicesImpl extends JdbcServicesSupport {
 
-    public boolean update(String utype) throws Exception{
-        if(utype.equalsIgnoreCase("addSchedule")){
-            return this.addSchedule();
-        }
-        else {
-            throw new Exception("在类[ Af02ServicesImpl ]中进行了未定义的动作调用,动作名称是"  +utype);
-        }
-    }
     static int gameId=11;//aaf101
     static String gameDate="2019-07-11";
     /**
@@ -60,4 +52,76 @@ public class Ac05ServicesImpl extends JdbcServicesSupport {
         return this.batchInsert_game(sql.toString(),args,idRows);
 
     }
+    
+    
+    private boolean deleteById()throws Exception
+    {
+    	String sql="delete from ab02 where aab201=?";
+    	return this.executeUpdate(sql, this.get("aab201"))>0;
+    }
+    
+    private boolean modifyEmp()throws Exception
+    {
+    	StringBuilder sql=new StringBuilder()
+
+//    			;
+    			.append("update af02 a")
+    			.append("   set a.aaf205=?,a.aaf206=?")
+    			.append(" where a.aaf201=?")
+    			;
+
+    	
+    	Object args[]={
+    			
+    			this.get("aaf205"),
+    			this.get("aaf206"),
+    			this.get("aaf201"),
+
+    	};
+    	System.out.println(this.get("aaf205"));
+    	System.out.println(this.get("aaf206"));
+    	return this.executeUpdate(sql.toString(), args)>0;
+    	
+    }
+    
+
+    
+    public boolean addEmp() throws Exception{
+        StringBuilder sql=new StringBuilder()
+                .append("insert into ac05(aab101，aaf101")
+                .append("           values(?,?)")
+                ;
+        Object args[]={
+                
+                //获取当前用户的主键值
+        		//4,
+                //this.get("aab101"),
+                this.get("aad301"),
+                1,
+
+               
+
+        };
+        return this.executeUpdate(sql.toString(),args)>0;
+    }
+    
+    
+
+
+   
+    
+    
+    public Map<String,String> findById()throws Exception
+    {
+    	//1.编写SQL语句
+    	StringBuilder sql=new StringBuilder()
+    			.append("select a.aad301")
+    			.append("  from ad03 a")
+    			.append(" where a.aad305=?")
+    			;
+    	//执行查询
+    	System.out.println(this.get("aad301"));
+    	return this.queryForMap(sql.toString(), this.get("aad305"));
+    }
+    
 }
