@@ -35,8 +35,8 @@ public class BaseServlet extends HttpServlet
 			if (baseName.substring(0, 4).equals("user")) {
 				basePackageName = "com.neusoft.web.impl.user.";
 			}
-			else if(baseName.substring(0, 5).equals("match")) {
-				basePackageName = "com.neusoft.web.impl.match.";
+			else if(baseName.substring(0, 5).equals("judge")) {
+				basePackageName = "com.neusoft.web.impl.judge.";
 			}
 			else if(baseName.substring(0, 4).equals("team")) {
 				basePackageName = "com.neusoft.web.impl.team.";
@@ -44,8 +44,17 @@ public class BaseServlet extends HttpServlet
 			else if(baseName.substring(0, 3).equals("bbs")) {
 				basePackageName = "com.neusoft.web.impl.bbs.";
 			}
+			else if(baseName.substring(0, 5).equals("admin")) {
+				basePackageName = "com.neusoft.web.impl.admin.";
+			}
+			else if(baseName.substring(0, 6).equals("player")) {
+				basePackageName = "com.neusoft.web.impl.player.";
+			}
+			else if(baseName.substring(0, 4).equals("shop")) {
+				basePackageName = "com.neusoft.web.impl.shop.";
+			}
 			else {
-				basePackageName = "com.neusoft.web.impl.";
+				basePackageName = "com.neusoft.web.impl.competition.";
 			}
      		//获取控制器的前缀名
      		String controllerFirstName=baseName.substring(0,1).toUpperCase()+baseName.substring(1);
