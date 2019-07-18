@@ -5,6 +5,7 @@ import java.security.MessageDigest;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -35,14 +36,21 @@ public class Tools
 	private Tools() {}
 	
 	//计算赔率,保留小数点后两位
-	public static double calculate(String a,String b){
+		public static double calculate(double a,double b){
 
-		double aa=Double.valueOf(a);
-		double bb=Double.valueOf(b);
-
-		double c =  (aa + bb)/aa;
-		return (double) ((Math.round((c - 0.005) * 100)) / 100.0);
-	}
+			double c =  (a + b)/a;
+			return (double) ((Math.round((c - 0.005) * 100)) / 100.0);
+		}
+	//去掉数组中的重复
+		public static String[] removeRepeat(String[] rows) {
+			List<String> list = new ArrayList<>();
+			for (int i = 0; i < rows.length; i++) {
+				if (!list.contains(rows[i])) {
+					list.add(rows[i]);
+				}
+			}
+			return list.toArray(new String[list.size()]);
+		}
 
 	public static String getPath2(String name)throws Exception{
 		//String path = this.getClass().getClassLoader().getResource("").getPath() + "name";
