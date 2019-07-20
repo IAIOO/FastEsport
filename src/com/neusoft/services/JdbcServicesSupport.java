@@ -660,7 +660,27 @@ public abstract class JdbcServicesSupport  implements BaseServices
 			DBUtils.close(pstm);
 		}
 	}
-	
+	//excel表导入数据库
+		protected final boolean executeUpdateExcel(String sql,List<List<String>> rows)throws Exception
+		{
+			PreparedStatement pstm=null;
+			try
+			{
+				pstm=DBUtils.prepareStatement(sql.toString());
+				for(int i=0;i<rows.size();i++)
+				{
+					for(int j=0;j<rows.get(i).size();j++)
+					{
+						pstm.setObject(j+1,rows.get(i).get(j));
+					}
+					pstm.addBatch();
+				}
+				return this.executeBatchTransaction(pstm);
+			}
+			finally {
+				DBUtils.close(pstm);
+			}
+		}
 	
 	//结束竞猜时，将竞猜结果发放给到个人竞猜信息表中（ab05）
 		protected final boolean executeEndGamble(final String sql,final Object args,int[] results,String[] rows)throws Exception
