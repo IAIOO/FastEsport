@@ -1,6 +1,7 @@
 package com.neusoft.services.impl;
 
 import com.neusoft.services.JdbcServicesSupport;
+import com.neusoft.system.tools.ExcelExportNImport;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -127,6 +128,23 @@ public class Af02ServicesImpl extends JdbcServicesSupport {
 
             return this.queryForList(sql.toString());
 
+        }
+        
+        
+      
+      //人工编排的赛程表用excel导入数据库中
+        public boolean excelInsertInto()throws Exception{
+
+            String filePath="/在服务器上的相对路径"+this.get("filePath");
+            List<List<String>> rows= ExcelExportNImport.excel2List(filePath);
+            int a=rows.get(1).size();
+            StringBuilder sql=new StringBuilder()
+                    .append("insert into af02(aaf101,aaf202,aaf203,aaf204)")
+                    .append("          values(?,?,?,?)")
+                    ;
+
+
+            return this.executeUpdateExcel(sql.toString(),rows);
         }
 
 }

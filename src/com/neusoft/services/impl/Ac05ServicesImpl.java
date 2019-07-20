@@ -1,6 +1,7 @@
 package com.neusoft.services.impl;
 
 import com.neusoft.services.JdbcServicesSupport;
+import com.neusoft.system.tools.ExcelExportNImport;
 import com.neusoft.system.tools.Tools;
 
 import java.util.Collections;
@@ -27,9 +28,6 @@ public class Ac05ServicesImpl extends JdbcServicesSupport {
 
         return this.queryForList(sql.toString());
     }
-    public void query2Excel() throws Exception{
-        List<Map<String,String>> ac05Rows=this.query();
-    }
 
 
 //    public boolean addPlayer() throws Exception{
@@ -53,6 +51,13 @@ public class Ac05ServicesImpl extends JdbcServicesSupport {
 
     }
     
+  //从数据库中导出参加比赛的选手
+    public boolean query2Excel1() throws Exception{
+        List<Map<String,String>> ac05Rows=this.query();
+
+        ExcelExportNImport.List2Excel(ac05Rows,this.get("aaf101").toString());
+        return true;
+    }
     
     private boolean deleteById()throws Exception
     {
