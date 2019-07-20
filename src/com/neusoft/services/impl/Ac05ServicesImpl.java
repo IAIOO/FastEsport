@@ -97,15 +97,9 @@ public class Ac05ServicesImpl extends JdbcServicesSupport {
                 .append("           values(?,?)")
                 ;
         Object args[]={
-                
-                //获取当前用户的主键值
-        		//4,
-                //this.get("aab101"),
-                this.get("aad301"),
-                1,
 
-               
-
+                this.get("aab101"),
+                this.get("aaf101")
         };
         return this.executeUpdate(sql.toString(),args)>0;
     }

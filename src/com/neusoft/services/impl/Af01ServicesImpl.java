@@ -17,6 +17,9 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
         }else if (utype.equalsIgnoreCase("modifyGame")){
             return this.modifyGame();
         }
+        else if (utype.equalsIgnoreCase("modifyEmp")){
+            return this.modifyEmp();
+        }
         else {
             throw new Exception("在类[ Af01ServicesImpl ]中进行了未定义的动作调用,动作名称是"  +utype);
         }
@@ -102,6 +105,34 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
         return this.executeUpdate(sql.toString(),args)>0;
 
     }
+    
+    
+    //裁判修改赛事状态
+    private boolean modifyEmp()throws Exception
+    {
+    	StringBuilder sql=new StringBuilder()
+
+    			.append("update af01 a")
+    			.append("   set a.aaf109=?")
+    			.append(" where a.aaf101=?")
+    			;
+
+    	
+    	Object args[]={
+    			
+    			this.get("aaf109"),
+    			this.get("aaf101")
+
+    	};
+    	System.out.println(this.get("aaf109"));
+    	System.out.println(this.get("aaf101"));
+    	return this.executeUpdate(sql.toString(), args)>0;
+    	
+    }
+    
+    
+    
+    
     //单一实例查询
     public Map<String,String> findById()throws Exception{
         //1.编写SQL语句

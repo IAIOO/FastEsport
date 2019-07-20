@@ -27,6 +27,10 @@ public interface BaseServices
      {
     	 return null;
      }
+     default List<Map<String,String>> query2()throws Exception
+     {
+    	 return null;
+     }
      
      default List<Map<String,String>> queryTwo()throws Exception
      {

@@ -25,7 +25,7 @@
       function onEdit(vaaf101)
       {
     	 var vform = document.getElementById("myform");
-    	 vform.action="<%=path%>/findByIdEmp.html?aaf101="+vaaf101;
+    	 vform.action="<%=path%>/judgeAf01FindById.html?aaf101="+vaaf101;
     	 //alert(vform.action);
     	 vform.submit();
       }
@@ -76,26 +76,20 @@ ${msg }
 	         <!-- 显示实际查询到的数据 -->
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr>
-				    <%-- <td>
-				      <input type="checkbox" name="idlist" value="${ins.aac401 }"
-				             onclick="onSelect(this.checked)" >
-				    </td> --%>
+
 				    
 			 	    <td>${vs.count }</td> 
-			 	    <%-- <td>${ins.aaf101 }</td> --%>
+			 	    
 			 	    <td>${ins.aaf102 }</td>
 			
 				    <td>
 				      <!-- #  空锚 -->
 				      <a href="#" onclick="onEdit('${ins.aaf101}')">${ins.aaf103 }</a> 
 				    </td>
-				  <%--   <td>${ins.aaf102 }</td> --%>
-				    <%-- <td>${ins.aaf103 }</td> --%>
+
 				    <td>${ins.aaf104 }</td>
 				    <td>${ins.aaf108 }</td>
-				    <%-- <td>
-				    	<input type="text" name="aaf109" value="${ins.aaf109 }">
-				    </td> --%>
+
 				    
 				   
 				    
@@ -138,10 +132,9 @@ ${msg }
 	<table border="1" width="95%" align="center">
 	  <tr>
 	    <td align="center">
-	       <input type="submit" name="next" value="查询" formaction="<%=path%>/af01QueryEmp.html">
+	       <input type="submit" name="next" value="查询" formaction="<%=path%>/judgeAf01QueryEmp.html">
 	       
-	       <%-- <input type="submit" id="modify" name="next" value="修改" formaction="<%=path%>/af01ModifyEmp.html"> --%>
-<%-- 	              formaction="<%=path%>/delEmp.html"  disabled="disabled"> --%>
+	       <input type="submit" name="next" value="返回" formaction="<%=path%>/judgeGame.jsp">
 	    </td>
 	  </tr>
 	</table>

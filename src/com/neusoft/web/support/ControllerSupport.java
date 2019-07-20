@@ -130,6 +130,26 @@ public abstract class ControllerSupport implements BaseController
 		}	
 	}
 	
+	/**
+	 * 裁判登录查询
+	 * @throws Exception
+	 */
+	protected final void Login()throws Exception
+	{
+		Map<String,String> ins=this.services.findById();
+		if(ins!=null)
+		{
+			if(!(ins.get("aad303").equals(this.dto.get("aad303")))) {
+				this.saveAttribute("msg", "用户名或密码错误");
+			}
+			this.saveAttribute("aad301", ins.get("aad301"));
+			this.saveAttribute("aad305", this.dto.get("aad305"));
+		}
+		else
+		{
+			this.saveAttribute("msg", "用户不存在");
+		}	
+	}
 	
 	/**
 	 * 管理员登录查询
@@ -168,7 +188,18 @@ public abstract class ControllerSupport implements BaseController
 			this.saveAttribute("msg", "没有符合条件的数据!");
 		}	
 	}
-	
+	protected final void savePageData2()throws Exception
+	{
+		List<Map<String,String>> rows=this.services.query2();
+		if(rows.size()>0)
+		{
+			this.saveAttribute("rows", rows);
+		}
+		else
+		{
+			this.saveAttribute("msg", "没有符合条件的数据!");
+		}	
+	}
 	/**
 	 * 单一实例 查询
 	 * @throws Exception

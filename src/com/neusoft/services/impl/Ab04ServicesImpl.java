@@ -1,6 +1,7 @@
 package com.neusoft.services.impl;
 
 import com.neusoft.services.JdbcServicesSupport;
+import com.neusoft.system.tools.Tools;
 
 import java.util.List;
 import java.util.Map;
@@ -125,7 +126,7 @@ public class Ab04ServicesImpl extends JdbcServicesSupport {
          * userId[i]
          */
         //去掉数组中的重复元素
-        String newUserId[]= removeRepeat(userId);
+        String newUserId[]= Tools.removeRepeat(userId);
         List<Map<String,String>> db=this.queryForList_2(queryAb01Aab101(),newUserId);//得到用户当前的代币数量(结束竞猜之前)
         int[] newDb=new int[db.size()];//竞猜结束之后用户的代币数量
         /**

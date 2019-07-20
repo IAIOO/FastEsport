@@ -13,7 +13,7 @@
 </style>
 </head>
 <body>
-<form action="<%=path %>/Register.html" method="post"> 
+<form action="<%=path %>/judgeRegister.html" method="post"> 
 <table border="1" align="center" width="30%">
 	<caption>
 	管理人员信息注册表
@@ -54,7 +54,7 @@
 		<td colspan="2" align="center">
 			<input type="submit" name="tijiao" value="提交">
 		
-			<input type="submit" name="fanhui" value="返回">
+			<input type="button" name="fanhui" value="返回" onclick="location='<%=path%>/judgeLogin.jsp'">
 		</td>
 	</tr>
 	
