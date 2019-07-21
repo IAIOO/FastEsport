@@ -17,8 +17,8 @@
 
     <input type="submit" name="next" value="自动生成赛程">
     
-    <input type="submit" name="next" value="导出比赛报名表excel"
-    formaction="<%=path%>/judgeExportExcel.html">
+    <%-- <input type="submit" name="next" value="导出比赛报名表excel"
+    formaction="<%=path%>/judgeExportExcel.html"> --%>
     
 </form>
 

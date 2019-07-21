@@ -27,17 +27,29 @@ public class Ac01ServicesImpl extends JdbcServicesSupport {
     	String aac110=Tools.getCurrentDate();
     	this.put("aac110", aac110);
     	StringBuilder sql=new StringBuilder()
-		.append("insert into ac01(aac101,aac102,aac103,aac104,aac105,")
-		.append("                 aac106,aac107,aac108,aac110,aac111,")
-		.append("                 aac112,aac113)")		
+		.append("insert into ac01(ac01.aab101,aac101,aac102,aac103,aac104,")
+		.append("                 aac105,aac106,aac107,aac108,aac110,")
+		.append("                 aac111,aac112,aac114)")		
 		.append("          values(?,?,?,?,?,")
 		.append("                 ?,?,?,?,?,")
-		.append("                 ?,?)")
+		.append("                 ?,?,?)")
 		;
+    	String aac111="0";
+    	Object aac102=this.get("aac102");
+    	if(aac102!=null)
+    	{
+        	if(aac102.equals("1"))
+        	{
+        		aac111="1";
+        	} 		
+    	}
+    	this.put("aac111",aac111);
+    	this.put("aac102",aac102);
     	//2.编写参数数组
      	Object args[]={
+     			2,//通过session获得this.get("aac101"),
     			this.get("aac101"),
-    			this.get("aac102"),
+    			aac102,
     			this.get("aac103"),
     			Tools.joinArray(this.get("aac104")),
     			Tools.ArrayToString(this.get("aac105")),
@@ -45,17 +57,22 @@ public class Ac01ServicesImpl extends JdbcServicesSupport {
     			Tools.joinArray(this.get("aac107")),
     			this.get("aac108"),
     			aac110,
-    			this.get("aac111"),
+    			aac111,
     			this.get("aac112"),
-    			this.get("aac113")
+    			this.get("aac114")
     	};
-
         return this.executeUpdate(sql.toString(), args)>0;	
     }	 
   
 	public Map<String, String> findById() throws Exception
    {
-	  String sql = "select * from ac01 a where a.aab101=?";
+	  StringBuilder sql = new StringBuilder()
+	  .append("select a.aac101,a.aac102,a.aac103,a.aac104,a.aac105,")
+	  .append("       a.aac106,a.aac107,a.aac108,a.aac110,a.aac111,")
+	  .append("       a.aac112")
+	  .append(" from  ac01 a ")
+	  .append(" where aab101= ? ")
+	  ;
       return this.queryForMap(sql.toString(), this.get("aab101"));
    } 
 	
