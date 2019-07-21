@@ -30,7 +30,7 @@
 ${msg }
 <br>
 <br>
-<form id="myform" action="<%=path%>/racecheck.html" method="post">
+<form id="myform" action="<%=path%>/adminracecheck.html" method="post">
   <!-- 查询条件区 -->
 	<table border="1" width="95%" align="center">
 	  <caption>

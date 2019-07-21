@@ -15,10 +15,10 @@
    
    <script type="text/javascript">
    var count=0;
-   function onDel(vaab601)
+   function onDel(vaab201)
    {
  	 var vform = document.getElementById("myform");
- 	 vform.action="<%=path%>/userdelete.html?aab601="+vaab601;
+ 	 vform.action="<%=path%>/adminuserdelete.html?aab201="+vaab201;
  	 //alert(vform.action);
  	 vform.submit();
    } 
@@ -27,11 +27,11 @@
 </head>
 <body>
 ${msg }
-<form id="myform" action="<%=path%>/userdelete.html" method="post">
+<form id="myform" action="<%=path%>/adminuserdelete.html" method="post">
 <!-- 查询条件区 -->
 <table border="1" width="95%" align="center">
 	  <caption>
-	               用户删除
+	               帖子删除
 	    <hr width="160">
 	  </caption>
 	 </table>
@@ -40,10 +40,11 @@ ${msg }
 	  <tr>
 	    <td></td>
 	    <td></td>
-	    <td>举报序列号</td>
+	    <td>举报流水号</td>
+	    <td>帖子序列号</td>
 	    <td>举报用户序列号</td>
 	    <td>被举报用户序列号</td>
-	    <td>检举原因</td>
+	    <td>举报描述</td>
 	    <td></td>
 	  </tr>
 	  <!--
@@ -62,11 +63,12 @@ ${msg }
 				      <!-- #  空锚 -->
 				    </td>
 				    <td>${ins.aab601 }</td>
+				    <td>${ins.aab201 }</td>
 				    <td>${ins.aab101a }</td>
 				    <td>${ins.aab101b }</td>
 				    <td>${ins.aab603 }</td>
 				    <td>
-				     <a href="#" onclick="onDel('${ins.aab601}')">删除</a>
+				     <a href="#" onclick="onDel('${ins.aab201}')">删除</a>
 				    </td>
 				  </tr>
 		      </c:forEach>
