@@ -18,7 +18,7 @@ function onMake() {
     var formData = new FormData($('#form2')[0]);
     $.ajax({
         type: 'post',
-        url: '/FastEsport/ShopuploadGoodsPic',
+        url: '/FastEsport/uploadGoodsPic',
         data: formData,
         dataType: "text",
         contentType: false, //不设置内容类型
@@ -31,7 +31,7 @@ function onMake() {
                 type: 'post',
                 data: $('#form1').serialize(),
                 dataType: "text",
-                url: '/FastEsport/Shopgoodsadd.html',
+                url: '/FastEsport/ShopGoodsadd.html',
                 success: function () {
                 	alert("上传商品成功！");
                 },

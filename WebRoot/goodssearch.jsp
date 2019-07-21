@@ -18,7 +18,7 @@
    function onChe(vaad201)
    {
  	 var vform = document.getElementById("myform");
- 	 vform.action="<%=path%>/shopgoodsdelete.html?aad201="+vaad201;
+ 	 vform.action="<%=path%>/shopGoodsdelete.html?aad201="+vaad201;
  	 //alert(vform.action);
  	 vform.submit();
    } 
@@ -27,7 +27,7 @@
 </head>
 <body>
 ${msg }
-<form id="myform" action="<%=path%>/shopgoodssearch.html" method="post">
+<form id="myform" action="<%=path%>/shopGoodssearch.html" method="post">
 <!-- 查询条件区 -->
 <table border="1" width="95%" align="center">
 	  <caption>

@@ -18,7 +18,7 @@
       function oncheck(vaab401)
       {
     	 var vform = document.getElementById("myform");
-    	 vform.action="<%=path%>/adminaddquizcheck.html?aab401="+vaab401;
+    	 vform.action="<%=path%>/adminAddquizcheck.html?aab401="+vaab401;
     	 //alert(vform.action);
     	 vform.submit();
       } 
@@ -27,7 +27,7 @@
 </head>
 <body>
 ${msg }
-<form id="myform" action="<%=path%>/adminquizcheck.html" method="post">
+<form id="myform" action="<%=path%>/adminQuizcheck.html" method="post">
 <!-- 查询条件区 -->
 <table border="1" width="95%" align="center">
 	  <caption>

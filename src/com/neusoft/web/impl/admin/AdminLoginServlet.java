@@ -7,10 +7,10 @@ public class AdminLoginServlet extends Ad01ControllerSupport
 	@Override
 	public String execute() throws Exception 
 	{
-		this.login();
+		this.adminLogin();
 		if(this.getAttribute().containsKey("msg")) {
 			return "adminlogin";
 	}
-		return "index";
+		return "adminindex";
 	}
 }

@@ -97,6 +97,7 @@ public class Ab02ServicesImpl extends JdbcServicesSupport {
  				 .append("  select b.aab201,b.aab202,date_format(b.aab205,'%Y-%m-%d %H:%i:%S') as aab205,a.aab102")
  				 .append("    from ab01 a,ab02 b")
  				 .append("   where b.aab101=a.aab101")
+ 				 .append("     and b.aab202 is not null")
  				 ;
  		
  		List<Object> paramList = new ArrayList<>();
@@ -120,7 +121,7 @@ public class Ab02ServicesImpl extends JdbcServicesSupport {
 	public int queryCount()throws Exception {
 		Object aab202=this.get("aab202");     //帖子标题  模糊查询
  		
-		StringBuilder sql = new StringBuilder().append("select * from ab02 where 1=1");
+		StringBuilder sql = new StringBuilder().append("select * from ab02 where aab202 is not null");
 		
 		List<Object> paramList = new ArrayList<>();
  		

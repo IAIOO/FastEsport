@@ -1,5 +1,8 @@
 package com.neusoft.services.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import com.neusoft.services.JdbcServicesSupport;
 
 public class Ac02ServicesImpl extends JdbcServicesSupport {
@@ -35,4 +38,21 @@ public class Ac02ServicesImpl extends JdbcServicesSupport {
     	};
         return this.executeUpdate(sql.toString(), args)>0;	
     }	 
+	
+	 public List<Map<String,String>> query()throws Exception
+	  {
+	  		//还原页面查询条件
+	  		
+	  		//定义SQL主体
+	  		StringBuilder sql=new StringBuilder()
+	  				.append("select a.aac201,a.aab101,a.aac202,a.aac203,a.aac205,a.aac206,")
+	  				.append("a.aac207,a.aac208,b.aab101,b.aab108")
+	  				.append("  from ac02 a,ab01 b ")
+	  				.append(" where a.aab101=b.aab101")
+	  				.append(" and b.aab108=0")
+	  		        .append(" order by a.aab101");
+	  		
+	  	return this.queryForList(sql.toString());
+	  }
+
 }

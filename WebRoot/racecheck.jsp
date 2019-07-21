@@ -19,7 +19,7 @@
       function oncon(vaaf101)
       {
     	 var vform = document.getElementById("myform");
-    	 vform.action="<%=path%>/addracecheck.html?aaf101="+vaaf101;
+    	 vform.action="<%=path%>/adminAddracecheck.html?aaf101="+vaaf101;
     	 //alert(vform.action);
     	 vform.submit();
       } 
@@ -30,7 +30,7 @@
 ${msg }
 <br>
 <br>
-<form id="myform" action="<%=path%>/adminracecheck.html" method="post">
+<form id="myform" action="<%=path%>/adminRacecheck.html" method="post">
   <!-- 查询条件区 -->
 	<table border="1" width="95%" align="center">
 	  <caption>

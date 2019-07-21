@@ -7,7 +7,7 @@ public class AdminProcheckServlet extends Ac02ControllerSupport
 	@Override
 	public String execute() throws Exception 
 	{
-		this.queryTwo();
+		this.savePageData();
 		return "procheck";
 	}
 }

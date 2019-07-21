@@ -27,7 +27,7 @@
 </head>
 <body>
 ${msg }
-<form id="myform" action="<%=path%>/shopusershop.html" method="post">
+<form id="myform" action="<%=path%>/shopUsershop.html" method="post">
 <!-- 查询条件区 -->
 <table border="1" width="95%" align="center">
 	  <caption>

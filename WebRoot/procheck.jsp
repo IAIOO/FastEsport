@@ -18,7 +18,7 @@
       function onadd(vaab101)
       {
     	 var vform = document.getElementById("myform");
-    	 vform.action="<%=path%>/adminaddprocheck.html?aab101="+vaab101;
+    	 vform.action="<%=path%>/adminAddprocheck.html?aab101="+vaab101;
     	 //alert(vform.action);
     	 vform.submit();
       } 
@@ -29,7 +29,7 @@
 ${msg }
 <br>
 <br>
-<form id="myform" action="<%=path%>/adminprocheck.html" method="post">
+<form id="myform" action="<%=path%>/adminProcheck.html" method="post">
   <!-- 查询条件区 -->
 	<table border="1" width="95%" align="center">
 	  <caption>
@@ -44,11 +44,13 @@ ${msg }
 	     <td></td>
 	    <td>申请认证号</td>
 	    <td>用户序列号</td>
-	    <td>申请文字资料</td>
 	    <td>申请图片资料</td>
+	    <td>职业履历</td>
+	    <td>个人荣誉</td>
+	    <td>真实姓名</td>
+	    <td>身份证号</td>
+	    <td>身份证图片</td>
 	    <td></td>
-	    <td></td>
-	   
 	  </tr>
 	  <!--
 	         注意事项
@@ -69,6 +71,10 @@ ${msg }
 				    <td>${ins.aab101 }</td>
 				    <td>${ins.aac203 }</td>
 				    <td><img src="${ins.aac202 }" style=height:50;weight:50></td>
+				    <td>${ins.aac205 }</td>
+				    <td>${ins.aac206 }</td>
+				    <td>${ins.aac207 }</td>
+				    <td><img src="${ins.aac208 }" style=height:50;weight:50></td>
 				     <td>
 				      <a href="#" onclick="onadd('${ins.aab101}')">认证</a>
 				    </td>
@@ -84,7 +90,10 @@ ${msg }
 			            <td></td>
 			            <td></td>
 			            <td></td>
-			            
+			            <td></td>
+			            <td></td>
+			            <td></td>
+			            <td></td>
 			          </tr>
 		      </c:forEach>
 	     </c:when>
@@ -98,7 +107,10 @@ ${msg }
 	             <td></td>
 	             <td></td>
 	             <td></td>
-	             
+	             <td></td>
+	             <td></td>
+	             <td></td>
+	             <td></td>
 	           </tr>
 	        </c:forEach>
 	     </c:otherwise>
@@ -110,7 +122,7 @@ ${msg }
 	  <tr>
 	    <td align="center">
 	       <input type="submit" name="next" value="查询">
-	        <a href="adminindex.jsp"target="main">首页</a>
+	       <a href="adminindex.jsp"target="main">首页</a>
 	    </td>
 	  </tr>
 	</table>

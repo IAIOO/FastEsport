@@ -18,7 +18,7 @@
    function onDel(vaab201)
    {
  	 var vform = document.getElementById("myform");
- 	 vform.action="<%=path%>/adminuserdelete.html?aab201="+vaab201;
+ 	 vform.action="<%=path%>/adminUserdelete.html?aab201="+vaab201;
  	 //alert(vform.action);
  	 vform.submit();
    } 
@@ -27,7 +27,7 @@
 </head>
 <body>
 ${msg }
-<form id="myform" action="<%=path%>/adminuserdelete.html" method="post">
+<form id="myform" action="<%=path%>/adminUsersearch.html" method="post">
 <!-- 查询条件区 -->
 <table border="1" width="95%" align="center">
 	  <caption>
