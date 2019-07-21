@@ -44,12 +44,7 @@
 		</td>
 	</tr>
 	
-	<tr>
-		<td>≤√≈–±‡∫≈</td>
-		<td>
-			<input type="text" name="aad306" required="true">
-		</td>
-	</tr>
+	
 	<tr>
 		<td colspan="2" align="center">
 			<input type="submit" name="tijiao" value="Ã·Ωª">

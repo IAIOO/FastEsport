@@ -4,6 +4,7 @@ import java.util.Map;
 
 
 import com.neusoft.services.JdbcServicesSupport;
+import com.neusoft.system.tools.Tools;
 
 
 public class Ad03ServicesImpl extends JdbcServicesSupport 
@@ -41,9 +42,9 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
     private boolean addEmp()throws Exception
     {
     	//获取当前员工编号
-    //	String aab103=Tools.getEmpNumber();
+    	String aad306=Tools.getUserNumber();
     	//向DTO添加员工编号
-    //	this.put("aab103", aab103);
+    	this.put("aad306", aad306);
     	
     	//1.编写SQL语句
 

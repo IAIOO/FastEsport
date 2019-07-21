@@ -93,13 +93,15 @@ public class Ac05ServicesImpl extends JdbcServicesSupport {
     
     public boolean addEmp() throws Exception{
         StringBuilder sql=new StringBuilder()
-                .append("insert into ac05(aab101£¬aaf101")
+                .append("insert into ac05(aab101,aaf101)")
                 .append("           values(?,?)")
                 ;
         Object args[]={
 
-                this.get("aab101"),
+        		this.get("aad301"),
+             //   this.get("aab101")
                 this.get("aaf101")
+                
         };
         return this.executeUpdate(sql.toString(),args)>0;
     }
