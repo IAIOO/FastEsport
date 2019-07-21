@@ -10,22 +10,26 @@
 
 <html>
 <head >
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
+  
 </head>
 <body>
-<form action="<%=path%>/addSchedule.html" method="post">
-
+<form action="<%=path%>/adminAddSchedule.html" method="post" >
 
     <input type="submit" name="next" value="自动生成赛程">
-    <input type="submit" name="next" value="导出比赛报名表excel">
+    
+    <input type="submit" name="next" value="导出比赛报名表excel"
+    formaction="<%=path%>/judgeExportExcel.html">
+    
+</form>
 
-
+<form enctype="multipart/form-data" action="/FastEsport/uploadExcel" method="post">
+    <input type="file" id="excel" name="excel">
+    <input type="submit" name="next" value="提交">
 </form>
 
 
 
-</form>
+
 </body>
 </html>
 

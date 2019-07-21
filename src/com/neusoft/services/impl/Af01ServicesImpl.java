@@ -39,7 +39,7 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
                 //this.get("aaf101"),
                 //this.get("aab101"),
                 //获取当前用户的主键值
-                1,
+                this.get("aab101"),
                 this.get("aaf102"),
                 this.get("aaf103"),
                 //this.get("aaf104"),赛事编号
@@ -71,7 +71,7 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
                 .append("        a.aaf112,a.aaf113")
                 .append("  from  af01 a")
                 .append("  where aab101 = ")
-                .append(         pkAab101)//当前用户主键值TODO
+                .append(         this.get("aab101"))//当前用户主键值TODO
                 ;
         return this.queryForList(sql.toString());
     }

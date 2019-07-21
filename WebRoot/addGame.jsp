@@ -33,52 +33,85 @@
             return fmt;
         };
     </script>
+    <head>
+        <title>Home</title>
+        <!-- for-mobile-apps -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="" />
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!-- //for-mobile-apps -->
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <!-- gallery -->
+        <link rel="stylesheet" href="css/lightGallery.css" type="text/css" media="all" />
+        <!-- //gallery -->
+        <!-- font-awesome icons -->
+        <link href="css/font-awesome.css" rel="stylesheet">
+
+        <!-- //font-awesome icons -->
+        <link href="http://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+        <link href="http://fonts.googleapis.com/css?family=Jura:300,400,500,600" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+
+    </head>
 
 
 </head>
 <body>
+<!-- <div class="w3_navigation" style="background-color: #bce8f1">
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="navbar-header navbar-left">
+                <div class="w3_navigation_pos">
+                    <h1><a href="index.jsp"><span>Fantasy</span> World</a></h1>
+                </div>
+            </div>
+            Collect the nav links, forms, and other content for toggling
+            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                <nav class="cl-effect-5" id="cl-effect-5">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.jsp"><span data-hover="Home">Home</span></a></li>
+                        <li><a href="#about" class="scroll"><span data-hover="About">全部赛事</span></a></li>
+                        <li><a href="#services" class="scroll"><span data-hover="Services">赛事管理</span></a></li>
+                        <li><a href="#work" class="scroll"><span data-hover="Gallery">战队</span></a></li>
+                        <li><a href="#projects" class="scroll"><span data-hover="News">商城</span></a></li>
+                        <li><a href="#mail" class="scroll"><span data-hover="Contact">论坛</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+    </div>
+</div> -->
 <%--${ins }--%>
-<div style="background-color: darkgray;">
-    <table>
-        <tr style="width: 1400px;height: 90px;font-size: large">
-
-            <td style="width: 200px;text-align: center;">
-                <a href="/" style="font-family: 楷体;color: black"><img src="sources/fastesoprt.png" style="width: 200px;height: 75px"></a>
-            </td>
-            <td style="width: 200px;text-align: center;font-family: 楷体;color: black">
-                <span>我的战队</span>
-            </td>
-            <td style="width: 200px;text-align: center;font-family: 楷体;color: black">
-                <span>论坛</span>
-            </td>
-            <td style="width: 200px;text-align: center;font-family: 楷体;color: black">
-                <span>全部赛事</span>
-            </td>
-            <td style="width: 200px;text-align: center">
-                <a href="queryGame.html" style="font-family: 楷体;color: black"><span>赛事管理</span></a>
-            </td>
-            <td style="width: 200px;text-align: center">
-                <a href="queryGamble.html" style="font-family: 楷体;color: black"><span>参与竞猜</span></a>
-            </td>
-            <td style="width: 200px;text-align: center;font-family: 楷体;color: black">
-                <span>商城</span>
-            </td>
-            <td style="width: 200px;text-align: center;font-family: 楷体;color: black">
-                <span>个人中心</span>
-            </td>
-        </tr>
-    </table>
-</div>
 
 <div style="text-align: center">
-    <form action="<%=path%>/addGame.html" method="post">
+    <form action="<%=path%>/competitionAddGame.html" method="post">
 
 
-        比赛类型:<input type="text" name="aaf102" value="${ins.aaf102}">
+        <%--比赛类型:<input type="text" name="aaf102" value="${ins.aaf102}">--%>
+        比赛类型：
+        <select name="aaf102">
+            <option value="1">DOTA2</option>
+            <option value="2">LOL</option>
+            <option value="3">王者荣耀</option>
+            <option value="4">CSGO</option>
+            <option value="5">PUBG</option>
+            <option value="6">OW</option>
+            <option value="7">星际争霸2</option>
+            <option value="8">魔兽争霸3</option>
+            <option value="9">炉石传说</option>
+        </select>
         <br>
         比赛名称:<input type="text" name="aaf103" value="${ins.aaf103}">
         <br>
-        赛制:<input type="text" name="aaf105" value="${ins.aaf105}">
+            <%--<input type="text" name="aaf105" value="${ins.aaf105}">--%>
+        赛制:<select name="aaf105">
+            <option value="1">单败淘汰赛</option>
+            <option value="2">小组循环单败淘汰赛</option>
+            <option value="3">小组循环双败淘汰赛</option>
+        </select>
         <br>
         报名结束时间:<input type="date" name="aaf107" value="${ins.aaf107}">
         <br>
@@ -93,9 +126,10 @@
         密码:<input type="text" name="aaf113" value="${ins.aaf113}">
         <br>
             <input type="submit" name="next" value="${empty param.aaf101?'添加':'修改' }"
-                   formaction="<%=path%>/${empty param.aaf101?'add':'modify' }Game.html">
+                   formaction="<%=path%>/${empty param.aaf101?'competitionAdd':'competitionModify' }Game.html">
         <br>
         <input type="hidden" name="aaf101" value="${param.aaf101 }">
+        <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
 
 
 

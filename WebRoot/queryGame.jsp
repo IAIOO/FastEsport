@@ -17,45 +17,55 @@
         function onEdit(vaaf101)
         {
             var vform = document.getElementById("myform");
-            vform.action="<%=path%>/findByIdGame.html?aaf101="+vaaf101;
+            vform.action="<%=path%>/competitionFindByIdGame.html?aaf101="+vaaf101;
             //alert(vform.action);
             vform.submit();
         }
         function myFunction(vaaf1011)
         {
             var vform = document.getElementById("myform");
-            vform.action="<%=path%>/querySchedule.html?aaf101="+vaaf1011;
+            vform.action="<%=path%>/userQuerySchedule.html?aaf101="+vaaf1011;
             //alert(vform.action);
             vform.submit();
         }
-        function autoLoad() {
-            jQuery.autoLoad({
-                method:"POST",
-                url:"web/impl/QueryGameServlet"
-            });
-        }
+        // function autoLoad() {
+        //     jQuery.autoLoad({
+        //         method:"POST",
+        //         url:"web/impl/QueryGameServlet"
+        //     });
+        // }
     </script>
 </head>
-<body onload="autoLoad()">
-<%=session.getAttribute("UserId")%>
+<%--<body onload="autoLoad()">--%>
+
 <%--${rows }--%>
 <div style="background-color: darkgray;">
     <table>
         <tr style="width: 1400px;height: 90px;font-size: large">
-            <td style="width: 280px;text-align: center;">
+
+            <td style="width: 200px;text-align: center;">
                 <a href="/" style="font-family: 楷体;color: black"><img src="sources/fastesoprt.png" style="width: 200px;height: 75px"></a>
             </td>
-            <td style="width: 280px;text-align: center;">
-                <a href="querySchedule.html" style="font-family: 楷体;color: black"><span>全部赛事</span></a>
+            <td style="width: 200px;text-align: center;font-family: 楷体;color: black">
+                <span>我的战队</span>
             </td>
-            <td style="width: 280px;text-align: center">
-                <a href="queryGame.html" style="font-family: 楷体;color: black"><span>赛事管理</span></a>
+            <td style="width: 200px;text-align: center;font-family: 楷体;color: black">
+                <span>论坛</span>
             </td>
-            <td style="width: 280px;text-align: center">
-                <a href="queryGamble.html" style="font-family: 楷体;color: black"><span>参与竞猜</span></a>
+            <td style="width: 200px;text-align: center;font-family: 楷体;color: black">
+                <span>全部赛事</span>
             </td>
-            <td style="width: 280px;text-align: center;font-family: 楷体;color: black">
+            <td style="width: 200px;text-align: center">
+                <a href="#" style="font-family: 楷体;color: black"><span>赛事管理</span></a>
+            </td>
+            <td style="width: 200px;text-align: center">
+                <a href="#" style="font-family: 楷体;color: black"><span>参与竞猜</span></a>
+            </td>
+            <td style="width: 200px;text-align: center;font-family: 楷体;color: black">
                 <span>商城</span>
+            </td>
+            <td style="width: 200px;text-align: center;font-family: 楷体;color: black">
+                <span>个人中心</span>
             </td>
         </tr>
     </table>
@@ -68,7 +78,7 @@
         </tr>
     </table>
 </a>
-<form id="myform" action="<%=path%>/queryGame.html" method="post">
+<form id="myform" action="<%=path%>/competitionQueryGame.html" method="post">
     <c:choose>
         <c:when test="${rows !=null}">
             <c:forEach items="${rows }" var="ins" varStatus="vs">

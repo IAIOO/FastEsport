@@ -21,7 +21,7 @@ public class Ac05ServicesImpl extends JdbcServicesSupport {
         System.out.println("µ÷ÓÃaaf101" + this.get("aaf101"));
 
         StringBuilder sql = new StringBuilder()
-                .append("select   a.aac501,a.aac502,a.aab101")
+                .append("select   a.aac501,a.aab101")
                 .append("    from ac05 a")
                 .append("   where a.aaf101 = ")
                 .append(this.get("aaf101"));
@@ -43,7 +43,7 @@ public class Ac05ServicesImpl extends JdbcServicesSupport {
         String [] idRows=Tools.getRows(this.query(),"2");
 
         Object args[] = {
-                12,
+                4,
                 gameDate
         };
 
@@ -98,7 +98,7 @@ public class Ac05ServicesImpl extends JdbcServicesSupport {
                 ;
         Object args[]={
 
-        		this.get("aad301"),
+        		this.get("aab101"),
              //   this.get("aab101")
                 this.get("aaf101")
                 

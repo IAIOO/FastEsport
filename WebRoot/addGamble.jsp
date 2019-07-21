@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="<%=path%>/addGamble.html" method="post">
+<form action="<%=path%>/userAddGamble.html" method="post">
 
     ¾º²ÂÖ÷Ìâ:<input type="text" name="aab402">
     <br>
@@ -22,7 +22,7 @@
     <br>
 
     <input type="submit" name="next" value="Ìí¼Ó"
-           formaction="addGamble.html">
+           formaction="userAddGamble.html">
     <br>
 
 

@@ -15,6 +15,7 @@ session.setAttribute("name",request.getAttribute("name"));
       <a href="userdelete.jsp" target="user">用户检举处理</a>
       <a href="goodsadd.jsp" target="shop">商品添加</a>
       <a href="goodssearch.jsp" target="good">商品查询与删除</a>
+      <a href="#" target="excel">赛程管理</a>
     </td>
   </tr>
 

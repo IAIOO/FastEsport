@@ -136,7 +136,7 @@ public class Af02ServicesImpl extends JdbcServicesSupport {
       //人工编排的赛程表用excel导入数据库中
         public boolean excelInsertInto()throws Exception{
 
-            String filePath="/在服务器上的相对路径"+this.get("filePath");
+            String filePath=this.get("filePath").toString();
             List<List<String>> rows= ExcelExportNImport.excel2List(filePath);
             int a=rows.get(1).size();
             StringBuilder sql=new StringBuilder()

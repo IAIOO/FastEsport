@@ -7,56 +7,53 @@
   Time: 14:40
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=GBK" language="java" %>
+<%String path=request.getContextPath(); %>
 <html>
 <head>
     <title>Title</title>
     <style>a{TEXT-DECORATION:none}</style>
     <script>
-        function getPx(i,vs) {
-            var a;
-            switch (i) {
-                case 1:a = 0;
-                case 2:
-                    if (vs==1){
-                        a = 1;
-                    } else {
-                        a = 3;
-                    }
-                case 3:
-                    if (vs==1){
-                        a = 3;
-                    } else {
-                        a = 7;
-                    }
-                case 4:a = 7;
-            }
-            // return a;
-            document.getElementById("table1").setAttribute()
-        }
+    function onEdit(vaaf201)
+    {
+        var vform = document.getElementById("myform");
+        vform.action="<%=path%>/queryGamble.html?aaf101="+vaaf201;
+        //alert(vform.action);
+        vform.submit();
+    }
     </script>
 </head>
 <body>
 <%--${rows }--%>
-<%--æ±‚rowsçš„é•¿åº¦--%>
+<%--ÇórowsµÄ³¤¶È--%>
 <%--${fn:length(rows)}--%>
 <div style="background-color: darkgray;">
     <table>
         <tr style="width: 1400px;height: 90px;font-size: large">
-            <td style="width: 280px;text-align: center;">
-                <a href="/" style="font-family: æ¥·ä½“;color: black"><img src="sources/fastesoprt.png" style="width: 200px;height: 75px"></a>
+
+            <td style="width: 200px;text-align: center;">
+                <a href="/" style="font-family: ¿¬Ìå;color: black"><img src="sources/fastesoprt.png" style="width: 200px;height: 75px"></a>
             </td>
-            <td style="width: 280px;text-align: center;">
-                <a href="querySchedule.html" style="font-family: æ¥·ä½“;color: black"><span>å…¨éƒ¨èµ›äº‹</span></a>
+            <td style="width: 200px;text-align: center;font-family: ¿¬Ìå;color: black">
+                <span>ÎÒµÄÕ½¶Ó</span>
             </td>
-            <td style="width: 280px;text-align: center">
-                <a href="queryGame.html" style="font-family: æ¥·ä½“;color: black"><span>èµ›äº‹ç®¡ç†</span></a>
+            <td style="width: 200px;text-align: center;font-family: ¿¬Ìå;color: black">
+                <span>ÂÛÌ³</span>
             </td>
-            <td style="width: 280px;text-align: center">
-                <a href="queryGamble.html" style="font-family: æ¥·ä½“;color: black"><span>å‚ä¸ç«çŒœ</span></a>
+            <td style="width: 200px;text-align: center;font-family: ¿¬Ìå;color: black">
+                <span>È«²¿ÈüÊÂ</span>
             </td>
-            <td style="width: 280px;text-align: center;font-family: æ¥·ä½“;color: black">
-                <span>å•†åŸ</span>
+            <td style="width: 200px;text-align: center">
+                <a href="#" style="font-family: ¿¬Ìå;color: black"><span>ÈüÊÂ¹ÜÀí</span></a>
+            </td>
+            <td style="width: 200px;text-align: center">
+                <a href="#" style="font-family: ¿¬Ìå;color: black"><span>²ÎÓë¾º²Â</span></a>
+            </td>
+            <td style="width: 200px;text-align: center;font-family: ¿¬Ìå;color: black">
+                <span>ÉÌ³Ç</span>
+            </td>
+            <td style="width: 200px;text-align: center;font-family: ¿¬Ìå;color: black">
+                <span>¸öÈËÖĞĞÄ</span>
             </td>
         </tr>
     </table>
@@ -68,24 +65,24 @@
     <table>
         <tr>
             <td style="width: 200px;text-align: center">
-                æ¯”èµ›çŠ¶æ€
+                ±ÈÈü×´Ì¬
             </td>
             <td style="width: 300px;text-align: center">
-                æ¯”èµ›æ—¶é—´
+                ±ÈÈüÊ±¼ä
             </td>
             <td style="width: 600px;text-align: center">
-                å¯¹é˜µæƒ…å†µ
+                ¶ÔÕóÇé¿ö
             </td>
         </tr>
     </table>
 
-    <div style="float: left;width: 1100px">
+    <div id="myform" style="float: left;width: 1100px">
         <table>
             <c:forEach items="${rows }" var="ins" varStatus="vs">
 
                 <tr style="height: 60px;margin-top: 0px">
                     <td width="200px" align="center">
-                        å·²ç»“æŸ
+                        ÒÑ½áÊø
                     </td>
                     <td width="300px" align="center">
                             ${ins.aaf204}
@@ -93,15 +90,15 @@
                     <td width="250px" align="center">
                             ${ins.aaf202}
                     </td>
-                        <%--æ¯”åˆ†--%>
+                        <%--±È·Ö--%>
                     <td width="48px" align="center">
-                        ${ins.aaf205}
+                            ${ins.aaf205}
                     </td>
                     <td width="4px" align="center">
                         :
                     </td>
                     <td width="48px" align="center">
-                        ${ins.aaf206}
+                            ${ins.aaf206}
                     </td>
                     <td width="250px" align="center">
                             ${ins.aaf203}
@@ -182,7 +179,7 @@
         <%--</div>--%>
     <%--</c:forEach>--%>
 
-    <%--&lt;%&ndash;é™æ€&ndash;%&gt;--%>
+    <%--&lt;%&ndash;¾²Ì¬&ndash;%&gt;--%>
     <%--&lt;%&ndash;<div style="display: block;float: left;width: 165px;margin-left: 40px">&ndash;%&gt;--%>
         <%--&lt;%&ndash;<c:forEach items="${rows }" var="ins1" varStatus="vs">&ndash;%&gt;--%>
             <%--&lt;%&ndash;<table frame="box" style="width: 150px;height: 40px;">&ndash;%&gt;--%>

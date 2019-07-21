@@ -11,13 +11,13 @@ public class Ab04ServicesImpl extends JdbcServicesSupport {
     int pkAaf201=1;//赛程表主键值
     public boolean addGamble() throws Exception{
         StringBuilder sql=new StringBuilder()
-                .append("insert into ab04(aaf201,aab402,aab408,aab409,aab410)")
+                .append("insert into ab04(aaf101,aab402,aab408,aab409,aab410)")
                 .append("           values(?,?,?,?,?)")
                 ;
         Object args[]={
 
                 //
-                pkAaf201,
+                this.get("aaf101"),
                 this.get("aab402"),
                 this.get("aab408"),
                 this.get("aab409"),
@@ -35,7 +35,7 @@ public class Ab04ServicesImpl extends JdbcServicesSupport {
                 .append("        a.aab407,a.aab408,a.aab409")
                 .append("  from  ab04 a")
                 .append("  where aaf201 = ")
-                .append(         pkAaf201)
+                .append(         this.get("aaf101"))
                 .append("    and a.aab410 = 1")//当前赛程流水号
                 ;
         return this.queryForList(sql.toString());

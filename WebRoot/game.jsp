@@ -5,7 +5,7 @@
   Time: 16:40
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=GBK" language="java" %>
 <%String path=request.getContextPath();%>
 <html>
 <head>
@@ -14,36 +14,61 @@
         function myFunction(vaaf1011)
         {
             var vform = document.getElementById("myform");
-            vform.action="<%=path%>/querySchedule.html?aaf101="+vaaf1011;
+            vform.action="<%=path%>/userQueryGamble.html?aaf101="+vaaf1011;
             //alert(vform.action);
             vform.submit();
         }
+        $.ajax({
+            type: 'post',
+            url: "/FastEsport/playerAc05Add.html",   
+            data: $('#form1').serialize(),
+            success: function () {
+   				alert("ok");
+            },
+            error : function() {
+                alert("Òì³££¡");
+            }
+        });
     </script>
 </head>
 <body>
 <div>
     <div>
         ${ins }
-        èµ›äº‹åç§°ï¼š${ins.aaf103 }<br>
-        èµ›äº‹ç±»å‹ï¼š${ins.aaf102 }<br>
-        æŠ¥åæˆªæ­¢æ—¶é—´ï¼š${ins.aaf107}<br>
-        æ¯”èµ›è§„åˆ™ï¼š${ins.aaf112 }<br>
-        æ¯”èµ›çŠ¶æ€ï¼š${ins.aaf109 }<br>
+        ÈüÊÂÃû³Æ£º${ins.aaf103 }<br>
+        ÈüÊÂÀàĞÍ£º${ins.aaf102 }<br>
+        ±¨Ãû½ØÖ¹Ê±¼ä£º${ins.aaf107}<br>
+        ±ÈÈü¹æÔò£º${ins.aaf112 }<br>
+        ±ÈÈü×´Ì¬£º${ins.aaf109 }<br>
     </div>
     <div>
-        <form>
-            <input type="submit" value="ç«‹åˆ»æŠ¥å">
+        <form id="form1">
+			<input type="hidden" name="aaf101" value="${param.aaf101 }">
+			<input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
+            <input type="submit" value="Á¢¿Ì±¨Ãû">
+            
         </form>
+        
     </div>
-</div>
-
-<div>
-    <form id="myform" action="<%=path%>/queryPlayer.html" method="post">
-        <input type="submit" value="å‚èµ›è€…åˆ—è¡¨">
-        <input type="submit" value="æŸ¥çœ‹èµ›ç¨‹"
-               formaction="<%=path%>/querySchedule.html">>
+    <div>
+    <form id="myform" action="<%=path%>/userQueryPlayer.html" method="post">
+        <input type="submit" value="²ÎÈüÕßÁĞ±í">
+        <input type="submit" value="²é¿´Èü³Ì"
+               formaction="<%=path%>/userQuerySchedule.html">>
+               
+        <%-- <input type="submit" name="next" value="µ¼³ö±ÈÈü±¨Ãû±íexcel"
+               formaction="<%=path%>/judgeExportExcel.html"> --%>
+               
+       <%--  <input type="submit" name="next" value="¾º²Â"
+               formaction="<%=path%>/userQueryGambel.html"> --%>
         <input type="hidden" name="aaf101" value="${param.aaf101 }">
+        <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
+        
+        
     </form>
 </div>
+</div>
+
+
 </body>
 </html>

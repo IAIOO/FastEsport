@@ -143,19 +143,19 @@ window.onload=function(){
 		<a href="makeTeam.jsp">创建战队</a>
 	</li>
 	<li>
-		<a href="icons.html">我的战队</a>
+		<a href="teamMyTeam.html">我的战队</a>
 	</li>
 	<li>
-		<a href="icons.html">发布招募</a>
+		<a href="enlistTeam.jsp">发布招募</a>
 	</li>
 	<li>
-		<a href="icons.html">审核招募</a>
+		<a href="queryForMyEnlist.jsp">审核招募</a>
 	</li>
 	<li>
-		<a href="icons.html">查看招募</a>
+		<a href="queryForTeam.jsp">报名战队</a>
 	</li>
 	<li>
-		<a href="icons.html">报名战队</a>
+		<a href="userProId.jsp">职业认证</a>
 	</li>
 </ul>
 </li>
