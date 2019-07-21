@@ -18,7 +18,7 @@
 ${msg}
 <br>
 <br>
-<form action="<%=path%>/af01ModifyEmp.html" method="post">
+<form action="<%=path%>/judgeAf01ModifyEmp.html" method="post">
 <table  border="1" align="center" width="45%">
     <caption>
        赛事状态修改
@@ -33,6 +33,7 @@ ${msg}
    <tr>
    	<td>
    		<input type="submit" value="修改">
+   		<input type="submit" value="返回" formaction="<%=path%>/judgeAf01QueryEmp.html">
    	</td>
    	</tr>
 </table>

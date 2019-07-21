@@ -1,6 +1,7 @@
 package com.neusoft.services.impl;
 
 import com.neusoft.services.JdbcServicesSupport;
+import com.neusoft.system.tools.ExcelExportNImport;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -128,5 +129,89 @@ public class Af02ServicesImpl extends JdbcServicesSupport {
             return this.queryForList(sql.toString());
 
         }
+        
+        
+        
+      
+      //人工编排的赛程表用excel导入数据库中
+        public boolean excelInsertInto()throws Exception{
+
+            String filePath="/在服务器上的相对路径"+this.get("filePath");
+            List<List<String>> rows= ExcelExportNImport.excel2List(filePath);
+            int a=rows.get(1).size();
+            StringBuilder sql=new StringBuilder()
+                    .append("insert into af02(aaf101,aaf202,aaf203,aaf204)")
+                    .append("          values(?,?,?,?)")
+                    ;
+
+
+            return this.executeUpdateExcel(sql.toString(),rows);
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        public List<Map<String,String>> query2()throws Exception{
+            //1.编写SQL语句
+            StringBuilder sql = new StringBuilder()
+                    .append("select a.aaf101,a.aaf201,a.aaf202,a.aaf203,a.aaf204,a.aaf205,a.aaf206")
+                    .append("  from af02 a")
+                    ;
+            //执行查询
+
+            return this.queryForList(sql.toString());
+
+        }
+        
+        private boolean modifyEmp()throws Exception
+        {
+        	StringBuilder sql=new StringBuilder()
+
+        			.append("update af02 a")
+        			.append("   set a.aaf205=?,a.aaf206=?")
+        			.append(" where a.aaf201=?")
+        			;
+
+        	
+        	Object args[]={
+        			
+        			this.get("aaf205"),
+        			this.get("aaf206"),
+        			this.get("aaf201")
+
+        	};
+        	System.out.println(this.get("aaf205"));
+        	System.out.println(this.get("aaf206"));
+        	return this.executeUpdate(sql.toString(), args)>0;
+        	
+        }
+        
+
+
+        
+        
+        public Map<String,String> findById()throws Exception
+        {
+        	//1.编写SQL语句
+        	StringBuilder sql=new StringBuilder()
+        			.append("select a.aaf101")
+        			.append("  from af02 a")
+        			.append(" where a.aaf201=?")
+        			;
+        	//执行查询
+        	System.out.println(this.get("aaf201"));
+        	return this.queryForMap(sql.toString(), this.get("aaf201"));
+        }
+        
 
 }
