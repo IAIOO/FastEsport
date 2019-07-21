@@ -108,6 +108,7 @@ ${msg }
 	  <tr>
 	    <td align="center">
 	       <input type="submit" name="next" value="²éÑ¯">
+	        <a href="adminindex.jsp"target="main">Ê×Ò³</a>
 	    </td>
 	  </tr>
 	</table>

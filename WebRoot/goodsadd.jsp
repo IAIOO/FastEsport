@@ -89,6 +89,13 @@ ${msg}
    </tr>
    <input type="hidden" id="aad206" name="aad206">
 </table>
+<table border="1" width="45%" align="center">
+	  <tr>
+	    <td align="center">
+	        <a href="adminindex.jsp"target="main">Ê×Ò³</a>
+	    </td>
+	  </tr>
+	</table>
 </form>
 <form id="form2" enctype="multipart/form-data">
 	<div>

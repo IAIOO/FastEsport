@@ -31,7 +31,10 @@
 				<c:forEach items="${rows }" var="ins" varStatus="vs">
 				<c:choose>
 					<c:when test="${ins.aab202 != null }">
-					<tr>${ins.aab202 }</tr>
+					<tr>
+					<td>±êÌâ£º</td>
+					<td>${ins.aab202 }</td>
+					</tr>
 					<tr>
 						<td>${ins.aab203 }</td>
 						<td>${ins.aab102 }</td>
