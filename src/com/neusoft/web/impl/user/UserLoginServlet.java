@@ -7,9 +7,6 @@ public class UserLoginServlet extends Ab01ControllerSupport {
 	@Override
 	public String execute() throws Exception {
 		this.login();
-		if(this.getAttribute().containsKey("msg")) {
-			return "login";
-		}
 		return "index";
 	}
 }

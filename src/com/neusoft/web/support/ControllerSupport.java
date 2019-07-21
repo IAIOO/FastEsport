@@ -99,6 +99,23 @@ public abstract class ControllerSupport implements BaseController
 			this.saveAttribute("msg", "没有符合条件的数据!");
 		}	
 	}
+	/**
+	 * 论坛帖子预览
+	 * @throws Exception
+	 */
+	protected final void dataForPreview()throws Exception {
+		this.dto.put("first", 0);
+		this.dto.put("end", 5);
+		List<Map<String,String>> prows=this.services.queryForPage();
+		if(prows.size()>0)
+		{
+			this.saveAttribute("prows", prows);
+		}
+		else
+		{
+			this.saveAttribute("msg", "没有符合条件的数据!");
+		}
+	}
 	
 	/**
 	 * 退出登录
@@ -120,6 +137,7 @@ public abstract class ControllerSupport implements BaseController
 		{
 			if(!(ins.get("aab104").equals(Tools.getMd5(this.dto.get("aab104"))))) {
 				this.saveAttribute("msg", "用户名或密码错误");
+				return;
 			}
 			this.saveAttribute("aab101", ins.get("aab101"));
 			this.saveAttribute("aab102", this.dto.get("aab102"));

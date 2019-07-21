@@ -1,8 +1,14 @@
 <%@ page language="java" pageEncoding="GBK"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+String path = request.getContextPath(); 
+session.setAttribute("aab101", request.getAttribute("aab101"));
+session.setAttribute("aab102", request.getAttribute("aab102"));
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Home</title>
+<title>快电竞赛事管理系统</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -22,6 +28,74 @@
 <link href="http://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Jura:300,400,500,600" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+var code; //在全局 定义验证码
+function createCode() {
+	//创建验证码函数
+	code = "";
+	var codeLength = 4;//验证码的长度
+	var selectChar = new Array(2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd',
+			'e', 'f', 'g', 'h', 'i', 'j', 'k', 'm', 'n', 'p', 'q', 'r',
+			's', 't', 'u', 'v', 'w', 'x', 'y', 'z');//所有候选组成验证码的字符，当然也可以用中文的
+
+	for (var i = 0; i < codeLength; i++) {
+		var charIndex = Math.floor(Math.random() * 32);
+		code += selectChar[charIndex];
+	}
+	// 设置验证码的显示样式，并显示
+	document.getElementById("discode").style.fontFamily = "Fixedsys"; //设置字体
+	document.getElementById("discode").style.letterSpacing = "5px"; //字体间距
+	document.getElementById("discode").style.color = "#0ab000"; //字体颜色
+	document.getElementById("discode").innerHTML = code; // 显示
+}
+
+function check() {
+	var vcode = document.getElementById("verifycode").value;
+	var vaab102 = document.getElementById("aab102").value;
+	var vaab104 = document.getElementById("aab104").value;
+	if(vaab102 == ""){
+		alert("用户名不能为空");
+		window.event.returnValue = false;
+		return false;
+		}
+	if(vaab104 == ""){
+		alert("密码不能为空");
+		window.event.returnValue = false;
+		return false;
+	}
+	if(vcode == ""){
+		alert("验证码不能为空");
+		window.event.returnValue = false;
+		return false;
+	}
+	if (vcode != code) {
+		alert("验证码错误");
+		createCode();
+		window.event.returnValue = false;
+		return false;
+	}else{
+		document.getElementById("hidebg").style.display="none";
+		document.getElementById("win").style.display="none";
+	}
+}
+function gotoLogin(){
+	document.getElementById("hidebg").style.display="block";
+	document.getElementById("hidebg").style.height=document.body.clientHeight+"px";
+	document.getElementById("win").style.display="";
+	createCode();
+}
+function toinfo(vaab201){
+	  //实现页面的跳转
+	  window.location.href='<%=path%>/bbsQueryPost.html?aab201=' + vaab201;
+}
+window.onload=function(){
+	if("<%=request.getAttribute("msg")%>" != "null"){
+		gotoLogin();
+	}
+}
+
+</script>
 
 </head>
 	
@@ -57,7 +131,14 @@
 						<h1><a href="index.jsp">快   电   竞</a></h1>
 					</div>
 					<div class ="login">
-						<a href="#">登录/注册</a>
+					<c:choose>
+						<c:when test="${empty sessionScope.aab101}">
+							<a href="#" onclick="gotoLogin()">登录/注册</a>
+						</c:when>
+						<c:otherwise>
+							<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
+						</c:otherwise>
+					</c:choose>
 					</div>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -76,6 +157,34 @@
 			</nav>	
 		</div>
 	</div>
+	<div id="hidebg" class="hidebg">
+	<!-- 这是遮罩层 -->
+	</div>
+	<div id="win" class="win" style="display:none">
+            <form action="<%=path%>/userLogin.html" method="post">
+				<table align="center">
+					<tr>
+						<td>用户名</td>
+						<td><input type="text" name="aab102" id="aab102"/></td>
+					</tr>
+					<tr>
+						<td>密码</td>
+						<td><input type="password" name="aab104" id="aab104"/></td>
+					</tr>
+					<tr>
+						<td>请输入验证码：</td>
+						<td><input type="text" name="verifycode" id="verifycode"></td>
+						<td><span id="discode"></span></td>
+						<td><a href="#" onclick="createCode()" >看不清，换一张</td>
+					</tr>
+					<tr>
+						<td><input type="submit" name="login" value="登录" onclick="check()"></td>
+						<td><a href="register.jsp">注册</a></td>
+					</tr>
+					<tr>${msg }</tr>
+				</table>
+			</form>
+        </div>
 <!-- //header -->
 <!-- banner -->
 	<div class="banner">
@@ -327,96 +436,14 @@
 	<div class="projects" id="projects">
 		<div class="container">
 			<div class="port-head">
-					 <h3 class="w3l_head w3l_head1">Latest News</h3>
-			         <p class="w3ls_head_para w3ls_head_para1">View Our Fantasy Games</p>
+				 <h3 class="w3l_head w3l_head1">论坛天地</h3>
+		         <p class="w3ls_head_para w3ls_head_para1">电竞爱好者的聚居地</p>
 			</div>
 		</div>
 		<div class="projects-grids">
-				<div class="sreen-gallery-cursual">
-
-			<div id="owl-demo" class="owl-carousel owl-theme">
-					<div class="item">
-						<div class="projects-agile-grid-info">
-							<img src="images/s1.jpg" alt="" />
-							<div class="projects-grid-caption"> 
-								
-							<h4>Fantasy World</h4>
-								<p>Lorem ipsum</p>
-							</div>
-						</div>	
-					</div>
-					<div class="item">
-						<div class="projects-agile-grid-info">
-							<img src="images/s2.jpg" alt="" />
-							<div class="projects-grid-caption"> 
-								
-									<h4>Fantasy World</h4>
-								<p>Lorem ipsum</p>
-							</div>
-						</div>	
-					</div>
-					<div class="item">
-						<div class="projects-agile-grid-info">
-							<img src="images/s3.jpg" alt="" />
-							<div class="projects-grid-caption"> 
-								
-								<h4>Fantasy World</h4>
-								<p>Lorem ipsum</p>
-							</div>
-						</div>	
-					</div>
-					<div class="item">
-						<div class="projects-agile-grid-info">
-							<img src="images/s4.jpg" alt="" />
-							<div class="projects-grid-caption"> 
-							
-								<h4>Fantasy World</h4>
-								<p>Lorem ipsum</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="projects-agile-grid-info">
-							<img src="images/s5.jpg" alt="" />
-							<div class="projects-grid-caption"> 
-							
-									<h4>Fantasy World</h4>
-								<p>Lorem ipsum</p>
-							</div>
-						</div>	
-					</div>
-					<div class="item">
-						<div class="projects-agile-grid-info">
-							<img src="images/s6.jpg" alt="" />
-							<div class="projects-grid-caption"> 
-								
-									<h4>Fantasy World</h4>
-								<p>Lorem ipsum</p>
-							</div>
-						</div>	
-					</div>
-					<div class="item">
-						<div class="projects-agile-grid-info">
-							<img src="images/s7.jpg" alt="" />
-							<div class="projects-grid-caption"> 
-								
-								<h4>Fantasy World</h4>
-								<p>Lorem ipsum</p>
-							</div>
-						</div>	
-					</div>
-					<div class="item">
-						<div class="projects-agile-grid-info">
-							<img src="images/s1.jpg" alt="" />
-							<div class="projects-grid-caption">
-									<h4>Fantasy World</h4>
-								<p>Lorem ipsum</p>
-							</div>
-						</div>
-					</div>
-			</div>
+			
+			<a href="<%=path%>/bbsQuery.html" class="">>>前往论坛首页</a>
 		</div>
-	</div>
 	</div>
 	<!-- //projects -->
 <!-- mail -->

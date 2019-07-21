@@ -102,9 +102,9 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
 		this.put("aab103", aab103);
 		StringBuilder sql = new StringBuilder()
 				.append("insert into ab01(aab102,aab103,aab104,aab105,aab106,")
-				.append("				  aab107,aab109)")
-				.append("	      values(?,?,?,?,?,")
-				.append("				 ?,?)")
+				.append("				  aab107,aab108,aab110)")
+				.append("	  values (?,?,?,?,?,")
+				.append("             ?,?,?)")
 				;
 		Object args[] = { this.get("aab102"),
 						  aab103,
@@ -112,6 +112,7 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
 						  this.get("aab105"),
 						  this.get("aab106"),
 						  new java.util.Date(),
+						  0,
 						  0
 						  };
 		return this.executeUpdate(sql.toString(), args) > 0;
