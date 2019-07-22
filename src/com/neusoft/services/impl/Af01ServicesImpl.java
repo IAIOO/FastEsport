@@ -39,7 +39,7 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
                 //this.get("aaf101"),
                 //this.get("aab101"),
                 //获取当前用户的主键值
-                this.get("aab101"),
+                1,
                 this.get("aaf102"),
                 this.get("aaf103"),
                 //this.get("aaf104"),赛事编号
@@ -71,7 +71,7 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
                 .append("        a.aaf112,a.aaf113")
                 .append("  from  af01 a")
                 .append("  where aab101 = ")
-                .append(         this.get("aab101"))//当前用户主键值TODO
+                .append(         pkAab101)//当前用户主键值TODO
                 ;
         return this.queryForList(sql.toString());
     }
@@ -173,11 +173,23 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
 	  				.append("select aaf101,aaf102,aaf103,aaf104,aaf105,aaf108,")
 	  				.append("       aaf109,aaf110,aaf111,aaf112")
 	  				.append("  from af01 ")
-	  				.append(" where aaf109=0")
-	  		        .append(" order by aaf103");
-	  	return this.queryForList(sql.toString());
+	  				;
+	  		return this.queryForList(sql.toString());
 	  }
 	  
+	  
+	  public List<Map<String,String>> queryT()throws Exception
+	  {
+	  		//还原页面查询条件
+	  		
+	  		//定义SQL主体
+	  		StringBuilder sql=new StringBuilder()
+	  				.append("select aaf101,aaf102,aaf103,aaf104,aaf105,aaf108,")
+	  				.append("       aaf109,aaf110,aaf111,aaf112")
+	  				.append("  from af01 ")
+	  				;
+	  		return this.queryForList(sql.toString());
+	  }
 	  /**
 		 * 用户查看赛事列表
 		 */

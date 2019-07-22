@@ -217,7 +217,7 @@ window.onload=function(){
 					</div>
 				<div class="top-nav-text">
 						<p>官方使用 : <span class="mail"><a href="adminlogin.jsp">管理员入口</a></span></p>
-						<p><span class="mail"><a href="judgeGame.jsp">裁判入口</a></span></p>
+						<p><span class="mail"><a href="judgeLogin.jsp">裁判入口</a></span></p>
 					</div>
 		</div>
 		

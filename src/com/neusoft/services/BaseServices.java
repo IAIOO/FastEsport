@@ -37,6 +37,10 @@ public interface BaseServices
     	 return null;
      }
      
+     default List<Map<String,String>> queryT()throws Exception
+     {
+    	 return null;
+     }
      default List<Map<String,String>> queryForPage()throws Exception
      {
     	 return null;
