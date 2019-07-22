@@ -48,6 +48,17 @@ public abstract class ControllerSupport implements BaseController
 	 * @param methodName
 	 * @throws Exception
 	 */
+	protected final void retReport(String methodName)throws Exception
+	{
+		this.executeUpdateMethod(methodName);
+		this.saveAttribute("aab201", this.dto.get("aab201"));
+	}
+	
+	/**
+	 * »ØÌû²Ù×÷
+	 * @param methodName
+	 * @throws Exception
+	 */
 	protected final void retPost(String methodName)throws Exception
 	{
 		this.executeUpdateMethod(methodName);

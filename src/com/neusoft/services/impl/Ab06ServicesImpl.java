@@ -9,6 +9,22 @@ import com.neusoft.system.tools.Tools;
 
 public class Ab06ServicesImpl extends JdbcServicesSupport
 {
+	
+	public boolean addReport()throws Exception {
+		StringBuilder sql = new StringBuilder()
+				.append("insert into ab06(aab201,aab101a,aab101b,aab602,aab603)")
+				.append("	 values (?,?,?,?,?)")
+				;
+		Object args[] = {
+				this.get("aab201"),
+				this.get("aab101a"),
+				this.get("aab101b"),
+				0,
+				this.get("aab603")
+		};
+		return this.executeUpdate(sql.toString(), args) > 0;
+	}
+	
 	private boolean deleteById()throws Exception
     {
     	String sql="delete from ab06 where aab601=?";

@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="GBK"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
 <%String path = request.getContextPath(); %>
 <html>
 <head>
@@ -11,6 +12,29 @@
 	</c:forEach>
 </title>
 
+<style>
+.report{
+    width:20%; margin-top:10%; margin:auto; padding:28px;
+    height:100px; border:1px #111 solid;
+    display:none;            /* 默认对话框隐藏 */
+}
+.report.show{display:block;} 
+.report input{width:80%; font-size:18px; margin-top:18px;}
+</style>
+
+<script type="text/javascript">
+function onReport(vaab101b,vaab201){
+	document.getElementById('report').style.display='block'; 
+	document.getElementById("aab101b").value=vaab101b;
+	document.getElementById("aab201").value=vaab201;
+}
+
+function cancel(){
+	document.getElementById('report').style.display='none';
+}
+
+</script>
+
 </head>
 <body>
 	<table border="1" width="95%" align="center">
@@ -18,6 +42,7 @@
 			<td>内容</td>
 			<td>作者</td>
 			<td>发表日期</td>
+			<td></td>
 		</tr>
 		<!--
 	         注意事项
@@ -39,6 +64,7 @@
 						<td>${ins.aab203 }</td>
 						<td>${ins.aab102 }</td>
 						<td>${ins.aab205 }</td>
+						<td><a href="#" onclick="onReport(${ins.aab101 },${ins.aab201 })">举报</a></td>
 					</tr>
 					</c:when>
 					<c:otherwise>
@@ -46,6 +72,7 @@
 						<td>${ins.aab203 }</td>
 						<td>${ins.aab102 }</td>
 						<td>${ins.aab205 }</td>
+						<td><a href="#" onclick="onReport(${ins.aab101 },${ins.aab201 })">举报</a></td>
 					</tr>
 					</c:otherwise>
 				</c:choose>
@@ -68,5 +95,22 @@
 			</tr>
 		</table>
 	</form>
+	<div class="report" id="report">
+		<form action="<%=path %>/bbsReport.html">
+			<table>
+				<tr>请输入举报原因：</tr>
+				<tr><e:textarea rows="5" cols="20" name="aab603"/></tr>
+				<tr>
+					<td><input type="hidden" id="aab101b" name="aab101b" value=""></td>
+					<td><input type="hidden" id="aab201" name="aab201" value=""></td>
+					<td><input type="hidden" name="aab101a" value="<%=session.getAttribute("aab101")%>"></td>
+				</tr>
+				<tr>
+					<td><input type="submit" name="next" value="提交"></td>
+					<td><button onclick="cancel()">取消</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>
