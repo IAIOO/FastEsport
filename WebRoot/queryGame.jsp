@@ -70,7 +70,7 @@
         </tr>
     </table>
 </div>
-<input type="hidden" name="aab101" value="${session.getAttribute("UserId") }">
+<input type="hidden" name="aab101" value="<%=session.getAttribute("aab101")%>">
 <a href="addGame.jsp">
     <table frame="box" align="center">
         <tr>

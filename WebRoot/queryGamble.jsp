@@ -77,7 +77,6 @@
 <%--${rows }--%>
 <%--<%=session.getId()%>--%>
 
-<%--<%=session.getAttribute("²âÊÔ")%>--%>
 <div style="background-color: darkgray;">
     <table>
         <tr style="width: 1400px;height: 90px;font-size: large">
@@ -140,7 +139,7 @@
                                             <option value="A">${ins1.aab408 }</option>
                                             <option value="B">${ins1.aab409 }</option>
                                         </select>
-                                        <input name="aab101" value="${session.getAttribute("UserId")}" type="hidden"/>
+                                        <input name="aab101" value="<%=session.getAttribute("aab101") %>" type="hidden"/>
                                         <input name="aab401" value="${ins1.aab401 }" type="hidden"/>
                                         <input name="aab403" value="${ins1.aab403 }" type="hidden"/>
                                         <input name="aab404" value="${ins1.aab404 }" type="hidden"/>
@@ -154,7 +153,7 @@
                                 </div>
                                 <div id="selectBox2" class="selectBox2">
                                     <form>
-                                        <input name="aab101" value="${session.getAttribute("UserId")}" type="hidden"/>
+                                        <input name="aab101" value="<%=session.getAttribute("aab101") %>" type="hidden"/>
                                         <input name="aab401" value="${ins1.aab401 }" type="hidden"/>
                                         <input name="aab405" value="${ins1.aab405}" type="hidden"/>
                                         <input name="aab406" value="${ins1.aab406}" type="hidden"/>

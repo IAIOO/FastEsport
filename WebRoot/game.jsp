@@ -5,6 +5,7 @@
   Time: 16:40
   To change this template use File | Settings | File Templates.
 --%>
+<%@page import="com.mysql.fabric.xmlrpc.base.Param"%>
 <%@ page contentType="text/html;charset=GBK" language="java" %>
 <%String path=request.getContextPath();%>
 <html>
@@ -59,13 +60,14 @@
         <%-- <input type="submit" name="next" value="导出比赛报名表excel"
                formaction="<%=path%>/judgeExportExcel.html"> --%>
                
-       <%--  <input type="submit" name="next" value="竞猜"
-               formaction="<%=path%>/userQueryGambel.html"> --%>
         <input type="hidden" name="aaf101" value="${param.aaf101 }">
         <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
         
         
+         <input type="submit" name="next" value="查看竞猜"
+               formaction="<%=path%>/userQueryGamble.html">
     </form>
+    </div>
 </div>
 </div>
 

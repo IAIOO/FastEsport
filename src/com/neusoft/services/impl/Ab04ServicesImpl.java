@@ -8,10 +8,10 @@ import java.util.Map;
 
 public class Ab04ServicesImpl extends JdbcServicesSupport {
     
-    int pkAaf201=1;//赛程表主键值
+   
     public boolean addGamble() throws Exception{
         StringBuilder sql=new StringBuilder()
-                .append("insert into ab04(aaf101,aab402,aab408,aab409,aab410)")
+                .append("insert into ab04(aaf101,aab402,aab403,aab404,aab408,aab409,aab410)")
                 .append("           values(?,?,?,?,?)")
                 ;
         Object args[]={
@@ -19,6 +19,8 @@ public class Ab04ServicesImpl extends JdbcServicesSupport {
                 //
                 this.get("aaf101"),
                 this.get("aab402"),
+                0,
+                0,
                 this.get("aab408"),
                 this.get("aab409"),
                 0
@@ -30,13 +32,15 @@ public class Ab04ServicesImpl extends JdbcServicesSupport {
 
     //查询竞猜
     public List<Map<String,String>> query()throws Exception{
+    	
+    	System.out.println("1234   "+this.get("aaf101"));
         StringBuilder sql=new StringBuilder()
                 .append("select  a.aab401,a.aab402,a.aab403,a.aab404,a.aab405,a.aab406,")
                 .append("        a.aab407,a.aab408,a.aab409")
                 .append("  from  ab04 a")
-                .append("  where aaf201 = ")
+                .append("  where aaf101 = ")
                 .append(         this.get("aaf101"))
-                .append("    and a.aab410 = 1")//当前赛程流水号
+                .append("    and a.aab410 = 1")
                 ;
         return this.queryForList(sql.toString());
     }

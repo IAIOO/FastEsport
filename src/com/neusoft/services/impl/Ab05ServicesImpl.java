@@ -27,7 +27,7 @@ public class Ab05ServicesImpl extends JdbcServicesSupport {
                 //
                 this.get("aab401"),
                 //用户序列号
-                1,
+                this.get("aab101"),
                 this.get("aab502"),
                 this.get("aab503")
         };
@@ -82,7 +82,7 @@ public class Ab05ServicesImpl extends JdbcServicesSupport {
                 .append("select    a.aab110")
                 .append("     from ab01 a")
                 .append("    where a.aab101 = ")
-                .append(pkAab101)
+                .append( this.get("aab101"))
                 ;
         List<Map<String,String>> num=this.queryForList(sql.toString());
         //用户当前的代币数量
@@ -96,7 +96,7 @@ public class Ab05ServicesImpl extends JdbcServicesSupport {
                 .append("update   ab01 a")
                 .append("     set a.aab110 = ?")
                 .append("   where a.aab101 = ")
-                .append(pkAab101)
+                .append(this.get("aab101"))
                 ;
         Object args[] = {
                 (int)(now-use)
