@@ -58,9 +58,9 @@ public abstract class ControllerSupport implements BaseController
 	 * ≈˙¡ø≤È—Ø*2
 	 * @throws Exception
 	 */
-	protected final void queryT()throws Exception
+	protected final void queryTwo()throws Exception
 	{
-		List<Map<String,String>> rows=this.services.queryT();
+		List<Map<String,String>> rows=this.services.queryTwo();
 		if(rows.size()>0)
 		{
 			this.saveAttribute("rows", rows);
