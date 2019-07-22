@@ -44,7 +44,7 @@
 		</div>
 			<div class="clear"> </div>
 	<div class="avtar">
-		<img src="images/avtar.png" />
+		<img src="images/judgeBgI.png" />
 	</div>
 
 
