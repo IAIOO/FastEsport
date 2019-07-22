@@ -5,7 +5,7 @@
   Time: 16:40
   To change this template use File | Settings | File Templates.
 --%>
-<%@page import="com.mysql.fabric.xmlrpc.base.Param"%>
+
 <%@ page contentType="text/html;charset=GBK" language="java" %>
 <%String path=request.getContextPath();%>
 <html>
