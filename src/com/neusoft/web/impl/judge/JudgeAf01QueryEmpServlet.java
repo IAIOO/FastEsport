@@ -5,7 +5,7 @@ public final class JudgeAf01QueryEmpServlet extends Af01ControllerSupport {
 
 	@Override
 	public String execute() throws Exception {
-		this.queryT();
+		this.queryTwo();
 		return "af01QueryEmp";
 	}
 
