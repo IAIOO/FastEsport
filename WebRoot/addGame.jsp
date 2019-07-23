@@ -5,127 +5,253 @@
   Time: 9:38
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=GBK" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <%@ taglib prefix="e" uri="http://org.wangxg/jsp/extl" %>
 <%String path=request.getContextPath();%>
 <html>
 <head>
-    <title>¡¾FastEsport¡¿µç¾ºÈüÊÂÆ½Ì¨</title>
+    <title>ã€FastEsportã€‘ç”µç«èµ›äº‹å¹³å°</title>
     <style>a{TEXT-DECORATION:none}</style>
-    <script>
-        Date.prototype.Format = function(fmt)
-        { //author: meizz
-            var o = {
-                "M+" : this.getMonth()+1,                 //ÔÂ·İ
-                "d+" : this.getDate(),                    //ÈÕ
-                "h+" : this.getHours(),                   //Ğ¡Ê±
-                "m+" : this.getMinutes(),                 //·Ö
-                "s+" : this.getSeconds(),                 //Ãë
-                "q+" : Math.floor((this.getMonth()+3)/3), //¼¾¶È
-                "S"  : this.getMilliseconds()             //ºÁÃë
-            };
-            if(/(y+)/.test(fmt))
-                fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
-            for(var k in o)
-                if(new RegExp("("+ k +")").test(fmt))
-                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
-            return fmt;
-        };
-    </script>
-    <head>
-        <title>Home</title>
-        <!-- for-mobile-apps -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="keywords" content="" />
-        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-        function hideURLbar(){ window.scrollTo(0,1); } </script>
-        <!-- //for-mobile-apps -->
-        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-        <!-- gallery -->
-        <link rel="stylesheet" href="css/lightGallery.css" type="text/css" media="all" />
-        <!-- //gallery -->
-        <!-- font-awesome icons -->
-        <link href="css/font-awesome.css" rel="stylesheet">
-
-        <!-- //font-awesome icons -->
-        <link href="http://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
-        <link href="http://fonts.googleapis.com/css?family=Jura:300,400,500,600" rel="stylesheet">
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-
-    </head>
-
-
+   
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+			function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- //for-mobile-apps -->
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- gallery -->
+	<link rel="stylesheet" href="css/lightGallery.css" type="text/css" media="all" />
+	<!-- //gallery -->
+	<!-- font-awesome icons -->
+	<link href="css/font-awesome.css" rel="stylesheet">  
+	
+	<link title="stylezb" rel="stylesheet" href="css/stylezb.css" type="text/css" />
+	
+	<!-- ç¼–è¾‘ä½ çš„script -->
+	<script type="text/javascript">
+	
+	</script>
 </head>
+	
 <body>
-<!-- <div class="w3_navigation" style="background-color: #bce8f1">
-    <div class="container">
-        <nav class="navbar navbar-default">
-            <div class="navbar-header navbar-left">
-                <div class="w3_navigation_pos">
-                    <h1><a href="index.jsp"><span>Fantasy</span> World</a></h1>
-                </div>
-            </div>
-            Collect the nav links, forms, and other content for toggling
-            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-                <nav class="cl-effect-5" id="cl-effect-5">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.jsp"><span data-hover="Home">Home</span></a></li>
-                        <li><a href="#about" class="scroll"><span data-hover="About">È«²¿ÈüÊÂ</span></a></li>
-                        <li><a href="#services" class="scroll"><span data-hover="Services">ÈüÊÂ¹ÜÀí</span></a></li>
-                        <li><a href="#work" class="scroll"><span data-hover="Gallery">Õ½¶Ó</span></a></li>
-                        <li><a href="#projects" class="scroll"><span data-hover="News">ÉÌ³Ç</span></a></li>
-                        <li><a href="#mail" class="scroll"><span data-hover="Contact">ÂÛÌ³</span></a></li>
-                    </ul>
-                </nav>
-            </div>
-        </nav>
-    </div>
-</div> -->
-<%--${ins }--%>
+<!-- header -->
+<div class="w3_navigation">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<div class="navbar-header navbar-left">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="w3_navigation_pos">
+						<h1><span>FastEsport</span></h1>
+					</div>
+				</div>
+				
+<!-- å¯¼èˆªæ  -->
+<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+	<nav class="cl-effect-5" id="cl-effect-5">												
+		<ul class="nav navbar-nav">	
+		 
+<!-- é¦–é¡µ -->																							
+<li class="dropdown menu__item">
+<a href="fistPage.jsp" class="dropdown-toggle menu__link">é¦–é¡µ			
+</a>
+</li>
+		
+<!-- å…¨éƒ¨èµ›äº‹ -->	
+<li class="dropdown menu__item">
+<a href="<%=path %>/competitionQueryForUser.html" class="dropdown-toggle menu__link">å…¨éƒ¨èµ›äº‹
+</a>
+</li>
+						
+<!-- èµ›äº‹ç®¡ç† -->
+<li class="dropdown menu__item">
+<a href="competitionQueryGame.html?aab101=<%=session.getAttribute("aab101") %>" class="dropdown-toggle menu__link">èµ›äº‹ç®¡ç†
+</a>
+</li>
+							
+<!-- æˆ˜é˜Ÿç®¡ç† -->
+<li class="dropdown menu__item">
+<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">æˆ˜é˜Ÿç®¡ç†
+	<span class="caret"></span>
+</a>
+<ul class="dropdown-menu">
+	<li>
+		<a href="makeTeam.jsp">åˆ›å»ºæˆ˜é˜Ÿ</a>
+	</li>
+	<li>
+		<a href="teamMyTeam.html">æˆ‘çš„æˆ˜é˜Ÿ</a>
+	</li>
+	<li>
+		<a href="enlistTeam.jsp">å‘å¸ƒæ‹›å‹Ÿ</a>
+	</li>
+	<li>
+		<a href="queryForMyEnlist.jsp">å®¡æ ¸æ‹›å‹Ÿ</a>
+	</li>
+	<li>
+		<a href="queryForTeam.jsp">æŠ¥åæˆ˜é˜Ÿ</a>
+	</li>
+	<li>
+		<a href="userProId.jsp">èŒä¸šè®¤è¯</a>
+	</li>
+</ul>
+</li>
 
+<!-- è®ºå›å¤©åœ° -->							
+<li class="dropdown menu__item">
+<a href="<%=path %>/bbsQuery.html" class="dropdown-toggle menu__link">è®ºå›å¤©åœ°
+</a>
+</li>
+	
+<!-- å•†åŸä¸­å¿ƒ -->							
+<li class="dropdown menu__item">
+<a href="usershop.jsp" class="dropdown-toggle menu__link">å•†åŸä¸­å¿ƒ
+</a>
+</li>																					
+					</ul>																					
+				</nav>
+			</div>
+		</nav>	
+	</div>
+</div>
+	
+	
+<!-- //header -->	
+<div class="header">
+	<div class="w3layouts_header_left">
+			<div class="top-nav-text">
+					<p>Call Us : <span class="call">+00 111 2222 333</span></p>
+					<p>Email Us : <span class="mail"><a href="mailto:info@example.com">FastEsport@us.com</a></span></p>
+				</div>
+	</div>
+	
+	<div class="w3layouts_header_right">
+		 	<c:choose>
+					<c:when test="${empty sessionScope.aab101}">
+						<a href="#" onclick="gotoLogin()">ç™»å½•/æ³¨å†Œ</a>
+					</c:when>
+					<c:otherwise>
+						<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
+					</c:otherwise>
+				</c:choose>
+	</div>
+	
+	<div class="clearfix"> </div>
+</div>
+<!-- banner -->
+
+<div class="form_content">
+   <form id="test" action="#" method="get">
+   <fieldset>
+       <div class="form-row">
+           <div class="field-label"><label for="field6">æ¯”èµ›é¡¹ç›®</label>:</div>
+           <div class="field-widget">
+               <select id="field6" name="aaf102" class="validate-selection" title="Choose your department">
+               		<option value="1">DOTA2</option>
+	                <option value="2">LOL</option>
+		            <option value="3">ç‹è€…è£è€€</option>
+		            <option value="4">CSGO</option>
+		            <option value="5">PUBG</option>
+		            <option value="6">OW</option>
+		            <option value="7">æ˜Ÿé™…äº‰éœ¸2</option>
+		            <option value="8">é­”å…½äº‰éœ¸3</option>
+		            <option value="9">ç‚‰çŸ³ä¼ è¯´</option>
+               </select>
+           </div>
+       </div>
+       <div class="form-row">
+           <div class="field-label"><label for="field1">æ¯”èµ›åç§°</label>:</div>
+           <div class="field-widget"><input name="aaf103" id="field1" class="required" title="Enter your name" /></div>
+       </div>
+       
+       <div class="form-row">
+           <div class="field-label"><label for="field2">èµ›åˆ¶</label>:</div>
+           <div class="field-widget">
+           		<select id="field6" name="aaf105" class="validate-selection" title="Choose your department">
+               		<option value="1">å•è´¥æ·˜æ±°èµ›</option>
+            		<option value="2">å°ç»„å¾ªç¯å•è´¥æ·˜æ±°èµ›</option>
+            		<option value="3">å°ç»„å¾ªç¯åŒè´¥æ·˜æ±°èµ›</option>
+               </select>
+            </div>
+       </div>
+       <div class="form-row">
+           <div class="field-label"><label for="field1">æŠ¥åç»“æŸæ—¶é—´</label>:</div>
+           <div class="field-widget"><input type="date" name="aaf107" id="field1" class="required" title="Enter your name" /></div>
+       </div>
+       <div class="form-row">
+           <div class="field-label"><label for="field1">æ¯”èµ›å¼€å§‹æ—¶é—´</label>:</div>
+           <div class="field-widget"><input type="date" name="aaf108" id="field1" class="required" title="Enter your name" /></div>
+       </div>
+       <div class="form-row">
+           <div class="field-label"><label for="field1">äººæ•°é™åˆ¶</label>:</div>
+           <div class="field-widget"><input name="aaf110" id="field1" class="required" title="Enter your name" /></div>
+       </div>
+       <div class="form-row">
+           <div class="field-label"><label for="field1">åœ°å€</label>:</div>
+           <div class="field-widget"><input name="aaf111" id="field1" class="required" title="Enter your name" /></div>
+       </div>
+       <div class="form-row">
+           <div class="field-label"><label for="field3">æ¯”èµ›è§„åˆ™</label>:</div>
+           <div class="field-widget"><textarea class="required" name="aaf112"></textarea></div>
+       </div>
+       <div class="form-row">
+           <div class="field-label"><label for="field1">å¯†ç </label>:</div>
+           <div class="field-widget"><input name="aaf113" id="field1" class="required" title="Enter your name" /></div>
+       </div>   
+       
+       
+   </fieldset>
+   <input type="submit" class="submit" name="next" value="${empty param.aaf101?'æ·»åŠ ':'ä¿®æ”¹' }"
+          formaction="<%=path%>/${empty param.aaf101?'competitionAdd':'competitionModify' }Game.html"> <input class="reset" type="button" value="Reset" onclick="valid.reset(); return false" />
+   <input type="hidden" name="aaf101" value="${param.aaf101 }">
+   <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
+  </form>
+ </div>
+   <%-- 
+   
 <div style="text-align: center">
     <form action="<%=path%>/competitionAddGame.html" method="post">
 
 
-        <%--±ÈÈüÀàĞÍ:<input type="text" name="aaf102" value="${ins.aaf102}">--%>
-        ±ÈÈüÀàĞÍ£º
+        æ¯”èµ›ç±»å‹:<input type="text" name="aaf102" value="${ins.aaf102}">
+        æ¯”èµ›ç±»å‹ï¼š
         <select name="aaf102">
             <option value="1">DOTA2</option>
             <option value="2">LOL</option>
-            <option value="3">ÍõÕßÈÙÒ«</option>
+            <option value="3">ç‹è€…è£è€€</option>
             <option value="4">CSGO</option>
             <option value="5">PUBG</option>
             <option value="6">OW</option>
-            <option value="7">ĞÇ¼ÊÕù°Ô2</option>
-            <option value="8">Ä§ÊŞÕù°Ô3</option>
-            <option value="9">Â¯Ê¯´«Ëµ</option>
+            <option value="7">æ˜Ÿé™…äº‰éœ¸2</option>
+            <option value="8">é­”å…½äº‰éœ¸3</option>
+            <option value="9">ç‚‰çŸ³ä¼ è¯´</option>
         </select>
         <br>
-        ±ÈÈüÃû³Æ:<input type="text" name="aaf103" value="${ins.aaf103}">
+        æ¯”èµ›åç§°:<input type="text" name="aaf103" value="${ins.aaf103}">
         <br>
-            <%--<input type="text" name="aaf105" value="${ins.aaf105}">--%>
-        ÈüÖÆ:<select name="aaf105">
-            <option value="1">µ¥°ÜÌÔÌ­Èü</option>
-            <option value="2">Ğ¡×éÑ­»·µ¥°ÜÌÔÌ­Èü</option>
-            <option value="3">Ğ¡×éÑ­»·Ë«°ÜÌÔÌ­Èü</option>
+            <input type="text" name="aaf105" value="${ins.aaf105}">
+        èµ›åˆ¶:<select name="aaf105">
+            <option value="1">å•è´¥æ·˜æ±°èµ›</option>
+            <option value="2">å°ç»„å¾ªç¯å•è´¥æ·˜æ±°èµ›</option>
+            <option value="3">å°ç»„å¾ªç¯åŒè´¥æ·˜æ±°èµ›</option>
         </select>
         <br>
-        ±¨Ãû½áÊøÊ±¼ä:<input type="date" name="aaf107" value="${ins.aaf107}">
+        æŠ¥åç»“æŸæ—¶é—´:<input type="date" name="aaf107" value="${ins.aaf107}">
         <br>
-        ±ÈÈü¿ªÊ¼Ê±¼ä:<input type="date" name="aaf108" value="${ins.aaf108}">
+        æ¯”èµ›å¼€å§‹æ—¶é—´:<input type="date" name="aaf108" value="${ins.aaf108}">
         <br>
-        ÈËÊıÏŞÖÆ:<input type="text" name="aaf110" value="${ins.aaf110}">
+        äººæ•°é™åˆ¶:<input type="text" name="aaf110" value="${ins.aaf110}">
         <br>
-        µØÖ·:<input type="text" name="aaf111" value="${ins.aaf111}">
+        åœ°å€:<input type="text" name="aaf111" value="${ins.aaf111}">
         <br>
-        ±ÈÈü¹æÔò:<input type="text" name="aaf112" value="${ins.aaf112}">
+        æ¯”èµ›è§„åˆ™:<input type="text" name="aaf112" value="${ins.aaf112}">
         <br>
-        ÃÜÂë:<input type="text" name="aaf113" value="${ins.aaf113}">
+        å¯†ç :<input type="text" name="aaf113" value="${ins.aaf113}">
         <br>
-            <input type="submit" name="next" value="${empty param.aaf101?'Ìí¼Ó':'ĞŞ¸Ä' }"
+            <input type="submit" name="next" value="${empty param.aaf101?'æ·»åŠ ':'ä¿®æ”¹' }"
                    formaction="<%=path%>/${empty param.aaf101?'competitionAdd':'competitionModify' }Game.html">
         <br>
         <input type="hidden" name="aaf101" value="${param.aaf101 }">
@@ -135,7 +261,7 @@
 
 
     </form>
-</div>
+</div> --%>
 </body>
 </html>
 

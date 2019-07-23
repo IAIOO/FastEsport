@@ -12,7 +12,7 @@ public class PlayerAc05AddServlet extends Ac05ControllerSupport
 		
 	//	this.update("findById", "");
 		this.update("addEmp", "Ìí¼Ó");
-		return "judgeGame";
+		return "game";
 	}
 
 }
