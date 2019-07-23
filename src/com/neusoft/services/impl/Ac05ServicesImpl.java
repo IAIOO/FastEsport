@@ -43,7 +43,7 @@ public class Ac05ServicesImpl extends JdbcServicesSupport {
         String [] idRows=Tools.getRows(this.query(),"2");
 
         Object args[] = {
-                4,
+                this.get("aaf101"),
                 gameDate
         };
 

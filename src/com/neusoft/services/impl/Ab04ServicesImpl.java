@@ -12,7 +12,7 @@ public class Ab04ServicesImpl extends JdbcServicesSupport {
     public boolean addGamble() throws Exception{
         StringBuilder sql=new StringBuilder()
                 .append("insert into ab04(aaf101,aab402,aab403,aab404,aab408,aab409,aab410)")
-                .append("           values(?,?,?,?,?)")
+                .append("           values(?,?,?,?,?,?,?)")
                 ;
         Object args[]={
 
