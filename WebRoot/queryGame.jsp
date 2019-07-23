@@ -12,7 +12,6 @@
 <head>
     <title>【FastEsport】电竞赛事平台</title>
     <style>a{TEXT-DECORATION:none}</style>
-    <script src="jquery/jquery.js"></script>
     <script type="text/javascript">
         function onEdit(vaaf101)
         {
@@ -46,7 +45,7 @@
 	<!-- font-awesome icons -->
 	<link href="css/font-awesome.css" rel="stylesheet">  
 	
-	<link title="style1" rel="stylesheet" href="css/style1.css" type="text/css" />
+	<link title="stylezb" rel="stylesheet" href="css/stylezb.css" type="text/css" />
 	
 	<!-- 编辑你的script -->
 	<script type="text/javascript">

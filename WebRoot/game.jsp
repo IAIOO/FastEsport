@@ -31,7 +31,7 @@
 	    function onMake1() {
 	    	$.ajax({
 	        	type: 'post',
-	            url: "/FastEsport/userQueryPlayer.html",   
+	            url: "/FastEsport/userQueryPlayer",   
 	            data: $('#myform2').serialize(),
 	            /* success: function(dates) {
 	            	$("#section").html(dates)
@@ -48,8 +48,9 @@
 	    function onMake(){
 	        $.ajax({
 	            type: 'post',
-	            url: "/FastEsport/playerAc05Add.html",   
+	            url: "/FastEsport/playerAc05Add",   
 	            data: $('#myform1').serialize(),
+	            async: false,
 	            success: function () {
 	   				alert("ok");
 	            },

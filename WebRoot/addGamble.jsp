@@ -1,14 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%--
-  Created by IntelliJ IDEA.
-  User: zzzzzzzzzzb
-  Date: 2019/7/16
-  Time: 16:40
-  To change this template use File | Settings | File Templates.
---%>
 
-<%@ page contentType="text/html;charset=GBK" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%String path=request.getContextPath();%>
 <html>
 <head>
@@ -26,48 +19,65 @@
 			z-index:1002;
 		}
    	</style>
-    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+	    function addGamble() {
+	    	$.ajax({
+	    		type: 'post',
+	    		url: "/FastEsport/userAddGamble",
+	    		data: $('#addFamble').serialize(),
+	    		async: false,
+	    		success: function () {
+	    			alert('æ·»åŠ æˆåŠŸ');
+	    		},
+	    		/* error: function (){
+	    			alert('æ·»åŠ å¤±è´¥');
+	    		} */
+	    	});
+	    }
+    </script>
     <script>
 	    function onMake1() {
 	    	$.ajax({
 	        	type: 'post',
-	            url: "/FastEsport/userQueryPlayer.html",   
+	            url: "/FastEsport/userQueryPlayer",   
 	            data: $('#myform2').serialize(),
 	            /* success: function(dates) {
 	            	$("#section").html(dates)
 	            	//alert(dates);
 	            },
 	    		error: function() {
-	    			alert("Òì³£");
+	    			alert("å¼‚å¸¸");
 	    		} */
 	           
 	        });
-	    	
-	        
 	    }
+    </script>
+    <script>
 	    function onMake(){
 	        $.ajax({
 	            type: 'post',
-	            url: "/FastEsport/playerAc05Add.html",   
+	            url: "/FastEsport/playerAc05Add",   
 	            data: $('#myform1').serialize(),
+	            async: false,
 	            success: function () {
 	   				alert("ok");
 	            },
 	            error : function() {
-	                alert("Òì³££¡");
+	                alert("å¼‚å¸¸ï¼");
 	            }
 	        });
 	    }
-        function myFunction(vaaf1011)
-        {
-            var vform = document.getElementById("myform");
-            vform.action="<%=path%>/userQueryGamble.html?aaf101="+vaaf1011;
-            //alert(vform.action);
-            vform.submit();
-        }
-       
-        
     </script>
+    <script>
+	    function myFunction(vaaf1011)
+	    {
+	        var vform = document.getElementById("myform");
+	        vform.action="<%=path%>/userQueryGamble.html?aaf101="+vaaf1011;
+	        //alert(vform.action);
+	        vform.submit();
+	    }
+    </script>
+    	
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 			function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<!-- //for-mobile-apps -->
@@ -83,7 +93,7 @@
 	
 	
 	
-	<!-- ±à¼­ÄãµÄscript -->
+	<!-- ç¼–è¾‘ä½ çš„script -->
 	<script type="text/javascript">
 	
 	</script>
@@ -106,65 +116,65 @@
 					</div>
 				</div>
 				
-<!-- µ¼º½À¸ -->
+<!-- å¯¼èˆªæ  -->
 <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 	<nav class="cl-effect-5" id="cl-effect-5">												
 		<ul class="nav navbar-nav">	
 		 
-<!-- Ê×Ò³ -->																							
+<!-- é¦–é¡µ -->																							
 <li class="dropdown menu__item">
-<a href="fistPage.jsp" class="dropdown-toggle menu__link">Ê×Ò³			
+<a href="fistPage.jsp" class="dropdown-toggle menu__link">é¦–é¡µ			
 </a>
 </li>
 		
-<!-- È«²¿ÈüÊÂ -->	
+<!-- å…¨éƒ¨èµ›äº‹ -->	
 <li class="dropdown menu__item">
-<a href="<%=path %>/competitionQueryForUser.html" class="dropdown-toggle menu__link">È«²¿ÈüÊÂ
+<a href="<%=path %>/competitionQueryForUser.html" class="dropdown-toggle menu__link">å…¨éƒ¨èµ›äº‹
 </a>
 </li>
 						
-<!-- ÈüÊÂ¹ÜÀí -->
+<!-- èµ›äº‹ç®¡ç† -->
 <li class="dropdown menu__item">
-<a href="competitionQueryGame.html?aab101=<%=session.getAttribute("aab101") %>" class="dropdown-toggle menu__link">ÈüÊÂ¹ÜÀí
+<a href="competitionQueryGame.html?aab101=<%=session.getAttribute("aab101") %>" class="dropdown-toggle menu__link">èµ›äº‹ç®¡ç†
 </a>
 </li>
 							
-<!-- Õ½¶Ó¹ÜÀí -->
+<!-- æˆ˜é˜Ÿç®¡ç† -->
 <li class="dropdown menu__item">
-<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Õ½¶Ó¹ÜÀí
+<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">æˆ˜é˜Ÿç®¡ç†
 	<span class="caret"></span>
 </a>
 <ul class="dropdown-menu">
 	<li>
-		<a href="makeTeam.jsp">´´½¨Õ½¶Ó</a>
+		<a href="makeTeam.jsp">åˆ›å»ºæˆ˜é˜Ÿ</a>
 	</li>
 	<li>
-		<a href="teamMyTeam.html">ÎÒµÄÕ½¶Ó</a>
+		<a href="teamMyTeam.html">æˆ‘çš„æˆ˜é˜Ÿ</a>
 	</li>
 	<li>
-		<a href="enlistTeam.jsp">·¢²¼ÕĞÄ¼</a>
+		<a href="enlistTeam.jsp">å‘å¸ƒæ‹›å‹Ÿ</a>
 	</li>
 	<li>
-		<a href="queryForMyEnlist.jsp">ÉóºËÕĞÄ¼</a>
+		<a href="queryForMyEnlist.jsp">å®¡æ ¸æ‹›å‹Ÿ</a>
 	</li>
 	<li>
-		<a href="queryForTeam.jsp">±¨ÃûÕ½¶Ó</a>
+		<a href="queryForTeam.jsp">æŠ¥åæˆ˜é˜Ÿ</a>
 	</li>
 	<li>
-		<a href="userProId.jsp">Ö°ÒµÈÏÖ¤</a>
+		<a href="userProId.jsp">èŒä¸šè®¤è¯</a>
 	</li>
 </ul>
 </li>
 
-<!-- ÂÛÌ³ÌìµØ -->							
+<!-- è®ºå›å¤©åœ° -->							
 <li class="dropdown menu__item">
-<a href="<%=path %>/bbsQuery.html" class="dropdown-toggle menu__link">ÂÛÌ³ÌìµØ
+<a href="<%=path %>/bbsQuery.html" class="dropdown-toggle menu__link">è®ºå›å¤©åœ°
 </a>
 </li>
 	
-<!-- ÉÌ³ÇÖĞĞÄ -->							
+<!-- å•†åŸä¸­å¿ƒ -->							
 <li class="dropdown menu__item">
-<a href="usershop.jsp" class="dropdown-toggle menu__link">ÉÌ³ÇÖĞĞÄ
+<a href="usershop.jsp" class="dropdown-toggle menu__link">å•†åŸä¸­å¿ƒ
 </a>
 </li>																					
 					</ul>																					
@@ -187,7 +197,7 @@
 		<div class="w3layouts_header_right">
 			 	<c:choose>
 						<c:when test="${empty sessionScope.aab101}">
-							<a href="#" onclick="gotoLogin()">µÇÂ¼/×¢²á</a>
+							<a href="#" onclick="gotoLogin()">ç™»å½•/æ³¨å†Œ</a>
 						</c:when>
 						<c:otherwise>
 							<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
@@ -203,10 +213,10 @@
 
 <div>
     <div id="header">
-    	<p>±ÈÈüÃû³Æ£º</p>
+    	<p>æ¯”èµ›åç§°ï¼š</p>
         <p>${ins.aaf103 }</p>
         <p>${ins.aaf102 }</p>
-       	<p>ÈüÊÂ¿ªÊ¼Ê±¼ä£º</p>
+       	<p>èµ›äº‹å¼€å§‹æ—¶é—´ï¼š</p>
        	<p>${ins.aaf107}</p>
         <p>${ins.aaf112 }</p>
        	<p>${ins.aaf109 }</p>
@@ -217,19 +227,19 @@
 	        <form id="myform1">
 				<input type="hidden" name="aaf101" value="${param.aaf101 }">
 				<input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
-	            <input id="buttonn" type="submit" value="Á¢¿Ì±¨Ãû"  onclick="onMake()">  
+	            <input id="buttonn" type="submit" value="ç«‹åˆ»æŠ¥å"  onclick="onMake()">  
 	        </form>
 	        
 		    <form id="myform2" action="<%=path%>/userQueryPlayer.html">
 		    	<input type="hidden" name="aaf101" value="${param.aaf101 }">
 		        <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
-		    	<input id="buttonn" type=submit value="²ÎÈüÁĞ±í" >
+		    	<input id="buttonn" type=submit value="å‚èµ›åˆ—è¡¨" >
 		    </form>
 	    
 		    <form id="myform3">
-		        <input id="buttonn" type="submit" value="²é¿´Èü³Ì"
+		        <input id="buttonn" type="submit" value="æŸ¥çœ‹èµ›ç¨‹"
 		               formaction="<%=path%>/userQuerySchedule.html">
-		        <%-- <input type="submit" name="next" value="µ¼³ö±ÈÈü±¨Ãû±íexcel"
+		        <%-- <input type="submit" name="next" value="å¯¼å‡ºæ¯”èµ›æŠ¥åè¡¨excel"
 		               formaction="<%=path%>/judgeExportExcel.html"> --%>
 		               
 		        <input type="hidden" name="aaf101" value="${param.aaf101 }">
@@ -238,7 +248,7 @@
 	        <form id="myform4">
 	        	<input type="hidden" name="aaf101" value="${param.aaf101 }">
 		        <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
-		        <input id="buttonn" type="submit" name="next" value="²é¿´¾º²Â"
+		        <input id="buttonn" type="submit" name="next" value="æŸ¥çœ‹ç«çŒœ"
 		               formaction="<%=path%>/userQueryGamble.html">
 	        </form>
 		        
@@ -247,22 +257,21 @@
 	    </div>
    </div>
    <div id="section"> 
-   		<form action="<%=path%>/userAddGamble.html" method="post">
-    		¾º²ÂÖ÷Ìâ:<input type="text" name="aab402">
+   		<form id="addGamble" action="<%=path%>/userAddGamble.html">
+    		ç«çŒœä¸»é¢˜:<input type="text" name="aab402">
 			    <br>
-			    Ñ¡ÏîA:<input type="text" name="aab408">
+			    é€‰é¡¹A:<input type="text" name="aab408">
 			    <br>
-			    Ñ¡ÏîB:<input type="text" name="aab409">
+			    é€‰é¡¹B:<input type="text" name="aab409">
 			    <br>
-			
-			    <input type="submit" name="next" value="Ìí¼Ó"
-			           formaction="userAddGamble.html">
+				<input type="hidden" name="aaf101" value="${param.aaf101 }">
+			    <input type="submit" name="next" onclick="addGamble()" value="æ·»åŠ ">
 			    <br>
 		</form>
    </div>
 </div>
 
 
-
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 </body>
 </html>

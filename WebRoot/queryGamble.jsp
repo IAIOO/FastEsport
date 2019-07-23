@@ -6,7 +6,7 @@
   Time: 9:52
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=GBK" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%String path=request.getContextPath(); %>
 <html>
 <head>
@@ -17,6 +17,19 @@
         div.selectBox{display:none;position:fixed;top:30%;left:30%;width:300px;height:300px;border:3px solid black;background-color:white;z-index:1002}
         div.selectBox2{display:none;position:fixed;top:30%;left:30%;width:300px;height:300px;border:3px solid black;background-color:white;z-index:1002}
     </style>
+    <style>
+    	div.selectBox{
+			display:none;
+			position:fixed;
+			top:30%;
+			left:30%;
+			width:300px;
+			height:300px;
+			border:3px solid black;
+			background-color:white;
+			z-index:1002;
+		}
+   	</style>
     <script>
         function showSelectBox() {
             document.getElementById("selectBox").style.display = "block";
@@ -61,32 +74,20 @@
         }
         
     </script>
-    <style>
-    	div.selectBox{
-			display:none;
-			position:fixed;
-			top:30%;
-			left:30%;
-			width:300px;
-			height:300px;
-			border:3px solid black;
-			background-color:white;
-			z-index:1002;
-		}
-   	</style>
+    
     <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
     <script>
 	    function onMake1() {
 	    	$.ajax({
 	        	type: 'post',
-	            url: "/FastEsport/userQueryPlayer.html",   
+	            url: "/FastEsport/userQueryPlayer",   
 	            data: $('#myform2').serialize(),
 	            /* success: function(dates) {
 	            	$("#section").html(dates)
 	            	//alert(dates);
 	            },
 	    		error: function() {
-	    			alert("“Ï≥£");
+	    			alert("ÂºÇÂ∏∏");
 	    		} */
 	           
 	        });
@@ -96,29 +97,46 @@
 	    function onMake(){
 	        $.ajax({
 	            type: 'post',
-	            url: "/FastEsport/playerAc05Add.html",   
+	            url: "/FastEsport/playerAc05Add",   
 	            data: $('#myform1').serialize(),
+	            async: false,
 	            success: function () {
 	   				alert("ok");
 	            },
 	            error : function() {
-	                alert("“Ï≥££°");
+	                alert("ÂºÇÂ∏∏ÔºÅ");
 	            }
 	        });
 	    }
 	    function joinQ(){
 	        $.ajax({
 	            type: 'post',
-	            url: "/FastEsport/userAddPersonGamble.html",   
-	            data: $('#myform1').serialize(),
+	            url: "/FastEsport/userAddGamble",  
+	            data: $('#personGamble_add').serialize(),
+	            
 	            success: function () {
 	   				alert("ok");
 	            },
 	            error : function() {
-	                alert("“Ï≥££°");
+	                alert("ÂºÇÂ∏∏ÔºÅ");
 	            }
 	        });
 	    }
+	    function endQ(){
+	    	$.ajax({
+	            type: 'post',
+	            url: "/FastEsport/adminEndGamble",   
+	            data: $('#endGamble').serialize(),
+	            async: false,
+	            success: function () {
+	   				alert("ok");
+	            },
+	            error : function() {
+	                alert("ÂºÇÂ∏∏ÔºÅ");
+	            }
+	        });
+	    }
+	    
         function myFunction(vaaf1011)
         {
             var vform = document.getElementById("myform");
@@ -144,7 +162,7 @@
 	
 	
 	
-	<!-- ±‡º≠ƒ„µƒscript -->
+	<!-- ÁºñËæë‰Ω†ÁöÑscript -->
 	<script type="text/javascript">
 	
 	</script>
@@ -169,65 +187,65 @@
 					</div>
 				</div>
 				
-<!-- µº∫Ω¿∏ -->
+<!-- ÂØºËà™Ê†è -->
 <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 	<nav class="cl-effect-5" id="cl-effect-5">												
 		<ul class="nav navbar-nav">	
 		 
-<!--  ◊“≥ -->																							
+<!-- È¶ñÈ°µ -->																							
 <li class="dropdown menu__item">
-<a href="fistPage.jsp" class="dropdown-toggle menu__link"> ◊“≥			
+<a href="fistPage.jsp" class="dropdown-toggle menu__link">È¶ñÈ°µ			
 </a>
 </li>
 		
-<!-- »´≤ø»¸ ¬ -->	
+<!-- ÂÖ®ÈÉ®Ëµõ‰∫ã -->	
 <li class="dropdown menu__item">
-<a href="<%=path %>/competitionQueryForUser.html" class="dropdown-toggle menu__link">»´≤ø»¸ ¬
+<a href="<%=path %>/competitionQueryForUser.html" class="dropdown-toggle menu__link">ÂÖ®ÈÉ®Ëµõ‰∫ã
 </a>
 </li>
 						
-<!-- »¸ ¬π‹¿Ì -->
+<!-- Ëµõ‰∫ãÁÆ°ÁêÜ -->
 <li class="dropdown menu__item">
-<a href="competitionQueryGame.html?aab101=<%=session.getAttribute("aab101") %>" class="dropdown-toggle menu__link">»¸ ¬π‹¿Ì
+<a href="competitionQueryGame.html?aab101=<%=session.getAttribute("aab101") %>" class="dropdown-toggle menu__link">Ëµõ‰∫ãÁÆ°ÁêÜ
 </a>
 </li>
 							
-<!-- ’Ω∂”π‹¿Ì -->
+<!-- ÊàòÈòüÁÆ°ÁêÜ -->
 <li class="dropdown menu__item">
-<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">’Ω∂”π‹¿Ì
+<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ÊàòÈòüÁÆ°ÁêÜ
 	<span class="caret"></span>
 </a>
 <ul class="dropdown-menu">
 	<li>
-		<a href="makeTeam.jsp">¥¥Ω®’Ω∂”</a>
+		<a href="makeTeam.jsp">ÂàõÂª∫ÊàòÈòü</a>
 	</li>
 	<li>
-		<a href="teamMyTeam.html">Œ“µƒ’Ω∂”</a>
+		<a href="teamMyTeam.html">ÊàëÁöÑÊàòÈòü</a>
 	</li>
 	<li>
-		<a href="enlistTeam.jsp">∑¢≤º’–ƒº</a>
+		<a href="enlistTeam.jsp">ÂèëÂ∏ÉÊãõÂãü</a>
 	</li>
 	<li>
-		<a href="queryForMyEnlist.jsp">…Û∫À’–ƒº</a>
+		<a href="queryForMyEnlist.jsp">ÂÆ°Ê†∏ÊãõÂãü</a>
 	</li>
 	<li>
-		<a href="queryForTeam.jsp">±®√˚’Ω∂”</a>
+		<a href="queryForTeam.jsp">Êä•ÂêçÊàòÈòü</a>
 	</li>
 	<li>
-		<a href="userProId.jsp">÷∞“µ»œ÷§</a>
+		<a href="userProId.jsp">ËÅå‰∏öËÆ§ËØÅ</a>
 	</li>
 </ul>
 </li>
 
-<!-- ¬€Ã≥ÃÏµÿ -->							
+<!-- ËÆ∫ÂùõÂ§©Âú∞ -->							
 <li class="dropdown menu__item">
-<a href="<%=path %>/bbsQuery.html" class="dropdown-toggle menu__link">¬€Ã≥ÃÏµÿ
+<a href="<%=path %>/bbsQuery.html" class="dropdown-toggle menu__link">ËÆ∫ÂùõÂ§©Âú∞
 </a>
 </li>
 	
-<!-- …Ã≥«÷––ƒ -->							
+<!-- ÂïÜÂüé‰∏≠ÂøÉ -->							
 <li class="dropdown menu__item">
-<a href="usershop.jsp" class="dropdown-toggle menu__link">…Ã≥«÷––ƒ
+<a href="usershop.jsp" class="dropdown-toggle menu__link">ÂïÜÂüé‰∏≠ÂøÉ
 </a>
 </li>																					
 					</ul>																					
@@ -250,7 +268,7 @@
 		<div class="w3layouts_header_right">
 			 	<c:choose>
 						<c:when test="${empty sessionScope.aab101}">
-							<a href="#" onclick="gotoLogin()">µ«¬º/◊¢≤·</a>
+							<a href="#" onclick="gotoLogin()">ÁôªÂΩï/Ê≥®ÂÜå</a>
 						</c:when>
 						<c:otherwise>
 							<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
@@ -266,10 +284,10 @@
 
 <div>
     <div id="header">
-    	<p>±»»¸√˚≥∆£∫</p>
+    	<p>ÊØîËµõÂêçÁß∞Ôºö</p>
         <p>${ins.aaf103 }</p>
         <p>${ins.aaf102 }</p>
-       	<p>»¸ ¬ø™ º ±º‰£∫</p>
+       	<p>Ëµõ‰∫ãÂºÄÂßãÊó∂Èó¥Ôºö</p>
        	<p>${ins.aaf107}</p>
         <p>${ins.aaf112 }</p>
        	<p>${ins.aaf109 }</p>
@@ -280,19 +298,19 @@
 	        <form id="myform1">
 				<input type="hidden" name="aaf101" value="${param.aaf101 }">
 				<input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
-	            <input id="buttonn" type="submit" value="¡¢øÃ±®√˚"  onclick="onMake()">  
+	            <input id="buttonn" type="submit" value="Á´ãÂàªÊä•Âêç"  onclick="onMake()">  
 	        </form>
 	        
 		    <form id="myform2" action="<%=path%>/userQueryPlayer.html">
 		    	<input type="hidden" name="aaf101" value="${param.aaf101 }">
 		        <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
-		    	<input id="buttonn" type=submit value="≤Œ»¸¡–±Ì" >
+		    	<input id="buttonn" type=submit value="ÂèÇËµõÂàóË°®" >
 		    </form>
 	    
 		    <form id="myform3">
-		        <input id="buttonn" type="submit" value="≤Èø¥»¸≥Ã"
+		        <input id="buttonn" type="submit" value="Êü•ÁúãËµõÁ®ã"
 		               formaction="<%=path%>/userQuerySchedule.html">
-		        <%-- <input type="submit" name="next" value="µº≥ˆ±»»¸±®√˚±Ìexcel"
+		        <%-- <input type="submit" name="next" value="ÂØºÂá∫ÊØîËµõÊä•ÂêçË°®excel"
 		               formaction="<%=path%>/judgeExportExcel.html"> --%>
 		               
 		        <input type="hidden" name="aaf101" value="${param.aaf101 }">
@@ -301,14 +319,14 @@
 	        <form id="myform4">
 	        	<input type="hidden" name="aaf101" value="${param.aaf101 }">
 		        <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
-		        <input id="buttonn" type="submit" name="next" value="≤Èø¥æ∫≤¬"
+		        <input id="buttonn" type="submit" name="next" value="Êü•ÁúãÁ´ûÁåú"
 		               formaction="<%=path%>/userQueryGamble.html">
 	        </form>
 	        
 	        <form action="addGamble.jsp">
 	        	<input type="hidden" name="aaf101" value="${param.aaf101 }">
 		        <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
-		        <input id="buttonn" type="submit" name="next" value="ÃÌº”æ∫≤¬">
+		        <input id="buttonn" type="submit" name="next" value="Ê∑ªÂä†Á´ûÁåú">
 	        </form>
 		        
 		        
@@ -316,67 +334,63 @@
 	    </div>
    </div>
 	<div id="section">
-		<form id="myform11" action="<%=path%>/userQueryGamble.html" method="post">
-		    <c:choose>
-		        <c:when test="${rows !=null}">
-		            <c:forEach items="${rows }" var="ins1" varStatus="vs">
-		                <table frame="box" align="center">
-		                    <tr>
-		                        <td>
-						                            æ∫≤¬÷˜Ã‚£∫${ins1.aab402 }<br>
-		                            <p>—°œÓA£∫${ins1.aab408 }</p>
-		                            <p>A—∫◊¢£∫${ins1.aab403 }  A≈‚¬ £∫${ins1.aab405 }</p>
-		                            <p>—°œÓB£∫${ins1.aab409 }</p>
-		                            <p>B—∫◊¢£∫${ins1.aab404 }  B≈‚¬ £∫${ins1.aab406 }</p>
-		
-		                            <div id="person">
-		                                <input id="btnSelect" type="button" value="≤Œ”Îæ∫≤¬" onclick="showSelectBox()"/>
-		                                <input id="btnSelect2" type="button" value="Ω· ¯æ∫≤¬" onclick="showSelectBox2()"/>
-		                                <div id="selectBox" class="selectBox">
-		
-		                                    <form id="personGamble_add">
-		                                        <select name="aab502">
-		                                            <option value="A">${ins1.aab408 }</option>
-		                                            <option value="B">${ins1.aab409 }</option>
-		                                        </select>
-		                                        <input name="aab101" value="<%=session.getAttribute("aab101") %>" type="hidden"/>
-		                                        <input name="aab401" value="${ins1.aab401 }" type="hidden"/>
-		                                        <input name="aab403" value="${ins1.aab403 }" type="hidden"/>
-		                                        <input name="aab404" value="${ins1.aab404 }" type="hidden"/>
-		                                            <input name="aab503"/>
-		                                        <br>
-		                                            <%--${ins1.aab409 }<input name="aab404" value="${ins1.aab404 }"/>--%>
-		                                            <%--<input type="hidden" name="aab401" value="${ins1.aab401 }">--%>
-		                                            <%--<a onclick="ok()">OK</a>&nbsp;&nbsp;&nbsp;<a onclick="cancel()">Cancel</a>--%>
-		                                        <input type="submit" value="Ã·Ωª" formaction="<%=path%>/userAddPersonGamble.html">&nbsp;&nbsp;&nbsp;<a onclick="cancel()">»°œ˚</a>
-		                                    </form>
-		                                </div>
-		                                <div id="selectBox2" class="selectBox2">
-		                                    <form>
-		                                        <input name="aab101" value="<%=session.getAttribute("aab101") %>" type="hidden"/>
-		                                        <input name="aab401" value="${ins1.aab401 }" type="hidden"/>
-		                                        <input name="aab405" value="${ins1.aab405}" type="hidden"/>
-		                                        <input name="aab406" value="${ins1.aab406}" type="hidden"/>
-		                                        <p>«Î—°‘Ò∑‚≈Ã£∫</p>
-		                                        <select name="aab407">
-		                                            <option value="A">${ins1.aab408 }</option>
-		                                            <option value="B">${ins1.aab409 }</option>
-		                                        </select>
-		                                        <br>
-		                                        <input type="submit" value="∑‚≈Ã" formaction="<%=path%>/adminEndGamble.html">&nbsp;&nbsp;&nbsp;<a onclick="cancel2()">»°œ˚</a>
-		                                    </form>
-		                                </div>
-		                                <%--ajax“Ï≤ΩÃ·Ωª£¨÷ªÃ·Ωª’‚≤ø∑÷--%>
-		                                <%--<div id="shelter" class="shelter"></div>--%>
-		                            </div>
-		                            <br>
-		                        </td>
-		                    </tr>
-		                </table>
-		            </c:forEach>
-		        </c:when>
-		    </c:choose>
-		</form>
+	    <c:choose>
+	        <c:when test="${rows !=null}">
+	            <c:forEach items="${rows }" var="ins1" varStatus="vs">
+	                <table frame="box" align="center">
+	                    <tr>
+	                        <td>
+					                            Á´ûÁåú‰∏ªÈ¢òÔºö${ins1.aab402 }<br>
+	                            <p>ÈÄâÈ°πAÔºö${ins1.aab408 }</p>
+	                            <p>AÊäºÊ≥®Ôºö${ins1.aab403 }  AËµîÁéáÔºö${ins1.aab405 }</p>
+	                            <p>ÈÄâÈ°πBÔºö${ins1.aab409 }</p>
+	                            <p>BÊäºÊ≥®Ôºö${ins1.aab404 }  BËµîÁéáÔºö${ins1.aab406 }</p>
+	
+	                            <div id="person">
+	                                <input id="btnSelect" type="button" value="ÂèÇ‰∏éÁ´ûÁåú" onclick="showSelectBox()"/>
+	                                <input id="btnSelect2" type="button" value="ÁªìÊùüÁ´ûÁåú" onclick="showSelectBox2()"/>
+	                                <div id="selectBox" class="selectBox">
+	
+	                                    <form id="personGamble_add">
+	                                        <select name="aab502">
+	                                            <option value="A">${ins1.aab408 }</option>
+	                                            <option value="B">${ins1.aab409 }</option>
+	                                        </select>
+	                                        <input name="aab101" value="<%=session.getAttribute("aab101") %>" type="hidden"/>
+	                                        <input name="aab401" value="${ins1.aab401 }" type="hidden"/>
+	                                        <input name="aab403" value="${ins1.aab403 }" type="hidden"/>
+	                                        <input name="aab404" value="${ins1.aab404 }" type="hidden"/>
+	                                            <input name="aab503"/>
+	                                        <br>
+	                                            <%--${ins1.aab409 }<input name="aab404" value="${ins1.aab404 }"/>--%>
+	                                            <%--<input type="hidden" name="aab401" value="${ins1.aab401 }">--%>
+	                                            <%--<a onclick="ok()">OK</a>&nbsp;&nbsp;&nbsp;<a onclick="cancel()">Cancel</a>--%>
+	                                        <input type="submit" value="Êèê‰∫§" onclick="jionQ()">&nbsp;&nbsp;&nbsp;<a onclick="cancel()">ÂèñÊ∂à</a>
+	                                    </form>
+	                                </div>
+	                                <div id="selectBox2" class="selectBox2">
+	                                    <form id="endGamble">
+	                                        <input name="aab101" value="<%=session.getAttribute("aab101") %>" type="hidden"/>
+	                                        <input name="aab401" value="${ins1.aab401 }" type="hidden"/>
+	                                        <input name="aab405" value="${ins1.aab405}" type="hidden"/>
+	                                        <input name="aab406" value="${ins1.aab406}" type="hidden"/>
+	                                        <p>ËØ∑ÈÄâÊã©Â∞ÅÁõòÔºö</p>
+	                                        <select name="aab407">
+	                                            <option value="A">${ins1.aab408 }</option>
+	                                            <option value="B">${ins1.aab409 }</option>
+	                                        </select>
+	                                        <br>
+	                                        <input type="submit" value="Â∞ÅÁõò" onclick="endQ()">&nbsp;&nbsp;&nbsp;<a onclick="cancel2()">ÂèñÊ∂à</a>
+	                                    </form>
+	                                </div>
+	                            </div>
+	                            <br>
+	                        </td>
+	                    </tr>
+	                </table>
+	            </c:forEach>
+	        </c:when>
+	    </c:choose>
 	</div>
 </div>
 
