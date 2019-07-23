@@ -7,10 +7,10 @@ public class UserAddServlet extends Ab01ControllerSupport {
 	public String execute() throws Exception {
 		this.savePageInstance();//判断用户名是否已存在
 		if(this.getAttribute().containsKey("ins")) {
-			this.saveAttribute("error", "该用户名已被注册");
+			this.saveAttribute("error", "该用户名已存在");
 			return "register";
 		}
 		this.update("addUser", "注册");//新建用户
-		return "login";
+		return "index";
 	}
 }

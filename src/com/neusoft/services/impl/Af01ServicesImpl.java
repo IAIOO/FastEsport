@@ -203,7 +203,7 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
 	 		Object end=this.get("end");
 	 		
 	 		StringBuilder sql = new StringBuilder()
-	 				 .append("select aaf102,aaf103,aaf107,aaf109,")
+	 				 .append("select aaf101,aaf102,aaf103,aaf107,aaf109,")
 	 				 .append("	     aaf110")
 	 				 .append("  from af01")
 	 				 .append(" where 1=1")
