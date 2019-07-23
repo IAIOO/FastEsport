@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: zzzzzzzzzzb
@@ -11,20 +13,43 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+    	div.selectBox{
+			display:none;
+			position:fixed;
+			top:30%;
+			left:30%;
+			width:300px;
+			height:300px;
+			border:3px solid black;
+			background-color:white;
+			z-index:1002;
+		}
+   	</style>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
     <script>
-        function myFunction(vaaf1011)
-        {
-            var vform = document.getElementById("myform");
-            vform.action="<%=path%>/userQueryGamble.html?aaf101="+vaaf1011;
-            //alert(vform.action);
-            vform.submit();
-        }
-        
-        function submitAjax(){
+	    function onMake1() {
+	    	$.ajax({
+	        	type: 'post',
+	            url: "/FastEsport/userQueryPlayer.html",   
+	            data: $('#myform2').serialize(),
+	            /* success: function(dates) {
+	            	$("#section").html(dates)
+	            	//alert(dates);
+	            },
+	    		error: function() {
+	    			alert("异常");
+	    		} */
+	           
+	        });
+	    	
+	        
+	    }
+	    function onMake(){
 	        $.ajax({
 	            type: 'post',
 	            url: "/FastEsport/playerAc05Add.html",   
-	            data: $('#form1').serialize(),
+	            data: $('#myform1').serialize(),
 	            success: function () {
 	   				alert("ok");
 	            },
@@ -32,19 +57,16 @@
 	                alert("异常！");
 	            }
 	        });
-	        
-	        $.ajax({
-	        	type: 'post',
-	            url: "/FastEsport/playerAc05Add.html",   
-	            data: $('#myform').serialize(),
-	            success: function () {
-	   				alert("ok");
-	            },
-	            error : function() {
-	                alert("异常！");
-	            }
-	        })
+	    }
+        function myFunction(vaaf1011)
+        {
+            var vform = document.getElementById("myform");
+            vform.action="<%=path%>/userQueryGamble.html?aaf101="+vaaf1011;
+            //alert(vform.action);
+            vform.submit();
         }
+       
+        
     </script>
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 			function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -58,6 +80,8 @@
 	<link href="css/font-awesome.css" rel="stylesheet">  
 	
 	<link title="stylezb" rel="stylesheet" href="css/stylezb.css" type="text/css" />
+	
+	
 	
 	<!-- 编辑你的script -->
 	<script type="text/javascript">
@@ -178,7 +202,7 @@
 <body>
 
 <div>
-    <div id="game_message">
+    <div id="header">
     	<p>比赛名称：</p>
         <p>${ins.aaf103 }</p>
         <p>${ins.aaf102 }</p>
@@ -187,32 +211,43 @@
         <p>${ins.aaf112 }</p>
        	<p>${ins.aaf109 }</p>
     </div>
-    <div id="bm">
-        <form id="form1" >
-			<input type="hidden" name="aaf101" value="${param.aaf101 }">
-			<input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
-            <input type="submit" value="立刻报名" onclick="submitAjax">  
-        </form>
-    </div>
-    
-    <div id="others">
-    <form id="myform" action="<%=path%>/userQueryPlayer.html" method="post">
-        <input type="submit" value="参赛者列表">
-        <input type="submit" value="查看赛程"
-               formaction="<%=path%>/userQuerySchedule.html">
-               
-        <%-- <input type="submit" name="next" value="导出比赛报名表excel"
-               formaction="<%=path%>/judgeExportExcel.html"> --%>
-               
-        <input type="hidden" name="aaf101" value="${param.aaf101 }">
-        <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
-        
-        
-        <input type="submit" name="next" value="查看竞猜"
-               formaction="<%=path%>/userQueryGamble.html">
-    </form>
-    </div>
-</div>
+    <div id="game_message" align="center">
+	    <div>
+	    	
+	        <form id="myform1">
+				<input type="hidden" name="aaf101" value="${param.aaf101 }">
+				<input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
+	            <input id="buttonn" type="submit" value="立刻报名"  onclick="onMake()">  
+	        </form>
+	        
+		    <form id="myform2" action="<%=path%>/userQueryPlayer.html">
+		    	<input type="hidden" name="aaf101" value="${param.aaf101 }">
+		        <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
+		    	<input id="buttonn" type=submit value="参赛列表" >
+		    </form>
+	    
+		    <form id="myform3">
+		        <input id="buttonn" type="submit" value="查看赛程"
+		               formaction="<%=path%>/userQuerySchedule.html">
+		        <%-- <input type="submit" name="next" value="导出比赛报名表excel"
+		               formaction="<%=path%>/judgeExportExcel.html"> --%>
+		               
+		        <input type="hidden" name="aaf101" value="${param.aaf101 }">
+		        <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
+	        </form>
+	        <form id="myform4">
+	        	<input type="hidden" name="aaf101" value="${param.aaf101 }">
+		        <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
+		        <input id="buttonn" type="submit" name="next" value="查看竞猜"
+		               formaction="<%=path%>/userQueryGamble.html">
+	        </form>
+		        
+		        
+		    
+	    </div>
+   </div>
+   <div id="section"> 
+   </div>
 </div>
 
 
