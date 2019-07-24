@@ -212,15 +212,7 @@
 <body>
 
 <div>
-    <div id="header">
-    	<p>比赛名称：</p>
-        <p>${ins.aaf103 }</p>
-        <p>${ins.aaf102 }</p>
-       	<p>赛事开始时间：</p>
-       	<p>${ins.aaf107}</p>
-        <p>${ins.aaf112 }</p>
-       	<p>${ins.aaf109 }</p>
-    </div>
+    
     <div id="game_message" align="center">
 	    <div>
 	    	
