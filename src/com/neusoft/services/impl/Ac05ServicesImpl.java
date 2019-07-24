@@ -12,11 +12,26 @@ public class Ac05ServicesImpl extends JdbcServicesSupport {
 
     static int gameId=11;//aaf101
     static String gameDate="2019-07-11";
+    
+    
+    public List<Map<String,String>> query() throws Exception {
+
+        System.out.println("调用aaf101" + this.get("aaf101"));
+
+        StringBuilder sql = new StringBuilder()
+                .append("select   a.aac501,a.aab101,b.aab102")
+                .append("    from ac05 a,ab01 b")
+                .append("   where a.aab101 = b.aab101")
+                .append("     and a.aaf101 = ")
+                .append(this.get("aaf101"));
+
+        return this.queryForList(sql.toString());
+    }
     /**
      *1.
      * 首先根据比赛的id从报名表ac05中查出所有相应比赛的所有报名的人员
      */
-    public List<Map<String,String>> query() throws Exception {
+    public List<Map<String,String>> queryForSchedule() throws Exception {
 
         System.out.println("调用aaf101" + this.get("aaf101"));
 
@@ -40,7 +55,7 @@ public class Ac05ServicesImpl extends JdbcServicesSupport {
                 .append("insert into af02(aaf101,aaf204,aaf202,aaf203)")
                 .append("           values(?,?,?,?)")
                 ;
-        String [] idRows=Tools.getRows(this.query(),"2");
+        String [] idRows=Tools.getRows(this.queryForSchedule(),"2");
 
         Object args[] = {
                 this.get("aaf101"),

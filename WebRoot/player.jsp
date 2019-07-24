@@ -252,6 +252,9 @@
 
 <div>
     <c:forEach items="${rows }" var="ins" varStatus="vs">
+        <p>пуцШ</p>
+        ${ins.aab102 }
+        <p>пРап╨е</p>
         ${ins.aab101 }
     </c:forEach>
 </div>

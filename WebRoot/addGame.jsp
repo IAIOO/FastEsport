@@ -5,6 +5,7 @@
   Time: 9:38
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <%@ taglib prefix="e" uri="http://org.wangxg/jsp/extl" %>
@@ -150,15 +151,15 @@
            <div class="field-label"><label for="field6">比赛项目</label>:</div>
            <div class="field-widget">
                <select id="field6" name="aaf102" class="validate-selection" title="Choose your department">
-               		<option value="1">DOTA2</option>
-	                <option value="2">LOL</option>
-		            <option value="3">王者荣耀</option>
-		            <option value="4">CSGO</option>
-		            <option value="5">PUBG</option>
-		            <option value="6">OW</option>
-		            <option value="7">星际争霸2</option>
-		            <option value="8">魔兽争霸3</option>
-		            <option value="9">炉石传说</option>
+               		<option value="01">DOTA2</option>
+	                <option value="02">LOL</option>
+		            <option value="03">王者荣耀</option>
+		            <option value="04">CSGO</option>
+		            <option value="05">PUBG</option>
+		            <option value="06">OW</option>
+		            <option value="07">星际争霸2</option>
+		            <option value="08">魔兽争霸3</option>
+		            <option value="09">炉石传说</option>
                </select>
            </div>
        </div>

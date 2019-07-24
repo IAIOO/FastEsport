@@ -289,7 +289,7 @@
 		                            ${ins.aaf204}
 		                    </td>
 		                    <td width="250px" align="center">
-		                            ${ins.aaf202}
+		                            ${ins.namea}
 		                    </td>
 		                        <%--±È·Ö--%>
 		                    <td width="48px" align="center">
@@ -302,7 +302,7 @@
 		                            ${ins.aaf206}
 		                    </td>
 		                    <td width="250px" align="center">
-		                            ${ins.aaf203}
+		                            ${ins.nameb}
 		                    </td>
 		                </tr>
 		

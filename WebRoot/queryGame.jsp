@@ -204,7 +204,7 @@
 		               				<td style="background-color: #eeeeee">
 			               				赛事名称：${ins.aaf103 }<br>
 										<%-- 报名截止时间：${ins.aaf107}<br> --%>
-										比赛状态：${ins.aaf109 }<br>
+										比赛状态：${ins.aaf109val }<br>
 									</td>
 								</tr>
 	                       	</table>

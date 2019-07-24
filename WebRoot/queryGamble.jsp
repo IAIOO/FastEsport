@@ -111,7 +111,7 @@
 	    function joinQ(){
 	        $.ajax({
 	            type: 'post',
-	            url: "/FastEsport/userAddGamble",  
+	            url: "/FastEsport/userAddPersonGamble.html?aaf101=${param.aaf101 }",  
 	            data: $('#personGamble_add').serialize(),
 	            
 	            success: function () {
@@ -125,9 +125,8 @@
 	    function endQ(){
 	    	$.ajax({
 	            type: 'post',
-	            url: "/FastEsport/adminEndGamble",   
+	            url: "/FastEsport/adminEndGamble.html",   
 	            data: $('#endGamble').serialize(),
-	            async: false,
 	            success: function () {
 	   				alert("ok");
 	            },
@@ -137,13 +136,7 @@
 	        });
 	    }
 	    
-        function myFunction(vaaf1011)
-        {
-            var vform = document.getElementById("myform");
-            vform.action="<%=path%>/userQueryGamble.html?aaf101="+vaaf1011;
-            //alert(vform.action);
-            vform.submit();
-        }
+        
        
         
     </script>
@@ -357,6 +350,7 @@
 	                                            <option value="B">${ins1.aab409 }</option>
 	                                        </select>
 	                                        <input name="aab101" value="<%=session.getAttribute("aab101") %>" type="hidden"/>
+	                                        <input name="aaf101" value="${param.aaf101 }" type="hidden"/>
 	                                        <input name="aab401" value="${ins1.aab401 }" type="hidden"/>
 	                                        <input name="aab403" value="${ins1.aab403 }" type="hidden"/>
 	                                        <input name="aab404" value="${ins1.aab404 }" type="hidden"/>
@@ -365,7 +359,7 @@
 	                                            <%--${ins1.aab409 }<input name="aab404" value="${ins1.aab404 }"/>--%>
 	                                            <%--<input type="hidden" name="aab401" value="${ins1.aab401 }">--%>
 	                                            <%--<a onclick="ok()">OK</a>&nbsp;&nbsp;&nbsp;<a onclick="cancel()">Cancel</a>--%>
-	                                        <input type="submit" value="提交" onclick="jionQ()">&nbsp;&nbsp;&nbsp;<a onclick="cancel()">取消</a>
+	                                        <input type="submit" value="提交" onclick="joinQ()">&nbsp;&nbsp;&nbsp;<a onclick="cancel()">取消</a>
 	                                    </form>
 	                                </div>
 	                                <div id="selectBox2" class="selectBox2">
@@ -394,6 +388,6 @@
 	</div>
 </div>
 
-
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 </body>
 </html>

@@ -68,9 +68,12 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
         StringBuilder sql=new StringBuilder()
                 .append("select  a.aaf101,a.aaf102,a.aaf103,a.aaf104,a.aaf105,")
                 .append("        a.aaf107,a.aaf108,a.aaf109,a.aaf110,a.aaf111,")
-                .append("        a.aaf112,a.aaf113")
-                .append("  from  af01 a")
-                .append("  where aab101 = ")
+                .append("        a.aaf112,a.aaf113,")
+                .append("        b.fvalue aaf109val,c.fvalue aaf105val")
+                .append("  from  af01 a,syscode b,syscode c")
+                .append("  where a.aaf109 = b.fcode and b.fname = 'aaf109'")
+                .append("  and   a.aaf105 = c.fcode and c.fname = 'aaf105'")
+                .append("  and   aab101 = ")
                 .append(         this.get("aab101"))//当前用户主键值TODO
                 ;
         return this.queryForList(sql.toString());
@@ -139,9 +142,13 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
         StringBuilder sql=new StringBuilder()
                 .append("select a.aaf102,a.aaf103,a.aaf104,a.aaf105,")
                 .append("       a.aaf107,a.aaf108,a.aaf109,a.aaf110,a.aaf111,")
-                .append("       a.aaf112,a.aaf113")
-                .append("  from af01 a")
-                .append(" where a.aaf101=?")
+                .append("       a.aaf112,a.aaf113,")
+                .append("       b.fvalue aaf109val,c.fvalue aaf105val,d.fvalue aaf102val")
+                .append("  from af01 a,syscode b,syscode c,syscode d")
+                .append(" where a.aaf109 = b.fcode and b.fname = 'aaf109'")
+                .append(" and   a.aaf105 = c.fcode and c.fname = 'aaf105'")
+                .append(" and   a.aaf102 = d.fcode and d.fname = 'aaf102'")
+                .append(" and   a.aaf101=?")
                 ;
         System.out.println(this.get("aaf101"));
         //执行查询
