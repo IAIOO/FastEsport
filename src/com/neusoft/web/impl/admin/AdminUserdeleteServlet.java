@@ -6,7 +6,7 @@ public class AdminUserdeleteServlet extends Ab06ControllerSupport {
 	@Override
 	public String execute() throws Exception 
 	{
-		this.update("deleteById", "É¾³ý");
+		this.update("postdelete", "É¾³ý");
 		this.savePageDataForDelete();
 		//this.savePageData();
 		return "userdelete";

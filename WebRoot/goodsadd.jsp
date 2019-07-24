@@ -1,18 +1,20 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
+<!DOCTYPE html>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%String path=request.getContextPath();%>
-<html>
+<%String path = request.getContextPath(); %>
 <head>
-<title>Insert title here</title>
-<style type="text/css">
-  td{
-      height:30px;
-  }
-  msg{
-     color:#FF0000
-  }
-</style>
+<title>Others</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- gallery -->
+<link rel="stylesheet" href="css/lightGallery.css" type="text/css" media="all" />
+<!-- //gallery -->
+<!-- font-awesome icons -->
+<link href="css/font-awesome.css" rel="stylesheet">  
+
+<link title="style1" rel="stylesheet" href="css/style1.css" type="text/css" />
+
+<!-- ç¼–è¾‘ä½ çš„script -->
 <script type="text/javascript">
 function onMake() {
     var formData = new FormData($('#form2')[0]);
@@ -21,8 +23,8 @@ function onMake() {
         url: '/FastEsport/uploadGoodsPic',
         data: formData,
         dataType: "text",
-        contentType: false, //²»ÉèÖÃÄÚÈİÀàĞÍ
-        processData: false, //²»´¦ÀíÊı¾İ
+        contentType: false, //ä¸è®¾ç½®å†…å®¹ç±»å‹
+        processData: false, //ä¸å¤„ç†æ•°æ®
         success: function (data) {
         	$("#goodsPicPlay").attr("src",data);
         	$("#aad206").attr("value",data);
@@ -31,81 +33,69 @@ function onMake() {
                 type: 'post',
                 data: $('#form1').serialize(),
                 dataType: "text",
-                url: '/FastEsport/ShopGoodsadd.html',
+                url: '/FastEsport/shopGoodsadd.html',
                 success: function () {
-                	alert("ÉÏ´«ÉÌÆ·³É¹¦£¡");
+                	alert("ä¸Šä¼ å•†å“æˆåŠŸï¼");
                 },
                    error : function() {
-                       alert("Òì³££¡");
+                       alert("å¼‚å¸¸ï¼");
                 }
             });	
         },
            error : function() {
-               alert("Òì³££¡");
+               alert("å¼‚å¸¸ï¼");
            }
     });	
 }
 </script>
 </head>
+	
 <body>
-${msg}
-<%=path %>
-<br>
-<br>
-<form id="form1">
-<table  border="1" align="center" width="45%">
-    <caption>
-       ÉÌÆ·
-      <hr width="160">
-    </caption>
-   <tr>
-     <td colspan="2">ÉÌÆ·×ÊÁÏ</td>
-   </tr>
-   <tr>
-     <td>ÉÌÆ·Ãû³Æ</td>
-     <td>
-       <e:text name="aad202" autofocus="true" /> 
-     </td>
-   </tr>
-   <tr>
-     <td>ÉÌÆ·ĞÅÏ¢</td>
-     <td>
-       <e:text name="aad203"/>
-     </td>
-   </tr>
-   <tr>
-   </tr>
-   <tr>
-     <td>ÉÌÆ·ÊıÁ¿</td>
-     <td>
-        <e:number name="aad204"  step="1"/> 
-     </td>
-   </tr>
-   <tr>
-     <td>ÏûºÄ´ú±Ò</td>
-     <td>
-       <e:number name="aad205"  step="1" /> 
-     </td>
-   </tr>
-   <input type="hidden" id="aad206" name="aad206">
-</table>
-<table border="1" width="45%" align="center">
-	  <tr>
-	    <td align="center">
-	        <a href="adminindex.jsp"target="main">Ê×Ò³</a>
-	    </td>
-	  </tr>
-	</table>
-</form>
-<form id="form2" enctype="multipart/form-data">
-	<div>
-		<span>ÉÏ´«Ö°ÒµÖ¤Ã÷£º</span> 
-		<input type="file" id="goodsPic" name="goodsPic"> 
-	    <i class="input-tips">Í¼Æ¬ÊÇjpg,png¸ñÊ½£¬µ«ĞëĞ¡ÓÚ1M.</i>
-	    <input type="button" value="ÉÏ´«ÉÌÆ·" onclick="onMake()">
+
+<!-- banner -->
+
+
+
+	<div class="form_content">
+    <form id="form1" action="#" method="post">
+    <fieldset>
+        <legend>å•†å“ä¿¡æ¯</legend>
+        <div class="form-row">
+            <div class="field-label"><label for="field1">å•†å“åç§°</label>:</div>
+            <div class="field-widget"><input name="aad202" id="field1" class="required" title="Enter your name" /></div>
+        </div>
+        
+        <div class="form-row">
+            <div class="field-label"><label for="field2">å•†å“ä¿¡æ¯</label>:</div>
+            <div class="field-widget"><input name="aad203" id="field1" class="required" title="Enter your name" /></div>
+        </div>
+        
+        <div class="form-row">
+            <div class="field-label"><label for="field3">å•†å“æ•°é‡</label>:</div>
+            <div class="field-widget"><input type="number" name="aad204"></div>
+        </div>    
+        <div class="form-row">
+            <div class="field-label"><label for="field3">æ¶ˆè€—ä»£å¸</label>:</div>
+            <div class="field-widget"><input type="number" name="aad205"></div>
+        </div>
+        <input type="hidden" id="aad206" name="aad206">
+        </fieldset>
+        </form>
+        </div>    
+      <div class="form_content">
+      <form id="form2" enctype="multipart/form-data" method="post">
+      <fieldset>
+      <legend>ä¸Šä¼ å›¾ç‰‡</legend>
+      <div class="form-row">
+      <input type="file" id="goodsPic" name="goodsPic"> 
+	    <i class="input-tips">å›¾ç‰‡æ˜¯jpg,pngæ ¼å¼ï¼Œä½†é¡»å°äº1M.</i>
+	    <input type="button" value="ä¸Šä¼ å•†å“" onclick="onMake()">
 	    <img id="goodsPicPlay">
-	</div>
-</form>
-<script type="text/javascript" src="<%=path %>/js/jquery-3.2.1.js"></script>
+      </div>
+      </fieldset>
+      </form>
+      <script type="text/javascript" src="<%=path %>/js/jquery-3.2.1.js"></script>
+      </div>
+
 </body>
 </html>

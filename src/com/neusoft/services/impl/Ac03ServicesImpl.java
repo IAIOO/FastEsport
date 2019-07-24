@@ -159,13 +159,13 @@ public boolean updateEnlist()throws Exception
 	  		//还原页面查询条件
 	  		
 	  		//定义SQL主体
-	  		StringBuilder sql=new StringBuilder()
-	  				.append("select a.aac202,a.aac203,a.aac204,a.aac205,a.aac206,")
-	  				.append("       a.aac207,b.aac101,b.aac107")
-	  				.append("  from ac03 a,ac02 b ")
-	  				.append(" where a.aac202=b.aac103")
-	  				.append(" and b.aac107='0'")
-	  		        .append(" order by a.aac202");
+		  StringBuilder sql=new StringBuilder()
+	  				.append("select a.aac201,a.aab101,a.aac202,a.aac203,a.aac204,a.aac205,")
+	  				.append("a.aac206,a.aac207,a.aac208,b.aab101,b.aab108")
+	  				.append("  from ac02 a,ab01 b ")
+	  				.append(" where a.aab101=b.aab101")
+	  				.append(" and b.aab108=0")
+	  		        .append(" order by a.aab101");
 	  		
 	  	return this.queryForList(sql.toString());
 	  }
