@@ -7,7 +7,7 @@ public class BbsAddTopicServlet extends Ab02ControllerSupport {
 	@Override
 	public String execute() throws Exception {
 		this.update("addTopic", "·¢±í");
-		return "bbs";
+		return "addsuccess";
 	}
 
 }
