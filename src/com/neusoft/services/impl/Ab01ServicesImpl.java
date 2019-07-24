@@ -87,9 +87,27 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
 	 * 用户登录时查询该用户密码,同时查询用户序列号
 	 */
 	public Map<String,String> findById()throws Exception{
-		String sql = "select aab101,aab104 from ab01 where aab102 = ?";
-		Object aab102 = this.get("aab102");
-		return this.queryForMap(sql, aab102);
+		StringBuilder sql=new StringBuilder()
+				.append("select c.aac101,c.aac114,b.aab101,b.aab104")
+				.append("   from ac01 c,ab01 b")
+				.append("  where c.aab101 = b.aab101")
+				.append("   and b.aab102 = ?")
+				;
+		Map<String, String> teMap =  this.queryForMap(sql.toString(), this.get("aab102"));
+		
+		if (isNotNull(teMap))
+		{
+			return teMap;
+		}
+		else
+		{
+			StringBuilder sql_1=new StringBuilder()
+					.append("select b.aab101,b.aab104")
+					.append("   from ab01 b")
+					.append("  where b.aab102 = ?")
+					;
+			return  this.queryForMap(sql_1.toString(), this.get("aab102"));
+		}
 	}
 	
 	/**

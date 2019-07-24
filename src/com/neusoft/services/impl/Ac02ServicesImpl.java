@@ -4,41 +4,42 @@ import java.util.List;
 import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
+import com.sun.javafx.sg.prism.web.NGWebView;
 
 public class Ac02ServicesImpl extends JdbcServicesSupport {
 
-	public boolean uploadProIdPic()throws Exception
-	{    	
-		String sql="update ac02 set aac202=? where aab101=?";
-		return this.executeUpdate(sql, this.get("aac202"),this.get("aab101"))>0;
-	}
-	
-	public boolean uploadUserIdPic()throws Exception
-	{    	
-		String sql="update ac02 set aac208=? where aab101=?";
-		return this.executeUpdate(sql, this.get("aac208"),this.get("aab101"))>0;
-	}
-	
 	public boolean updateProId()throws Exception 	  
     {
 		//aab101应该由session获得
     	StringBuilder sql=new StringBuilder()
-		.append("insert into ac02(aab101,aac203,aac204,aac205,aac206,aac207)")
-		.append("          values(?,?,?,?,?,?)")
-
+		.append("insert into ac02(aab101,aac202,aac203,aac204,aac205,")
+		.append("                 aac206,aac207,aac208)")
+		.append("          values(?,?,?,?,?,")
+		.append("                 ?,?,?)")
 		;
     	//2.编写参数数组
      	Object args[]={
-     			1,
+     			this.get("aab101"),
+     			this.get("aac202"),
     			this.get("aac203"),
     			this.get("aac204"),
     			this.get("aac205"),
     			this.get("aac206"),
     			this.get("aac207"),
+    			this.get("aac208")
     	};
         return this.executeUpdate(sql.toString(), args)>0;	
     }	  
 	
+	public Map<String,String> findById()throws Exception
+	{
+		StringBuilder sql =  new StringBuilder()
+				.append(" select aab102,aab103,aab105,aab106")
+				.append(" from ab01")
+				.append(" where aab101 = ?")
+				; 
+		return this.queryForMap(sql.toString(),this.get("aab101"));
+	}
 	 public List<Map<String,String>> query()throws Exception
 	  {
 	  		//还原页面查询条件

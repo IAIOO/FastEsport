@@ -9,30 +9,30 @@ import com.neusoft.system.tools.Tools;
 
 public class Ac01ServicesImpl extends JdbcServicesSupport {
 	
-	public boolean modifyIdPic()throws Exception
-	{    	
-		String sql="update ac01 set aac109=? where aab101=?";
-		return this.executeUpdate(sql, this.get("aac109"),this.get("aab101"))>0;
-	}
-	
+
 	public boolean modifyTeamPic()throws Exception
 	{    	
 		String sql="update ac01 set aac115=? where aab101=?";
 		return this.executeUpdate(sql, this.get("aac115"),this.get("aab101"))>0;
 	}
      
+	public boolean updateCheck()throws Exception
+	{
+		String sql = "update ac01 set aac114 = 1 where aac101 = ?";
+		return this.executeUpdate(sql, this.get("aac101"))>0;	
+	}
 	private boolean makeTeam()throws Exception 	  
     {
     	//获取当前日期
     	String aac110=Tools.getCurrentDate();
     	this.put("aac110", aac110);
     	StringBuilder sql=new StringBuilder()
-		.append("insert into ac01(ac01.aab101,aac101,aac102,aac103,aac104,")
-		.append("                 aac105,aac106,aac107,aac108,aac110,")
-		.append("                 aac111,aac112,aac114)")		
+		.append("insert into ac01(aab101,aac101,aac102,aac103,aac104,")
+		.append("                 aac105,aac106,aac107,aac108,aac109,")
+		.append("                 aac110,aac111,aac112,aac114,aac115)")		
 		.append("          values(?,?,?,?,?,")
 		.append("                 ?,?,?,?,?,")
-		.append("                 ?,?,?)")
+		.append("                 ?,?,?,?,?)")
 		;
     	String aac111="0";
     	Object aac102=this.get("aac102");
@@ -47,7 +47,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport {
     	this.put("aac102",aac102);
     	//2.编写参数数组
      	Object args[]={
-     			2,//通过session获得this.get("aac101"),
+     			this.get("aab101"),//通过session获得this.get("aab101"),
     			this.get("aac101"),
     			aac102,
     			this.get("aac103"),
@@ -56,25 +56,68 @@ public class Ac01ServicesImpl extends JdbcServicesSupport {
     			this.get("aac106"),
     			Tools.joinArray(this.get("aac107")),
     			this.get("aac108"),
+    			this.get("aac109"),
     			aac110,
     			aac111,
     			this.get("aac112"),
-    			this.get("aac114")
+    			this.get("aac114"),
+    			this.get("aac115")
     	};
         return this.executeUpdate(sql.toString(), args)>0;	
     }	 
   
 	public Map<String, String> findById() throws Exception
    {
+		Object aac101=this.get("aac101");
+		Object aab101=this.get("aab101");
 	  StringBuilder sql = new StringBuilder()
 	  .append("select a.aac101,a.aac102,a.aac103,a.aac104,a.aac105,")
-	  .append("       a.aac106,a.aac107,a.aac108,a.aac110,a.aac111,")
-	  .append("       a.aac112")
-	  .append(" from  ac01 a ")
-	  .append(" where aab101= ? ")
+	  .append("       a.aac106,a.aac107,a.aac108,a.aac109,a.aac110,")
+	  .append("       a.aac111,a.aac112,a.aac114,a.aac115")
+	  .append(" from  ac01 a,syscode b ")
+	  .append(" where true ")
+	  .append(" and a.aac111=b.fcode and b.fname='aac111'")
 	  ;
-      return this.queryForMap(sql.toString(), this.get("aab101"));
+		if(this.isNotNull(aab101)) {
+		sql.append(" and aab101 = ?");
+	      return this.queryForMap(sql.toString(), this.get("aab101"));
+	}
+		else{
+			sql.append(" and aac101 = ?");	
+		    return this.queryForMap(sql.toString(), this.get("aac101"));
+		}
+	  
    } 
+	
+	/*管理员审核战队*/	
+	@Override
+	public List<Map<String,String>> query()throws Exception{
+  		Object aac111=this.get("qaac111");     //职业/非职业战队
+ 		Object aac110=this.get("qaac110");     //申请创建日期
+ 		Object aac114=this.get("qaac114");		  //审核状态
+ 		
+ 		StringBuilder sql = new StringBuilder()
+ 				 .append("select aac101,aac102,aac103,aac110")
+ 				 .append("  from ac01")
+ 				 .append(" where 1=1")
+ 				 ;
+ 		
+ 		List<Object> paramList = new ArrayList<>();
+ 	 		if(this.isNotNull(aac110)) {
+ 			sql.append(" and aac110 <= ?");
+ 			paramList.add(aac110);
+ 		}
+ 		if(this.isNotNull(aac111)) {
+ 			sql.append(" and aac111=?");
+ 			paramList.add(aac111);
+ 		}
+ 		if(this.isNotNull(aac114)) {
+ 			sql.append(" and aac114=?");
+ 			paramList.add(aac114);
+ 		}
+
+ 		return this.queryForList(sql.toString(), paramList.toArray());
+	}
 	
 	/**
 	 * 用户查看战队列表

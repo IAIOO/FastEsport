@@ -146,12 +146,15 @@ public abstract class ControllerSupport implements BaseController
 		Map<String,String> ins=this.services.findById();
 		if(ins!=null)
 		{
+			
 			if(!(ins.get("aab104").equals(Tools.getMd5(this.dto.get("aab104"))))) {
 				this.saveAttribute("msg", "用户名或密码错误");
 				return;
 			}
 			this.saveAttribute("aab101", ins.get("aab101"));
 			this.saveAttribute("aab102", this.dto.get("aab102"));
+			this.saveAttribute("aac114", ins.get("aac114"));
+			this.saveAttribute("aac101", ins.get("aac101"));	
 		}
 		else
 		{

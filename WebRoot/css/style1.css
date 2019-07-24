@@ -5,6 +5,18 @@ margin:30px auto;
 padding:10px;
 background:url(images/form_top_bg.gif) repeat-x top #000000;
 }
+.form_content1{
+width:800px;
+margin:30px auto;
+padding:10px;
+background:url(images/form_top_bg.gif) repeat-x top #000000;
+}
+.form_content2{
+width:975px;
+margin:30px auto;
+padding:10px;
+background:url(images/form_top_bg.gif) repeat-x top #000000;
+}
 fieldset{
 border:1px #ebebeb solid;
 padding:15px 10px 15px 10px;
@@ -33,7 +45,7 @@ float:left;
 padding:10px 5px 5px 5px;
 }
 .field-label {
-width:150px;
+width:100px;
 float:left;
 line-height:25px;
 }
@@ -48,6 +60,7 @@ color:#FFFFFF;
 }
 .field-widget {
 float:left;
+color:#0fcdf6
 }
 input.required{
 width:300px;

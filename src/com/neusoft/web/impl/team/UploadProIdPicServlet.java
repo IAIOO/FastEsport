@@ -3,8 +3,6 @@ package com.neusoft.web.impl.team;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -13,10 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-
-import com.neusoft.services.impl.Ac02ServicesImpl;
 
 
 @WebServlet("/uploadProIdPic")
@@ -41,23 +36,12 @@ public class UploadProIdPicServlet extends HttpServlet {
 		}
 		try
 		{
-			Map<String,Object> dto = new HashMap<>();
-			dto.put("aab101","1");//应该由session获取aab101的值		
-			dto.put("aac202","./img/proIdPic/"+uuid+fileName);
-			Ac02ServicesImpl services = new Ac02ServicesImpl();
-			services.setMapDto(dto);
-			if(fileName.endsWith(".jpg")||fileName.endsWith(".png"))
-			{
-				if(services.uploadProIdPic())
-				{
-					request.setAttribute("msg", "上传成功!");
-				}
-				else
-				{
-					request.setAttribute("msg","上传失败！");
-				}
-				
-			}
+			PrintWriter out = response.getWriter();
+			response.setContentType("text");
+			out.write("./img/idPic/"+uuid+fileName); //保留小数点后一位
+			out.flush();
+			out.close();
+
 		}
 		catch(Exception e)
 		{

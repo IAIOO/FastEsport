@@ -6,7 +6,7 @@ public class TeamMakeTeamServlet extends Ac01ControllerSupport
 {	
 	@Override
 	public String execute() throws Exception {	
-		this.update("makeTeam", "组建战队");	;
-		return "makeTeam";
+		this.update("makeTeam", "组建战队");	
+		return "inCheck";
 	}
 }

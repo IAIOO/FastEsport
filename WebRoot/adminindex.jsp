@@ -23,6 +23,9 @@ function user(){
 function good(){
 	window.location.href="<%=path%>/shopGoodssearch.html";
 } 
+function teamcheck(){
+	window.location.href="<%=path%>/checkMakeTeam.jsp";
+} 
 
 </script>
 <body>
@@ -35,6 +38,7 @@ function good(){
      <font color=black>后台管理页面</font>
   
       <li><a href="index.jsp"target="main">首页</a></li>
+       <li><a href="#" onclick="teamcheck()">战队认证</a></li>
       <li><a href="#" onclick="team()">职业认证</a></li>
       <li><a href="#" onclick="quiz()">竞猜认证</a></li>
       <li><a href="#" onclick="race()">赛事审核</a></li>

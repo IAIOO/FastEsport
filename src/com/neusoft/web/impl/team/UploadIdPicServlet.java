@@ -2,6 +2,7 @@ package com.neusoft.web.impl.team;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -41,25 +42,11 @@ public class UploadIdPicServlet extends HttpServlet {
 		}
 		try
 		{
-			Map<String,Object> dto = new HashMap<>();
-			dto.put("aab101","1");//应该由session获取aab101的值		
-			dto.put("aac109","./img/idPic/"+uuid+fileName);
-			Ac01ServicesImpl services = new Ac01ServicesImpl();
-			services.setMapDto(dto);
-			if(fileName.endsWith(".jpg")||fileName.endsWith(".png"))
-			{
-				if(services.modifyIdPic())
-				{
-					request.setAttribute("msg", "上传成功!");
-					HttpSession session=request.getSession();
-					session.setAttribute("aac109", "./img/idPic/"+uuid+fileName);
-				}
-				else
-				{
-					request.setAttribute("msg","上传失败！");
-				}
-				
-			}
+			PrintWriter out = response.getWriter();
+			response.setContentType("text");
+			out.write("./img/idPic/"+uuid+fileName); //保留小数点后一位
+			out.flush();
+			out.close();
 		}
 		catch(Exception e)
 		{

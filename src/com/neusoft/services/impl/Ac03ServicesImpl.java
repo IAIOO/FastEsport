@@ -46,68 +46,88 @@ public class Ac03ServicesImpl extends JdbcServicesSupport
   		Object aac307=this.get("eaac307");     //结束日期 范围查询
   		Object aac104=Tools.joinArray(this.get("qaac104"));//地区查询  模糊查询
   		Object aac304=this.get("qaac304"); //游戏类型 模糊查询
-  				
-  		//定义SQL主体
-  		StringBuilder sql=new StringBuilder()
-  				.append("select y.aac301,x.aac103,y.aac303,y.aac305,")
-  				.append("       y.aac310,x.aac111,y.aac307,x.aac104")
-  				.append("  from ac01 x,ac03 y")
-  				.append("   where x.aac101 = y.aac101")
-  				;
   		
-  		//参数列表
-  		List<Object> paramList=new ArrayList<>();
-  		//逐一判断查询条件是否录入,拼接AND条件
-  		if(this.isNotNull(aac103))
+  		Object aab101=this.get("aab101"); //查询自己加入的战队
+  		
+  		if(this.isNotNull(aab101))
   		{
-  			sql.append(" and x.aac103 like ?");
-  			paramList.add("%"+aac103+"%");
+  			StringBuilder sql=new StringBuilder()
+  					.append("select ac01.aac101,ac01.aac103,ac01.aac104,ac01.aac111")
+  	  				.append("  from syscode b,(ab01 left join ac04 on ac04.aab101=ab01.aab101)")
+  	  				.append("  left join ac03 on ac03.aac301=ac04.aac301")
+  	  				.append("  left join ac01 on ac01.aac101=ac03.aac101")
+  	  				.append("  where ac01.aac111=b.fcode and b.fname='ac01.aac111'")
+  	  			    .append("  and ab01.aab101=?")
+  	  				;
+  			List<Object> paramList=new ArrayList<>();
+  			paramList.add(aab101);
+  			return this.queryForList(sql.toString(), paramList.toArray());
   		}
-  		if(this.isNotNull(aac305))
+  		else
   		{
-  			sql.append(" and y.aac305>=?");
-  			paramList.add(aac305);
-  		}
-  		if(this.isNotNull(aac310))
-  		{
-  			sql.append(" and y.aac310<=?");
-  			paramList.add(aac310);
-  		}
-  		if(this.isNotNull(aac111))
-  		{
-  			sql.append(" and x.aac111=?");
-  			paramList.add(aac111);
-  		}
-  		if(this.isNotNull(aac307))
-  		{
-  			sql.append(" and y.aac307<=?");
-  			paramList.add(aac307);
-  		}
-  		if(this.isNotNull(aac104))
-  		{
-  			sql.append(" and x.aac104 like ?");
-  			paramList.add("%"+aac104+"%");
-  		}
-  		if(aac304 instanceof java.lang.String[])
-  		{
-			String arr[]=(String[])(this.get("qaac304"));
-			int len=arr.length;
-			if(len>0)
-			{
-				for(int i=0;i<len;i++)
-				{
-					sql.append(" and y.aac304 like ?");
-					paramList.add("%"+arr[i]+"%");
-				}		 	
-			} 	
-  		}	
-  		else if(aac304!=null)
-  		{
-			sql.append(" and y.aac304 like ?");
-			paramList.add("%"+aac304+"%");
-  		}
-  		sql.append(" order by y.aac301");	
-  		return this.queryForList(sql.toString(), paramList.toArray());
+  		//定义SQL主体
+  	  		StringBuilder sql=new StringBuilder()
+  	  				.append("select y.aac301,x.aac103,y.aac303,y.aac305,")
+  	  				.append("       y.aac310,x.aac111,y.aac307,x.aac104,b.fvalue vaac111")
+  	  				.append("  from ac01 x,ac03 y,syscode b")
+  	  				.append("   where x.aac101 = y.aac101")
+  	  				.append(" and x.aac111=b.fcode and b.fname='aac111'")
+  	  				;
+  	  		
+  	  		//参数列表
+  	  		List<Object> paramList=new ArrayList<>();
+  	  		//逐一判断查询条件是否录入,拼接AND条件
+  	  		if(this.isNotNull(aac103))
+  	  		{
+  	  			sql.append(" and x.aac103 like ?");
+  	  			paramList.add("%"+aac103+"%");
+  	  		}
+  	  		if(this.isNotNull(aac305))
+  	  		{
+  	  			sql.append(" and y.aac305>=?");
+  	  			paramList.add(aac305);
+  	  		}
+  	  		if(this.isNotNull(aac310))
+  	  		{
+  	  			sql.append(" and y.aac310<=?");
+  	  			paramList.add(aac310);
+  	  		}
+  	  		if(this.isNotNull(aac111))
+  	  		{
+  	  			sql.append(" and x.aac111=?");
+  	  			paramList.add(aac111);
+  	  		}
+  	  		if(this.isNotNull(aac307))
+  	  		{
+  	  			sql.append(" and y.aac307<=?");
+  	  			paramList.add(aac307);
+  	  		}
+  	  		if(this.isNotNull(aac104))
+  	  		{
+  	  			sql.append(" and x.aac104 like ?");
+  	  			paramList.add("%"+aac104+"%");
+  	  		}
+  	  		if(aac304 instanceof java.lang.String[])
+  	  		{
+  				String arr[]=(String[])(this.get("qaac304"));
+  				int len=arr.length;
+  				if(len>0)
+  				{
+  					for(int i=0;i<len;i++)
+  					{
+  						sql.append(" and y.aac304 like ?");
+  						paramList.add("%"+arr[i]+"%");
+  					}		 	
+  				} 	
+  	  		}	
+  	  		else if(aac304!=null)
+  	  		{
+  				sql.append(" and y.aac304 like ?");
+  				paramList.add("%"+aac304+"%");
+  	  		}
+  	  		sql.append(" order by y.aac301");	
+  	  		return this.queryForList(sql.toString(), paramList.toArray());
+  		} 		
   }
   
   public Map<String,String> findById()throws Exception
@@ -159,13 +179,13 @@ public boolean updateEnlist()throws Exception
 	  		//还原页面查询条件
 	  		
 	  		//定义SQL主体
-		  StringBuilder sql=new StringBuilder()
-	  				.append("select a.aac201,a.aab101,a.aac202,a.aac203,a.aac204,a.aac205,")
-	  				.append("a.aac206,a.aac207,a.aac208,b.aab101,b.aab108")
-	  				.append("  from ac02 a,ab01 b ")
-	  				.append(" where a.aab101=b.aab101")
-	  				.append(" and b.aab108=0")
-	  		        .append(" order by a.aab101");
+	  		StringBuilder sql=new StringBuilder()
+	  				.append("select a.aac202,a.aac203,a.aac204,a.aac205,a.aac206,")
+	  				.append("       a.aac207,b.aac101,b.aac107")
+	  				.append("  from ac03 a,ac02 b ")
+	  				.append(" where a.aac202=b.aac103")
+	  				.append(" and b.aac107='0'")
+	  		        .append(" order by a.aac202");
 	  		
 	  	return this.queryForList(sql.toString());
 	  }

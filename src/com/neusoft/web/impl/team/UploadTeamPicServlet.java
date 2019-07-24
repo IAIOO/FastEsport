@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import javax.websocket.Session;
 
 import com.neusoft.services.impl.Ac01ServicesImpl;
 
@@ -41,9 +42,10 @@ public class UploadTeamPicServlet extends HttpServlet {
 		}
 		try
 		{
-			Map<String,Object> dto = new HashMap<>();
-			dto.put("aab101","1");//应该由session获取aab101的值		
+			Map<String,Object> dto = new HashMap<>();	
 			dto.put("aac115","./img/teamPic/"+uuid+fileName);
+			String aab101 = request.getSession().getAttribute("aab101").toString();
+			dto.put("aab101",aab101);
 			Ac01ServicesImpl services = new Ac01ServicesImpl();
 			services.setMapDto(dto);
 			if(fileName.endsWith(".jpg")||fileName.endsWith(".png"))

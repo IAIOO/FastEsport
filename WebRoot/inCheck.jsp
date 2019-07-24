@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
 <%String path = request.getContextPath(); %>
 <head>
 <title>Others</title>
@@ -21,40 +20,15 @@
 <!-- font-awesome icons -->
 <link href="css/font-awesome.css" rel="stylesheet">  
 
-<link rel="stylesheet" href="css/style1.css" type="text/css" />
-<link rel="stylesheet" href="css/table.css" type="text/css" />
+<link title="style1" rel="stylesheet" href="css/style1.css" type="text/css" />
 
 <!-- 编辑你的script -->
-<style type="text/css">
-  tr
-  {
-     height:25px;
-  }
-</style>
-<script type="text/javascript">
-function onLook(vaac401)
-{
-	 var vform = document.getElementById("myform");
-	 vform.action="<%=path%>/teamFindByIdOnEnlist.html?aac401="+vaac401;
-	 vform.submit();
-}
-</script>
 </head>
-<c:choose>
-	<c:when test="${empty rows }">
-	<c:set var= "aac301" value="${param.aac301 }"></c:set>
-	</c:when>
-	<c:otherwise>
-	<c:set var= "aac301" value="${rows[0].aac301 }"></c:set>
-	</c:otherwise>
-</c:choose>
+	
 <body>
 <!-- header -->
-<!-- header -->
-<c:set var="userId" scope="session" value='<%=session.getAttribute("aab101") %>'/>
-<c:choose>
-<c:when test="${userId!=null }">
-	<div class="w3_navigation">
+<div>
+<div class="w3_navigation">
 		<div class="container">
 			<nav class="navbar navbar-default">
 				<div class="navbar-header navbar-left">
@@ -73,7 +47,7 @@ function onLook(vaac401)
 <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 	<nav class="cl-effect-5" id="cl-effect-5">												
 		<ul class="nav navbar-nav">	
-		
+		 
 <!-- 首页 -->																							
 <li class="dropdown menu__item">
 <a href="index.jsp">首页			
@@ -88,123 +62,27 @@ function onLook(vaac401)
 						
 <!-- 赛事管理 -->
 <li class="dropdown menu__item">
-<a href="competitionQueryGame.html?aab101=<%=session.getAttribute("aab101") %>" class="dropdown-toggle menu__link" >赛事管理
+<a href="competitionQueryGame.html?aab101=<%=session.getAttribute("aab101") %>" class="dropdown-toggle menu__link">赛事管理
 </a>
 </li>
 							
 <!-- 战队管理 -->
 <li class="dropdown menu__item">
-<a href="index.jsp" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">战队管理
+<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">战队管理
 	<span class="caret"></span>
 </a>
 <ul class="dropdown-menu">
-	<!-- 	判断是否已创建战队 -->
-	<c:set var="teamId" scope="session" value='<%=session.getAttribute("aac114") %>'/>
+	<c:set var="teamId" scope="session" value='<%=session.getAttribute("aac101") %>'/>
 	<c:if test="${teamId==null }">
 	<li>
 		<a href="makeTeam.jsp">创建战队</a>
 	</li>
 	</c:if>
-	<c:if test="${teamId==0 }">
-	<li>
-		<a href="inCheck.jsp">我的战队</a>
-	</li>
-	</c:if>
-	<c:if test="${teamId==1 }">
+	<c:if test="${teamId!=null }">
 	<li>
 		<a href="teamMyTeam.html?aab101=<%=session.getAttribute("aab101") %>">我的战队</a>
 	</li>
 	</c:if>
-	<li>
-		<a href="teamFindForEnlist.html?aab101=<%=session.getAttribute("aab101") %>">发布招募</a>
-	</li>
-	<li>
-		<a href="queryForMyEnlist.jsp">审核招募</a>
-	</li>
-	<li>
-		<a href="teamQueryForOnEnlist.html?aac101=<%=session.getAttribute("aac101")%>&qaac409=1">我的队员</a>
-	</li>
-	<li>
-		<a href="queryForTeam.jsp">报名战队</a>
-	</li>
-	<li>
-		<a href="teamQueryForTeam.html?aab101=<%=session.getAttribute("aab101") %>">我加入的战队</a>
-	</li>
-	<li>
-		<a href="teamFindByIdForPro.html?aab101=<%=session.getAttribute("aab101") %>">职业认证</a>
-	</li>
-</ul>
-</li>
-
-<!-- 论坛天地 -->							
-<li class="dropdown menu__item">
-<a href="<%=path %>/bbsQuery.html" class="dropdown-toggle menu__link" >论坛天地
-</a>
-</li>
-	
-<!-- 商城中心 -->							
-<li class="dropdown menu__item">
-<a href="<%=path %>/shopUsershop.html" class="dropdown-toggle menu__link" >商城中心
-</a>
-</li>																					
-					</ul>																					
-				</nav>
-			</div>
-		</nav>	
-	</div>
-</div>
-</c:when>
-<c:otherwise>
-	<div class="w3_navigation">
-		<div class="container">
-			<nav class="navbar navbar-default">
-				<div class="navbar-header navbar-left">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<div class="w3_navigation_pos">
-						<h1><span>FastEsport</span></h1>
-					</div>
-				</div>
-				
-<!-- 导航栏 -->
-<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-	<nav class="cl-effect-5" id="cl-effect-5">												
-		<ul class="nav navbar-nav">	
-		
-<!-- 首页 -->																							
-<li class="dropdown menu__item">
-<a href="index.jsp" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">首页			
-</a>
-</li>
-		
-<!-- 全部赛事 -->	
-<li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link">全部赛事
-</a>
-</li>
-						
-<!-- 赛事管理 -->
-<li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link" >赛事管理
-</a>
-</li>
-							
-<!-- 战队管理 -->
-<li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link">战队管理
-	<span class="caret"></span>
-</a>
-<ul class="dropdown-menu">
-	<li>
-		<a href="makeTeam.jsp">创建战队</a>
-	</li>
-	<li>
-		<a href="teamMyTeam.html?aab101=<%=session.getAttribute("aab101") %>">我的战队</a>
-	</li>
 	<li>
 		<a href="teamFindForEnlist.html?aab101=<%=session.getAttribute("aab101") %>">发布招募</a>
 	</li>
@@ -222,13 +100,13 @@ function onLook(vaac401)
 
 <!-- 论坛天地 -->							
 <li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link" >论坛天地
+<a href="<%=path %>/bbsQuery.html" class="dropdown-toggle menu__link">论坛天地
 </a>
 </li>
 	
 <!-- 商城中心 -->							
 <li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link" >商城中心
+<a href="usershop.jsp" class="dropdown-toggle menu__link">商城中心
 </a>
 </li>																					
 					</ul>																					
@@ -237,8 +115,7 @@ function onLook(vaac401)
 		</nav>	
 	</div>
 </div>
-</c:otherwise>
-</c:choose>
+	
 	
 <!-- //header -->	
 	<div class="header">
@@ -264,108 +141,21 @@ function onLook(vaac401)
 	</div>
 <!-- banner -->
 
-<!-- 自由修改区域 -->
-<!-- 自由修改区域 -->
-<!-- 自由修改区域 -->
-<div class="form_content1">
-<c:choose>
-	<c:when test="${empty rows }">
-	<c:set var= "aac301" value="${param.aac301 }"></c:set>
-	</c:when>
-	<c:otherwise>
-	<c:set var= "aac301" value="${rows[0].aac301 }"></c:set>
-	</c:otherwise>
-</c:choose>
-<form id="myform" action="<%=path%>/teamQueryForOnEnlist.html?aac301=${aac301}" method="post">
 
-<!-- 查询条件区 -->
-<c:choose>
-<c:when test="${param.aac101!=null }">
- <fieldset>
- <legend>我已招募的队员</legend>
-  </fieldset>
-  </c:when>
-  <c:otherwise>
-   <fieldset>
-                <legend>招募信息审核</legend>
-        <div class="form-row">
-            <div class="field-label"><label for="field4">审核状态</label>:</div>
-            <div class="field-widget">
-            <e:radio name="qaac409" value="待审核:0,已审核:1" defval="0"/>
-			</div>
-        </div>
-  </fieldset>
-  </c:otherwise>
-  </c:choose>
-<fieldset>
-<table> 
-    <thead> 
-    <tr>
-		<td></td>
-		<td>姓名</td>
-		<td>出生日期</td>
-		<td>电话号码</td>
-		<td>邮箱</td>
-<td>查看具体信息</td>
-	</tr> 
-    </thead> 
-    <tbody> 
-		<c:choose>
-		     <c:when test="${rows!=null }">
-		         <!-- 显示实际查询到的数据 -->
-			     <c:forEach items="${rows }" var="ins" varStatus="vs">
-		    	   	  <tr>
-					    <td>${vs.count }</td>
-					    <td>${ins.aac402 }</td>
-					    <td>${ins.aac404 }</td>
-					    <td>${ins.aac405 }</td>
-					    <td>${ins.aac408 }</td>
-					    <td>
-					      <!-- #  空锚 -->
-					      <a href="#" onclick="onLook('${ins.aac401 }')">查看</a>
-					    </td>
-					  </tr>
-			      </c:forEach>
-			      <!-- 补充空行 -->
-			      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="15">
-				          <tr>
-				            <td></td>
-				            <td></td>
-				            <td></td>
-				            <td></td>
-				            <td></td>
-				            <td></td>
-				          </tr>
-			      </c:forEach>
-		     </c:when>
-		     <c:otherwise>
-		        <c:forEach begin="1" step="1" end="15">
-		           <tr>
-		             <td></td>
-		             <td></td>
-		             <td></td>
-		             <td></td>
-		             <td></td>
-		             <td></td>
-		           </tr>
-		        </c:forEach>
-		     </c:otherwise>
-		   </c:choose>
-    </tbody> 
-</table>
-<div class="form-row">  
-<input class="submit" type="submit" name="next" value="查询">
-<input class="reset" type="button" value="返回" onclick="valid.reset(); return false" />
-</div>     
-     </fieldset>
-
-        		</form>
-		</div>
 <!-- 自由修改区域 -->
 <!-- 自由修改区域 -->
 <!-- 自由修改区域 -->
+	<div class="form_content">
+	<form>
+        <span style="color:#00cc00">你创建的战队还在审核中。。。。别急</span>
+        <%session.setAttribute("aac114",0); %>
+        <input class="reset" type="button" onclick="javascript:location.href='<%=path%>/index.jsp'" value="返回" /> 
+    </form>
+    </div>
 
-
+<!-- 自由修改区域 -->
+<!-- 自由修改区域 -->
+<!-- 自由修改区域 -->
 
 <!-- Modal1 -->
 <div class="modal fade" id="myModal1" role="dialog">
@@ -638,7 +428,5 @@ $(document).ready(function() {
 			});
 	</script>
 <!-- //here ends scrolling icon -->
-<script type="text/javascript" src="js/city.js"></script>
-<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 </body>
 </html>

@@ -46,26 +46,47 @@ public class Ac04ServicesImpl extends JdbcServicesSupport {
 			//还原页面查询条件
 			Object aac409=this.get("qaac409");     //审核状态
 			Object aac301=this.get("aac301");     //所属战队招募表 
-			//定义SQL主体
-			StringBuilder sql=new StringBuilder()
-					.append("select y.aac301, y.aac401,y.aac402,y.aac404,y.aac405,y.aac408")
-					.append("  from ac03 x,ac04 y")
-					.append("   where y.aac301 = x.aac301")
-					;
-			
-			//参数列表
-			List<Object> paramList=new ArrayList<>();
-			//逐一判断查询条件是否录入,拼接AND条件
-			if(this.isNotNull(aac409))
+			Object aac101=this.get("aac101");     //查看我的队友使用
+			if(this.isNotNull(aac101))
 			{
-				sql.append(" and y.aac409 = ?");
-				paramList.add(aac409);
+				StringBuilder sql=new StringBuilder()
+						.append("select ac04.aac401,ac04.aac402,ac04.aac404,ac04.aac405,ac04.aac408")
+						.append("  from (ac01 left join ac03 on ac01.aac101=ac03.aac101)left join ac04 on ac03.aac301=ac04.aac301")
+						.append("  where ac01.aac101=?")
+						.append("  and ac04.aac409=?")
+						;	
+				List<Object> paramList=new ArrayList<>();
+				paramList.add(aac101);
+				paramList.add(aac409);			
+				return this.queryForList(sql.toString(), paramList.toArray()); 
+				
 			}
-			if(this.isNotNull(aac301))
+			else
 			{
-				sql.append(" and y.aac301 = ?");
-				paramList.add(aac301);
-			}	  
-			return this.queryForList(sql.toString(), paramList.toArray());  
+				//定义SQL主体
+				StringBuilder sql=new StringBuilder()
+						.append("select y.aac301, y.aac401,y.aac402,y.aac404,y.aac405,y.aac408")
+						.append("  from ac03 x,ac04 y")
+						.append("   where y.aac301 = x.aac301")
+						;
+				
+				//参数列表
+				List<Object> paramList=new ArrayList<>();
+				//逐一判断查询条件是否录入,拼接AND条件
+				if(this.isNotNull(aac409))
+				{
+					sql.append(" and y.aac409 = ?");
+					paramList.add(aac409);
+				}
+				if(this.isNotNull(aac301))
+				{
+					sql.append(" and y.aac301 = ?");
+					paramList.add(aac301);
+				}
+				return this.queryForList(sql.toString(), paramList.toArray()); 	
+			}
+
+			
+
 	  }
 }
