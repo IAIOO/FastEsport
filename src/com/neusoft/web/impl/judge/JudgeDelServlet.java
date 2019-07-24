@@ -9,7 +9,7 @@ public class JudgeDelServlet extends Ad03ControllerSupport
 	public String execute() throws Exception 
 	{
 		this.update("deleteById", "É¾³ý");
-		return "judgeLogin";
+		return "index";
 	}
 
 }

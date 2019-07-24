@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=GBK"
     pageEncoding="GBK"%>
-    <%String path=request.getContextPath();%>
+<%String path=request.getContextPath();
+session.setAttribute("aad301",request.getAttribute("aad301"));
+session.setAttribute("aad305", request.getAttribute("aad305"));%>
 <!DOCTYPE html>
 <html>
 <head>

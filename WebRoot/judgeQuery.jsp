@@ -1,4 +1,3 @@
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="java.util.function.Function"%>
 <%@ page language="java" pageEncoding="GBK"%>
@@ -39,11 +38,11 @@ session.setAttribute("aad305", request.getAttribute("aad305"));
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
-  <form action="<%=path%>/judgeAf01ModifyEmp.html" method="post">
+  <form method="post">
   <input type="hidden" name="aad301" value="<%=session.getAttribute("aad301") %>">
   <input type="hidden" name="aad305" value="<%=session.getAttribute("aad305") %>">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="judgeGame.jsp"">FastEsport</a>
+    <a class="navbar-brand" href="judgeGame.jsp">FastEsport</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -115,23 +114,54 @@ session.setAttribute("aad305", request.getAttribute("aad305"));
         <div class="col-12">
           <table  border="1" align="center" width="45%">
     <caption>
-       赛事状态修改
+       我的信息
       <hr width="160">
     </caption>
+   
    <tr>
-     <td>赛事状态</td>
-     <td>	
-     	<input type="text" name="aaf109" >
+     <td>姓名</td>
+     <td>
+       <e:text name="aad302" required="true" readonly="true" autofocus="true" defval="${ins.aad302 }"/> 
      </td>
    </tr>
    <tr>
-   	<td>
-   		<input type="submit" value="修改">
-   		<input type="submit" value="返回" formaction="<%=path%>/judgeAf01QueryEmp.html">
-   	</td>
-   	</tr>
+     <td>密码</td>
+     <td>
+     	<input type="password" required="true" name="aad303" defval="${ins.aad303 }"/>
+       <%-- <e:password name="aab103"  readonly="true" defval="${ins.aab103 }"/>  --%>
+     </td>
+   </tr>
+
+  
+   <tr>
+     <td>电子邮件</td>
+     <td>
+       <e:email name="aad304" required="true" defval="${ins.aad304 }"/>
+     </td>
+   </tr>
+    <tr>
+     <td>身份证号码</td>
+     <td>
+       <e:text name="aad305"  required="true" readonly="true" defval="${ins.aad305 }"/> 
+     </td>
+   </tr>
+    <tr>
+     <td>裁判编号</td>
+     <td>
+       <e:text name="aad306"  required="true" readonly="true" defval="${ins.aad306 }"/> 
+     </td>
+   </tr>
+   
+   <tr>
+     <td colspan="2" align="center">
+       <input type="submit" name="next" value="修改"
+              formaction="<%=path%>/modify.html">
+       <input type="submit" name="next" value="返回" 
+              formaction="<%=path%>/queryEmp.html"
+              formnovalidate="formnovalidate">
+     </td>
+   </tr>
 </table>
-<input type="hidden" name="aaf101" value="${param.aaf101}">
          
         </div>
       </div>

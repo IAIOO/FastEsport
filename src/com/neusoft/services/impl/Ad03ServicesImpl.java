@@ -74,15 +74,18 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
     
     public Map<String,String> findById()throws Exception
     {
+    	
     	//1.±‡–¥SQL”Ôæ‰
     	StringBuilder sql=new StringBuilder()
 
-    			.append("select a.aad303,a.aad301")
-    			.append("  from ad03 a")
-    			.append(" where a.aad305=?")
+    			.append("select aad302,aad303,aad304,aad305,aad306")
+    			.append("  from ad03")
+    			.append(" where aad305=?")
     			;
-    	//÷¥––≤È—Ø
+    	
     	return this.queryForMap(sql.toString(), this.get("aad305"));
+    	 
+    //	return this.queryForMap(sql.toString(), "123456");
     }
     
     
