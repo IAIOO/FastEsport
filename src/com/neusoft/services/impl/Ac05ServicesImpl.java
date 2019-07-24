@@ -19,9 +19,10 @@ public class Ac05ServicesImpl extends JdbcServicesSupport {
         System.out.println("µ÷ÓÃaaf101" + this.get("aaf101"));
 
         StringBuilder sql = new StringBuilder()
-                .append("select   a.aac501,a.aab101,b.aab102")
-                .append("    from ac05 a,ab01 b")
+                .append("select   a.aac501,a.aab101,b.aab102,b.aab103,c.fvalue ab108val")
+                .append("    from ac05 a,ab01 b,syscode c")
                 .append("   where a.aab101 = b.aab101")
+                .append("     and b.aab108 = c.fcode and c.fname = 'aab108'")
                 .append("     and a.aaf101 = ")
                 .append(this.get("aaf101"));
 

@@ -246,17 +246,46 @@
 	    </div>
    </div>
    <div id="section"> 
-   		
+   		<div >
+			<div style="float: left;width: 1100px">
+			    <table>
+			        <tr>
+			            <td style="width: 200px;text-align: center">
+			                	名称
+			            </td>
+			            <td style="width: 300px;text-align: center">
+			                	编号
+			            </td>
+			            <td style="width: 600px;text-align: center">
+			                	是否为职业选手
+			            </td>
+			        </tr>
+			    </table>
+		    </div>
+	
+		    <div id="myform" style="float: left;width: 1100px">
+		        <table>
+		            <c:forEach items="${rows }" var="ins" varStatus="vs">
+		
+		                <tr style="height: 60px;margin-top: 0px">
+		                    <td width="200px" align="center">
+		                        	${ins.aab102 }
+		                    </td>
+		                    <td width="300px" align="center">
+		                            ${ins.aab103 }
+		                    </td>
+		                    <td width="600px" align="center">
+		                            ${ins.ab108val }
+		                    </td>
+		                </tr>
+		
+		            </c:forEach>
+		        </table>
+		    </div>
+		</div>
+	    
    </div>
 </div>
 
-<div>
-    <c:forEach items="${rows }" var="ins" varStatus="vs">
-        <p>姓名</p>
-        ${ins.aab102 }
-        <p>序列号</p>
-        ${ins.aab101 }
-    </c:forEach>
-</div>
 </body>
 </html>
