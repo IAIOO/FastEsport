@@ -66,7 +66,7 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
     public List<Map<String,String>> query()throws Exception{
 
         StringBuilder sql=new StringBuilder()
-                .append("select  a.aaf101,a.aaf102,a.aaf103,a.aaf104,a.aaf105,")
+                .append("select  a.aab101,a.aaf101,a.aaf102,a.aaf103,a.aaf104,a.aaf105,")
                 .append("        a.aaf107,a.aaf108,a.aaf109,a.aaf110,a.aaf111,")
                 .append("        a.aaf112,a.aaf113,")
                 .append("        b.fvalue aaf109val,c.fvalue aaf105val")

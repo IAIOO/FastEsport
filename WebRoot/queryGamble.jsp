@@ -278,13 +278,7 @@
 <div>
     <c:if test="${ins.aav103!=null }">
 	    <div id="header">
-	    	<p>比赛名称：</p>
-	        <p>${ins.aaf103 }</p>
-	        <p>${ins.aaf102 }</p>
-	       	<p>赛事开始时间：</p>
-	       	<p>${ins.aaf107}</p>
-	        <p>${ins.aaf112 }</p>
-	       	<p>${ins.aaf109 }</p>
+	    	
 	    </div>
     </c:if>
     <div id="game_message" align="center">
@@ -323,7 +317,7 @@
 		        <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
 		        <input id="buttonn" type="submit" name="next" value="添加竞猜">
 	        </form>
-		        
+		    
 		        
 		    
 	    </div>
@@ -342,7 +336,9 @@
 	                            <p>B押注：${ins1.aab404 }  B赔率：${ins1.aab406 }</p>
 	
 	                            <div id="person">
+	                            	
 	                                <input id="btnSelect" type="button" value="参与竞猜" onclick="showSelectBox()"/>
+	                                
 	                                <input id="btnSelect2" type="button" value="结束竞猜" onclick="showSelectBox2()"/>
 	                                <div id="selectBox" class="selectBox">
 	
