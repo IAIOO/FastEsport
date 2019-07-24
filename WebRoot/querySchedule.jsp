@@ -285,7 +285,7 @@
 		
 		                <tr style="height: 60px;margin-top: 0px">
 		                    <td width="200px" align="center">
-		                        	已结束
+		                        	未开始
 		                    </td>
 		                    <td width="300px" align="center">
 		                            ${ins.aaf204}
