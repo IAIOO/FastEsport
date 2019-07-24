@@ -77,7 +77,7 @@
 		 
 <!-- Ê×Ò³ -->																							
 <li class="dropdown menu__item">
-<a href="fistPage.jsp" class="dropdown-toggle menu__link">Ê×Ò³			
+<a href="index.jsp" class="dropdown-toggle menu__link">Ê×Ò³			
 </a>
 </li>
 		

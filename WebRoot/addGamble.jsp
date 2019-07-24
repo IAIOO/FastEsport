@@ -56,7 +56,7 @@
 	    function onMake(){
 	        $.ajax({
 	            type: 'post',
-	            url: "/FastEsport/playerAc05Add",   
+	            url: "/FastEsport/playerAc05Add.html",   
 	            data: $('#myform1').serialize(),
 	            async: false,
 	            success: function () {
@@ -123,7 +123,7 @@
 		 
 <!-- 首页 -->																							
 <li class="dropdown menu__item">
-<a href="fistPage.jsp" class="dropdown-toggle menu__link">首页			
+<a href="index.jsp" class="dropdown-toggle menu__link">首页			
 </a>
 </li>
 		

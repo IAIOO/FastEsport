@@ -58,7 +58,7 @@
 		 
 <!-- 首页 -->																							
 <li class="dropdown menu__item">
-<a href="fistPage.jsp" class="dropdown-toggle menu__link">首页			
+<a href="index.jsp" class="dropdown-toggle menu__link">首页			
 </a>
 </li>
 		

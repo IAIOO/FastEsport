@@ -48,7 +48,7 @@
 	    function onMake(){
 	        $.ajax({
 	            type: 'post',
-	            url: "/FastEsport/playerAc05Add",   
+	            url: "/FastEsport/playerAc05Add.html",   
 	            data: $('#myform1').serialize(),
 	            async: false,
 	            success: function () {
@@ -114,7 +114,7 @@
 		 
 <!-- Ê×Ò³ -->																							
 <li class="dropdown menu__item">
-<a href="fistPage.jsp" class="dropdown-toggle menu__link">Ê×Ò³			
+<a href="index.jsp" class="dropdown-toggle menu__link">Ê×Ò³			
 </a>
 </li>
 		
