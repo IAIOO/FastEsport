@@ -4,38 +4,8 @@
 <%@page import="com.neusoft.system.tools.*" %>
 <%
 String path=request.getContextPath(); 
-session.setAttribute("aad301",request.getAttribute("aad301"));
 session.setAttribute("aad305", request.getAttribute("aad305"));
 %>
-<%-- <html>
-<head>
-<title>参加比赛</title>
-
-</head>
-<body>
-${msg }
-<br>
-<br>
-<form  method="post">
-<input type="submit" value="注销"  formaction="<%=path%>/judgeDel.html">
-
-<input type="hidden" name="aad305" value="<%=session.getAttribute("aad305") %>">
-<input type="hidden" name="aad301" value="<%=session.getAttribute("aad301") %>">
-<input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
-<br>
-
-<input type="submit" value="赛事状态修改" formaction="<%=path%>/judgeAf01QueryEmp.html">
-<br>
-<input type="submit" value="赛事结果修改" formaction="<%=path%>/judgeAf02QueryEmp.html">
-<br>
-<br>
-<br>
-<br>
-<br>
-
-</form> --%>
-
-
 
 
 
@@ -45,24 +15,34 @@ ${msg }
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="GBK">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Template</title>
+  <title>主页</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+  
+  
+  <style type="text/css">
+#btn
+{
+border-style:none none none none;
+background: transparent;
+}   
+
+</style>
+
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body class="fixed-nav sticky-footer bg-dark" id="page-top" >
   <!-- Navigation-->
-  <form method="post">
-  <input type="hidden" name="aad301" value="<%=session.getAttribute("aad301") %>">
+  <form action="<%=path%>/judgeQuery.html"> method="post">
   <input type="hidden" name="aad305" value="<%=session.getAttribute("aad305") %>">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="<%=path %>/judgeGame.jsp">FastEsport</a>
@@ -72,11 +52,18 @@ ${msg }
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="<%=path%>/judgeQuery.html">
-          <input type="hidden" name="aad305" value="<%=session.getAttribute("aad305") %>">
-            <!-- <i class="fa fa-fw fa-dashboard"></i> -->
-            <span class="nav-link-text">账号信息</span>
-          </a>
+        
+        
+        <%-- <input type="submit" value="我的信息" formaction="<%=path%>/judgeQuery.html"> --%>
+        <%-- <a class="nav-link">
+        <input type="submit" id="btn" value="&nbsp我的信息" formaction="<%=path%>/judgeQuery.html">
+        </a> --%>
+       
+          <%-- <a class="nav-link" href="<%=path%>/judgeQuery.html">
+          
+            
+            <input type="submit" value="账号信息"  background=transparent formaction="<%=path%>/judgeQuery.html">
+          </a> --%>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="<%=path%>/judgeAf01QueryEmp.html">
@@ -129,12 +116,24 @@ ${msg }
       </ul>
     </div>
   </nav>
-  <div class="content-wrapper">
-    <div class="container-fluid">
+  
+  <!-- <div class="content-wrapper"> -->
+    <!-- <div class="container-fluid"> -->
       <!-- Breadcrumbs-->
       
-      <div class="row">
-        <div class="col-12">
+     <!--  <div class="row"> -->
+        <!-- <div class="col-12"> -->
+        
+       <h2 style="background:url(images/charcoal.jpg);background-size:cover;" align="center">  
+       <font color="white">     
+       <br><br><br><br><br><br><br><br><br>
+       Welcome to the FastEsport Referee Management Platform
+       <br><br><br><br><br><br><br><br><br><br><br><br>
+      
+
+       </font>
+       </h2>
+        <%-- <img src="<%=path%>/images/charcoal.jpg" width="100%" height="100%"> --%>
 
 
 
@@ -145,8 +144,8 @@ ${msg }
 
 
          
-        </div>
-      </div>
+        <!-- </div> -->
+      <!-- </div> -->
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
@@ -209,7 +208,6 @@ ${msg }
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
   </div>
-  <input type="hidden" name="aad305" value="<%=session.getAttribute("aad305") %>">
   out.print(<%=session.getAttribute("aad305")%>);
   </form>
 
