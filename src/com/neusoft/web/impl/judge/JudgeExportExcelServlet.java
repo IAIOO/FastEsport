@@ -6,7 +6,7 @@ public class JudgeExportExcelServlet extends Ac05ControllerSupport {
 
     public String execute() throws Exception
     {
-        this.update("query2Excel", "ÐÞ¸Ä");
+        this.update("query2Excel1", "ÐÞ¸Ä");
         return "game";
     }
 }

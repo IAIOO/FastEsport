@@ -125,7 +125,7 @@
 	    function endQ(){
 	    	$.ajax({
 	            type: 'post',
-	            url: "/FastEsport/adminEndGamble.html",   
+	            url: "/FastEsport/adminEndGamble.html?aaf101=${param.aaf101 }",   
 	            data: $('#endGamble').serialize(),
 	            success: function () {
 	   				alert("ok");
@@ -276,15 +276,17 @@
 <body>
 
 <div>
-    <div id="header">
-    	<p>比赛名称：</p>
-        <p>${ins.aaf103 }</p>
-        <p>${ins.aaf102 }</p>
-       	<p>赛事开始时间：</p>
-       	<p>${ins.aaf107}</p>
-        <p>${ins.aaf112 }</p>
-       	<p>${ins.aaf109 }</p>
-    </div>
+    <c:if test="${ins.aav103!=null }">
+	    <div id="header">
+	    	<p>比赛名称：</p>
+	        <p>${ins.aaf103 }</p>
+	        <p>${ins.aaf102 }</p>
+	       	<p>赛事开始时间：</p>
+	       	<p>${ins.aaf107}</p>
+	        <p>${ins.aaf112 }</p>
+	       	<p>${ins.aaf109 }</p>
+	    </div>
+    </c:if>
     <div id="game_message" align="center">
 	    <div>
 	    	
@@ -368,13 +370,13 @@
 	                                        <input name="aab401" value="${ins1.aab401 }" type="hidden"/>
 	                                        <input name="aab405" value="${ins1.aab405}" type="hidden"/>
 	                                        <input name="aab406" value="${ins1.aab406}" type="hidden"/>
-	                                        <p>请选择封盘：</p>
+	                                        <p>请选择结束竞猜：</p>
 	                                        <select name="aab407">
 	                                            <option value="A">${ins1.aab408 }</option>
 	                                            <option value="B">${ins1.aab409 }</option>
 	                                        </select>
 	                                        <br>
-	                                        <input type="submit" value="封盘" onclick="endQ()">&nbsp;&nbsp;&nbsp;<a onclick="cancel2()">取消</a>
+	                                        <input type="submit" value="结束竞猜" onclick="endQ()">&nbsp;&nbsp;&nbsp;<a onclick="cancel2()">取消</a>
 	                                    </form>
 	                                </div>
 	                            </div>

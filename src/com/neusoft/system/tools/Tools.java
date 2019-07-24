@@ -61,8 +61,8 @@ public class Tools
 	public static String[] getRows(List<Map<String,String>> ac05Rows,String sz) throws Exception{
 		//随机打乱
 		Collections.shuffle(ac05Rows);
-		String[] idRows=new String[ac05Rows.size()*6];
 		int teamNum=ac05Rows.size()/4;//每个分组的队伍数量
+		String[] idRows=new String[(teamNum*teamNum-teamNum)*8];
 		//普通单败赛制
 		if(sz=="1"){
 			//得到参赛人员的序列号
@@ -93,8 +93,8 @@ public class Tools
 				for (int i = 1; i <= teamNum; i++) {
 					for (int j = 1; j <= teamNum; j++) {
 						if (j != 1) {
-							idRows[m] = ac05Rows.get(4*n+array[i][1]-1).get("aac501");
-							idRows[m + 1] = ac05Rows.get(4*n+array[i][j]-1).get("aac501");
+							idRows[m] = ac05Rows.get(teamNum*n+array[i][1]-1).get("aac501");
+							idRows[m + 1] = ac05Rows.get(teamNum*n+array[i][j]-1).get("aac501");
 							m=m+2;
 						}
 					}

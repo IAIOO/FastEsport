@@ -37,7 +37,7 @@ public class Ac05ServicesImpl extends JdbcServicesSupport {
         System.out.println("调用aaf101" + this.get("aaf101"));
 
         StringBuilder sql = new StringBuilder()
-                .append("select   a.aac501,a.aab101")
+                .append("select   a.aac501,a.aab101,a.aaf101")
                 .append("    from ac05 a")
                 .append("   where a.aaf101 = ")
                 .append(this.get("aaf101"));
@@ -69,7 +69,7 @@ public class Ac05ServicesImpl extends JdbcServicesSupport {
     
   //从数据库中导出参加比赛的选手
     public boolean query2Excel1() throws Exception{
-        List<Map<String,String>> ac05Rows=this.query();
+        List<Map<String,String>> ac05Rows=this.queryForSchedule();
 
         ExcelExportNImport.List2Excel(ac05Rows,this.get("aaf101").toString());
         return true;

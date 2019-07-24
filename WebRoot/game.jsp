@@ -203,18 +203,13 @@
 <body>
 
 <div>
-    <div id="header">
-    	<p>比赛名称：</p>
-        <p>${ins.aaf103 }</p>
-        <p>${ins.aaf102val }</p>
-       	<p>赛事开始时间：</p>
-       	<p>${ins.aaf107}</p>
-        <p>${ins.aaf112 }</p>
-       	<p>${ins.aaf109val }</p>
-    </div>
     <div id="game_message" align="center">
 	    <div>
-	    	
+			<p>${ins.aaf103 }</p>
+			<p>${ins.aaf102val }</p>
+			<p>赛事开始时间：${ins.aaf107}</p>
+			<p>${ins.aaf112 }</p>
+			<p>${ins.aaf109val }</p>
 	        <form id="myform1">
 				<input type="hidden" name="aaf101" value="${param.aaf101 }">
 				<input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">

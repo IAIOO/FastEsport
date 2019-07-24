@@ -42,8 +42,8 @@ public class ExcelExportNImport {
         HSSFRow titleRow=sheet.createRow(0);
         titleRow.createCell(0).setCellValue("流水号");
         titleRow.createCell(1).setCellValue("比赛序列号");
-        titleRow.createCell(2).setCellValue("aac502");
-        titleRow.createCell(3).setCellValue("选手序列号");
+        
+        titleRow.createCell(2).setCellValue("选手序列号");
 
         //遍历数据，创建数据行
         for(int i=0;i<rows.size();i++){
@@ -52,8 +52,8 @@ public class ExcelExportNImport {
             //添加数据
             row.createCell(0).setCellValue(rows.get(i).get("aac501"));
             row.createCell(1).setCellValue(rows.get(i).get("aaf101"));
-            row.createCell(2).setCellValue(rows.get(i).get("aac502"));
-            row.createCell(3).setCellValue(rows.get(i).get("aab101"));
+            row.createCell(2).setCellValue(rows.get(i).get("aab101"));
+            
         }
 
         //创建文件名
@@ -138,7 +138,7 @@ public class ExcelExportNImport {
                 //循环读取表格数据
 
                 for (Row rows1 : sheetAt) {
-                    List list = new ArrayList();
+                    List<String> list = new ArrayList<String>();
                     //表头数据不读取
                     if (rows1.getRowNum() == 0) {
                         continue;

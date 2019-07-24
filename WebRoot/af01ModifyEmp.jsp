@@ -128,9 +128,29 @@ msg {
 					</div>
 				</div>
 			</div>
+			
+			
+	<input type="hidden" name="aad305"
+			value="<%=session.getAttribute("aad305") %>"> out.print(<%=session.getAttribute("aad305")%>);
+	</form>
 			<!-- /.container-fluid-->
 			<!-- /.content-wrapper-->
+			<!--赛程  -->
+	<form action="<%=path%>/adminAddSchedule.html" method="post" >
+	
+	<input type="hidden" name="aaf101" value="${param.aaf101}">
+    <input type="submit" name="next" value="自动生成赛程">
+    
+    <input type="submit" name="next" value="导出比赛报名表excel"
+    formaction="<%=path%>/judgeExportExcel.html">
+	</form>
 
+	<form enctype="multipart/form-data" action="/FastEsport/uploadExcel" method="post">
+	
+		<input type="hidden" name="aaf101" value="${param.aaf101}">
+	    <input type="file" id="excel" name="excel">
+	    <input type="submit" name="next" value="提交">
+	</form>
 
 
 
@@ -198,9 +218,7 @@ msg {
 			<!-- Custom scripts for all pages-->
 			<script src="js/sb-admin.min.js"></script>
 		</div>
-		<input type="hidden" name="aad305"
-			value="<%=session.getAttribute("aad305") %>"> out.print(<%=session.getAttribute("aad305")%>);
-	</form>
+		
 
 
 

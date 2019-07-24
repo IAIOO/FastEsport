@@ -198,17 +198,34 @@
 	        <c:when test="${rows !=null}">
 	            <c:forEach items="${rows }" var="ins" varStatus="vs">
 	                <div style="padding-top: 20px">
-		                <a href="#" onclick="onEdit('${ins.aaf101 }')">
-		               		<table frame="box" align="center" style="width:50%; padding-top: 1px; ">
-		               			<tr>
-		               				<td style="background-color: #eeeeee">
-			               				赛事名称：${ins.aaf103 }<br>
-										<%-- 报名截止时间：${ins.aaf107}<br> --%>
-										比赛状态：${ins.aaf109val }<br>
-									</td>
-								</tr>
-	                       	</table>
-		                </a>
+	                	<c:choose>
+		                	<c:when test="${ins.aaf109val !='审核中' }">
+				                <a href="#" onclick="onEdit('${ins.aaf101 }')">
+				               		<table frame="box" align="center" style="width:50%; padding-top: 1px; ">
+				               			<tr>
+				               				<td style="background-color: #eeeeee">
+					               				赛事名称：${ins.aaf103 }<br>
+												<%-- 报名截止时间：${ins.aaf107}<br> --%>
+												比赛状态：${ins.aaf109val }<br>
+											</td>
+										</tr>
+			                       	</table>
+				                </a>
+			                </c:when>
+			                <c:otherwise>
+			                	<a href="#">
+				               		<table frame="box" align="center" style="width:50%; padding-top: 1px; ">
+				               			<tr>
+				               				<td style="background-color: #eeeeee">
+					               				赛事名称：${ins.aaf103 }<br>
+												<%-- 报名截止时间：${ins.aaf107}<br> --%>
+												比赛状态：${ins.aaf109val }<br>
+											</td>
+										</tr>
+			                       	</table>
+				                </a>
+			                </c:otherwise>
+		                </c:choose>
 	               	</div>
 	            </c:forEach>
 	        </c:when>
