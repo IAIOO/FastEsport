@@ -36,7 +36,10 @@ public interface BaseServices
      {
     	 return null;
      }
-     
+     default List<Map<String,String>> queryThree()throws Exception
+     {
+    	 return null;
+     }
      default List<Map<String,String>> queryT()throws Exception
      {
     	 return null;

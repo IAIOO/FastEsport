@@ -81,7 +81,18 @@ public abstract class ControllerSupport implements BaseController
 			this.saveAttribute("msg", "没有符合条件的数据!");
 		}	
 	}
-	
+	protected final void queryThree()throws Exception
+	{
+		List<Map<String,String>> rows=this.services.queryThree();
+		if(rows.size()>0)
+		{
+			this.saveAttribute("rows", rows);
+		}
+		else
+		{
+			this.saveAttribute("msg", "没有符合条件的数据!");
+		}	
+	}
 	/**
 	 * 实现分页查询
 	 * @throws Exception

@@ -131,7 +131,7 @@ ${msg }
       <li><a href="#" onclick="user()">用户检举处理</a></li>
       <li><a href="goodsadd.jsp">商品添加</a></li>
       <li><a href="#" onclick="good()">商品查询与删除</a></li>
-      <li><a href="#" target="excel">赛程管理</a></li>
+      
   </ul>
 </div>
   </tr>

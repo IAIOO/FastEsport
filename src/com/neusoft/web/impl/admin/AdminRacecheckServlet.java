@@ -7,7 +7,7 @@ public class AdminRacecheckServlet extends Af01ControllerSupport
 	@Override
 	public String execute() throws Exception 
 	{
-		this.queryTwo();
+		this.queryThree();
 		return "racecheck";
 	}
 }

@@ -324,7 +324,8 @@ function onPass(sval){
              <c:if test="${empty ins.aac401 }">
 			        <input type="hidden" name="aac409" value="0">
 			   		<input type="hidden" name="aac301" value="${param.aac301 }">
-			        <input class="submit" type="submit" name="next" value="提交" onclick="onEnlist()">                        
+			        <input class="submit" type="submit" name="next" value="提交" onclick="onEnlist()">  
+			        <input class="reset" type="button" onclick="javascript:location.href='<%=path%>/index.jsp'" value="返回" />                        
              </c:if> 
              </div>
              </fieldset>
@@ -335,7 +336,8 @@ function onPass(sval){
 			 <input type="hidden" name="aac401" value="${ins.aac401 }">
 		   	 <c:if test="${ins.aac409==0 }">
 			 <div class="form-row">
-			  <input class="submit" type="submit" name="next" value="通过" onclick="onPass('${ins.aac301 }')">                        
+			  <input class="submit" type="submit" name="next" value="通过" onclick="onPass('${ins.aac301 }')">
+			  <input class="reset" type="button" onclick="javascript:location.href='<%=path%>/index.jsp'" value="返回" />                        
 			 </div>
 			 </c:if>
 			 </fieldset>

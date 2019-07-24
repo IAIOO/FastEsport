@@ -167,7 +167,6 @@ window.onload=function(){
 	<li>
 		<a href="teamMyTeam.html?aab101=<%=session.getAttribute("aab101") %>">我的战队</a>
 	</li>
-	</c:if>
 	<li>
 		<a href="teamFindForEnlist.html?aab101=<%=session.getAttribute("aab101") %>">发布招募</a>
 	</li>
@@ -177,6 +176,8 @@ window.onload=function(){
 	<li>
 		<a href="teamQueryForOnEnlist.html?aac101=<%=session.getAttribute("aac101")%>&qaac409=1">我的队员</a>
 	</li>
+	</c:if>
+
 	<li>
 		<a href="queryForTeam.jsp">报名战队</a>
 	</li>

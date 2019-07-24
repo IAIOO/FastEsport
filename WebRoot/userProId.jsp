@@ -34,7 +34,7 @@ function onMake() {
         contentType: false, //不设置内容类型
         processData: false, //不处理数据
         success: function (data) {
-        	alert(data);
+     
         	$("#aac202").attr("value",data);
             var formData2 = new FormData($('#form3')[0]);
             $.ajax({
@@ -45,7 +45,7 @@ function onMake() {
                 contentType: false, //不设置内容类型
                 processData: false, //不处理数据
                 success: function (data) {
-                	alert(data);
+                
                 	$("#aac208").attr("value",data);
 	  		  		var vform = document.getElementById("form1");
 	  		  		vform.action="<%=path%>/teamUserProId.html";

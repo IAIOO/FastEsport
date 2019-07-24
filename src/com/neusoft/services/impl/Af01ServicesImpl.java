@@ -162,10 +162,28 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
 	  */
 	 private boolean addracecheck()throws Exception
 	    {
-	    	String sql="update af01 set aaf109=1 where aaf101=?";
+	    	String sql="update af01 set aaf109=2 where aaf101=?";
 	    	return this.executeUpdate(sql, this.get("aaf101"))>0;
 	    }
 
+	  /**
+	     * 不定条件查询
+	     * @return
+	     * @throws Exception
+	     */
+		  public List<Map<String,String>> queryThree()throws Exception
+		  {
+		  		//还原页面查询条件
+		  		
+		  		//定义SQL主体
+		  		StringBuilder sql=new StringBuilder()
+		  				.append("select aaf101,aaf102,aaf103,aaf104,aaf105,aaf108,")
+		  				.append("       aaf109,aaf110,aaf111,aaf112")
+		  				.append("  from af01 ")
+		  				.append(" where aaf109=1")
+		  		        .append(" order by aaf103");
+		  	return this.queryForList(sql.toString());
+		  }
 	/**
 	 * 不定条件查询
 	 * @return
@@ -180,7 +198,7 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
 	  				.append("select aaf101,aaf102,aaf103,aaf104,aaf105,aaf108,")
 	  				.append("       aaf109,aaf110,aaf111,aaf112")
 	  				.append("  from af01 ")
-	  				.append("where aaf109=0")
+	  				
 	  				;
 	  		return this.queryForList(sql.toString());
 	  }

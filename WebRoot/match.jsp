@@ -28,7 +28,7 @@
   }
   
   function doPage(num) {
-	  window.location.href='<%=path%>/matchQuery.html?now=' + num;
+	  window.location.href='<%=path%>/competitionQueryForUser.html?now=' + num;
   }
   
   function toPage() {
@@ -37,7 +37,7 @@
 		  alert(" ‰»Î“≥¬Î”–ŒÛ");
 	  }
 	  else{
-	      window.location.href='<%=path%>/matchQuery.html?now=' + vpageNum;
+	      window.location.href='<%=path%>/competitionQueryForUser.html?now=' + vpageNum;
 	  }
 	  window.event.returnValue=false;
   }

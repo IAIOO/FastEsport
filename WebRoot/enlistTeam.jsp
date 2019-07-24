@@ -194,7 +194,7 @@ function onMoney(){
   	<input type="hidden" id="aac301" name="aac301" value="${ins.aac301 }">	
     <fieldset>
         <legend>战队招募表</legend>
-        <c:if test="${param.aac301!=null }">
+        <c:if test="${ins.aac301!=null }">
         <div class="form-row">
             <div class="field-label"><label for="field4">战队名称</label>:</div>
             <div class="field-widget"><input  class="required" type="text" name="aac103" value="${ins.aac103 }"/></div>
@@ -246,7 +246,7 @@ function onMoney(){
 		<input style="display:none" name="aac309" value="0">
 		<div class="form-row">
 			<c:choose>
-				<c:when test="${param.aac301==null }">
+				<c:when test="${ins.aac301==null }">
 				<tr>
 				<td><input class="submit" type="submit" value="创建" formaction="<%=path %>/teamEnlistTeam.html"></td>
 				</tr>

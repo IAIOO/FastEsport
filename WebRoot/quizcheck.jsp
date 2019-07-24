@@ -63,10 +63,9 @@ ${msg }
 	    
 	    <td>竞猜序列号</td>
 	    <td>竞猜主题</td>
-	    <td>A押注</td>
-	    <td>B押注</td>
-	    <td>A赔率</td>
-	    <td>B赔率</td>
+	    <td>选项A</td>
+	    <td>选项B</td>
+	    <td>审核状态</td>
 	    <td>操作</td>
 	  </tr>
 	  <!--
@@ -83,10 +82,10 @@ ${msg }
 				  
 				    <td>${ins.aab401 }</td>
 				    <td>${ins.aab402 }</td>
-				    <td>${ins.aab403 }</td>
-				    <td>${ins.aab404 }</td>
-				    <td>${ins.aab405 }</td>
-				    <td>${ins.aab406 }</td>
+				    <td>${ins.aab408 }</td>
+				    <td>${ins.aab409 }</td>
+				    <td>${ins.aab410 }</td>
+				   
 				    <td>
 				      <a href="#" onclick="oncheck('${ins.aab401}')">审核</a>
 				    </td>
@@ -101,7 +100,7 @@ ${msg }
 			            <td></td>
 			            <td></td>
 			            <td></td>
-			            <td></td>
+			            
 			            
 			          </tr>
 		      </c:forEach>
@@ -115,7 +114,7 @@ ${msg }
 	             <td></td>
 	             <td></td>
 	             <td></td>
-	             <td></td>
+	            
 	             
 	           </tr>
 	        </c:forEach>
@@ -145,7 +144,7 @@ ${msg }
       <li><a href="#" onclick="user()">用户检举处理</a></li>
       <li><a href="goodsadd.jsp">商品添加</a></li>
       <li><a href="#" onclick="good()">商品查询与删除</a></li>
-      <li><a href="#" target="excel">赛程管理</a></li>
+      
   </ul>
 </div>
   </tr>

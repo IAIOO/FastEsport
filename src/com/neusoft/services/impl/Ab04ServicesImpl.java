@@ -236,7 +236,7 @@ public class Ab04ServicesImpl extends JdbcServicesSupport {
 	  */
 	 private boolean addquizcheck()throws Exception
 	    {
-	    	String sql="update ab04 set aab408=1 where aab401=?";
+	    	String sql="update ab04 set aab410=1 where aab401=?";
 	    	return this.executeUpdate(sql, this.get("aab401"))>0;
 	    }
 	   /**
@@ -250,11 +250,11 @@ public class Ab04ServicesImpl extends JdbcServicesSupport {
 	  		
 	  		//定义SQL主体
 	  		StringBuilder sql=new StringBuilder()
-	  				.append("select aab401,aab402,aab403,aab404,aab405,aab406,")
-	  				.append("       aab408")
+	  				.append("select aab401,aab402,aab408,aab409,")
+	  				.append("       aab410")
 	  				.append("  from ab04 ")
-	  				.append(" where aab408=0") 
-	  		        .append(" order by aab402");
+	  				.append(" where aab410=0") 
+	  		        .append(" order by aab401");
 	  	return this.queryForList(sql.toString());
 	  }
     

@@ -60,7 +60,7 @@ public class Ab02ServicesImpl extends JdbcServicesSupport {
 		Object aab201 = this.get("aab201");
 		
 		StringBuilder sql = new StringBuilder()
-				.append("select a.aab102,b.aab202,b.aab203,date_format(b.aab205,'%Y-%m-%d %H:%i:%S') as aab205")
+				.append("select a.aab101,a.aab102,b.aab201,b.aab202,b.aab203,date_format(b.aab205,'%Y-%m-%d %H:%i:%S') as aab205")
 				.append("  from ab01 a,ab02 b")
 				.append(" where b.aab101=a.aab101")
 				.append("   and b.aab201=?")
@@ -70,7 +70,7 @@ public class Ab02ServicesImpl extends JdbcServicesSupport {
 		result.add(queryForMap(sql.toString(), aab201));
 		
 		StringBuilder sql2 = new StringBuilder()
-				.append("select a.aab102,b.aab202,b.aab203,date_format(b.aab205,'%Y-%m-%d %H:%i:%S') as aab205")
+				.append("select a.aab101,a.aab102,b.aab201,b.aab202,b.aab203,date_format(b.aab205,'%Y-%m-%d %H:%i:%S') as aab205")
 				.append("  from ab01 a,ab02 b")
 				.append(" where a.aab101=b.aab101")
 				.append("   and b.aab204=?")

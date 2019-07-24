@@ -355,7 +355,7 @@ function onLook(vaac401)
 </table>
 <div class="form-row">  
 <input class="submit" type="submit" name="next" value="查询">
-<input class="reset" type="button" value="返回" onclick="valid.reset(); return false" />
+<input class="reset" type="button" onclick="javascript:location.href='<%=path%>/index.jsp'" value="返回" />
 </div>     
      </fieldset>
 

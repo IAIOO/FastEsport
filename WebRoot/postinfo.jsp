@@ -22,8 +22,8 @@
 <link title="style1" rel="stylesheet" href="css/style1.css" type="text/css" />
 <style>
 .report{
-    width:20%; margin-top:10%; margin:auto; padding:28px;
-    height:200px; border:1px #111 solid;
+    width:20%; margin-top:20%; margin:auto; padding:28px;
+    height:250px; border:1px #111 solid;
     display:none;            /* Ä¬ÈÏ¶Ô»°¿òÒþ²Ø */
 }
 .report.show{display:block;} 
@@ -31,7 +31,10 @@
 width:100%; font-size:18px; margin-top:18px;
 }
 .report textarea{
-width: 125%
+width: 125%;
+}
+.report button{
+width: 125%;
 }
 </style>
 

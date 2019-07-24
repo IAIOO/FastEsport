@@ -37,9 +37,6 @@ function onLook(vaac101)
 <body>
 <!-- header -->
 <!-- header -->
-<c:set var="userId" scope="session" value='<%=session.getAttribute("aab101") %>'/>
-<c:choose>
-<c:when test="${userId!=null }">
 	<div class="w3_navigation">
 		<div class="container">
 			<nav class="navbar navbar-default">
@@ -139,92 +136,6 @@ function onLook(vaac101)
 		</nav>	
 	</div>
 </div>
-</c:when>
-<c:otherwise>
-	<div class="w3_navigation">
-		<div class="container">
-			<nav class="navbar navbar-default">
-				<div class="navbar-header navbar-left">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<div class="w3_navigation_pos">
-						<h1><span>FastEsport</span></h1>
-					</div>
-				</div>
-				
-<!-- 导航栏 -->
-<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-	<nav class="cl-effect-5" id="cl-effect-5">												
-		<ul class="nav navbar-nav">	
-		
-<!-- 首页 -->																							
-<li class="dropdown menu__item">
-<a href="index.jsp" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">首页			
-</a>
-</li>
-		
-<!-- 全部赛事 -->	
-<li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link">全部赛事
-</a>
-</li>
-						
-<!-- 赛事管理 -->
-<li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link" >赛事管理
-</a>
-</li>
-							
-<!-- 战队管理 -->
-<li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link">战队管理
-	<span class="caret"></span>
-</a>
-<ul class="dropdown-menu">
-	<li>
-		<a href="makeTeam.jsp">创建战队</a>
-	</li>
-	<li>
-		<a href="teamMyTeam.html?aab101=<%=session.getAttribute("aab101") %>">我的战队</a>
-	</li>
-	<li>
-		<a href="teamFindForEnlist.html?aab101=<%=session.getAttribute("aab101") %>">发布招募</a>
-	</li>
-	<li>
-		<a href="queryForMyEnlist.jsp">审核招募</a>
-	</li>
-	<li>
-		<a href="queryForTeam.jsp">报名战队</a>
-	</li>
-	<li>
-		<a href="teamFindByIdForPro.html?aab101=<%=session.getAttribute("aab101")%>">职业认证</a>
-	</li>
-</ul>
-</li>
-
-<!-- 论坛天地 -->							
-<li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link" >论坛天地
-</a>
-</li>
-	
-<!-- 商城中心 -->							
-<li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link" >商城中心
-</a>
-</li>																					
-					</ul>																					
-				</nav>
-			</div>
-		</nav>	
-	</div>
-</div>
-</c:otherwise>
-</c:choose>
 	
 	
 <!-- //header -->	

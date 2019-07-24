@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
-import com.sun.javafx.sg.prism.web.NGWebView;
+
 
 public class Ac02ServicesImpl extends JdbcServicesSupport {
 
@@ -40,6 +40,11 @@ public class Ac02ServicesImpl extends JdbcServicesSupport {
 				; 
 		return this.queryForMap(sql.toString(),this.get("aab101"));
 	}
+	private boolean addprocheck()throws Exception
+    {
+    	String sql="update ab01 set aab108=1 where aab101=?";
+    	return this.executeUpdate(sql, this.get("aab101"))>0;
+    }
 	 public List<Map<String,String>> query()throws Exception
 	  {
 	  		//还原页面查询条件
