@@ -137,7 +137,7 @@ ${msg }
   <ul class="sidebar-menu">
     <li></li>
     
-      <li><a href="adminindex.jsp"target="main">首页</a></li>
+      <li><a href="index.jsp"target="main">首页</a></li>
       <li><a href="#" onclick="team()">职业认证</a></li>
       <li><a href="#" onclick="quiz()">竞猜认证</a></li>
       <li><a href="#" onclick="race()">赛事审核</a></li>

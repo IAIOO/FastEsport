@@ -180,6 +180,7 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
 	  				.append("select aaf101,aaf102,aaf103,aaf104,aaf105,aaf108,")
 	  				.append("       aaf109,aaf110,aaf111,aaf112")
 	  				.append("  from af01 ")
+	  				.append("where aaf109=0")
 	  				;
 	  		return this.queryForList(sql.toString());
 	  }
