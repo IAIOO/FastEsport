@@ -11,7 +11,7 @@ import java.util.Map;
 public class Ac05ServicesImpl extends JdbcServicesSupport {
 
     static int gameId=11;//aaf101
-    static String gameDate="2019-07-11";
+    static String gameDate="2019-07-26";
     
     
     public List<Map<String,String>> query() throws Exception {
