@@ -11,19 +11,19 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
 
 
 
-    public boolean update(String utype) throws Exception{
-        if(utype.equalsIgnoreCase("addGame")){
-            return this.addGame();
-        }else if (utype.equalsIgnoreCase("modifyGame")){
-            return this.modifyGame();
-        }
-        else if (utype.equalsIgnoreCase("modifyEmp")){
-            return this.modifyEmp();
-        }
-        else {
-            throw new Exception("在类[ Af01ServicesImpl ]中进行了未定义的动作调用,动作名称是"  +utype);
-        }
-    }
+//    public boolean update(String utype) throws Exception{
+//        if(utype.equalsIgnoreCase("addGame")){
+//            return this.addGame();
+//        }else if (utype.equalsIgnoreCase("modifyGame")){
+//            return this.modifyGame();
+//        }
+//        else if (utype.equalsIgnoreCase("modifyEmp")){
+//            return this.modifyEmp();
+//        }
+//        else {
+//            throw new Exception("在类[ Af01ServicesImpl ]中进行了未定义的动作调用,动作名称是"  +utype);
+//        }
+//    }
     //创建赛事，将赛事信息存入数据表af01
 
     public boolean addGame() throws Exception{
@@ -42,7 +42,7 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
                 this.get("aab101"),
                 this.get("aaf102"),
                 this.get("aaf103"),
-                //this.get("aaf104"),赛事编号
+                //this.get("aaf104"),
                 132,
                 this.get("aaf105"),
                 this.get("aaf107"),

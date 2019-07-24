@@ -198,15 +198,15 @@
            <div class="field-label"><label for="field3">比赛规则</label>:</div>
            <div class="field-widget"><textarea class="required" name="aaf112"></textarea></div>
        </div>
-       <div class="form-row">
+       <!-- <div class="form-row">
            <div class="field-label"><label for="field1">密码</label>:</div>
            <div class="field-widget"><input name="aaf113" id="field1" class="required" title="Enter your name" /></div>
-       </div>   
+       </div>  -->  
        
        
    </fieldset>
    <input type="submit" class="submit" name="next" value="${empty param.aaf101?'添加':'修改' }"
-          formaction="<%=path%>/${empty param.aaf101?'competitionAdd':'competitionModify' }Game.html"> <input class="reset" type="button" value="Reset" onclick="valid.reset(); return false" />
+          formaction="<%=path%>/${empty param.aaf101?'competitionAdd':'competitionModify' }Game.html"> 
    <input type="hidden" name="aaf101" value="${param.aaf101 }">
    <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
   </form>
