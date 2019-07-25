@@ -155,6 +155,7 @@ function cancel(){
 						</c:when>
 						<c:otherwise>
 							<a href="#"><%=session.getAttribute("aab102") %></a>
+							<a href="<%=path%>/userLoginout.html">ÍË³öµÇÂ¼</a>
 						</c:otherwise>
 					</c:choose>
 		</div>
