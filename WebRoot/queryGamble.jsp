@@ -265,6 +265,7 @@
 						</c:when>
 						<c:otherwise>
 							<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
+							<a href="<%=path%>/userLoginout.html">退出登录</a>
 						</c:otherwise>
 					</c:choose>
 		</div>
@@ -274,7 +275,7 @@
 <!-- banner -->
 </head>
 <body>
-
+<c:set var="userId" scope="session" value='<%=session.getAttribute("aab101") %>'/>
 <div>
     <c:if test="${ins.aav103!=null }">
 	    <div id="header">
@@ -311,37 +312,51 @@
 		        <input id="buttonn" type="submit" name="next" value="查看竞猜"
 		               formaction="<%=path%>/userQueryGamble.html">
 	        </form>
-	        
+	        <c:if test="${rows[1].aab101==userId}">
 	        <form action="addGamble.jsp">
 	        	<input type="hidden" name="aaf101" value="${param.aaf101 }">
 		        <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
 		        <input id="buttonn" type="submit" name="next" value="添加竞猜">
 	        </form>
+	        </c:if>
 		    
 		        
 		    
 	    </div>
    </div>
+   
 	<div id="section">
-		<%=session.getAttribute("aab101") %>
-		<%=session.getAttribute("aab110") %>
+	<p>当前代币数量：${rows[1].aab110 }</p>
 	    <c:choose>
 	        <c:when test="${rows !=null}">
 	            <c:forEach items="${rows }" var="ins1" varStatus="vs">
 	                <table frame="box" align="center">
 	                    <tr>
 	                        <td>
+	                        
 					                            竞猜主题：${ins1.aab402 }<br>
 	                            <p>选项A：${ins1.aab408 }</p>
 	                            <p>A押注：${ins1.aab403 }  A赔率：${ins1.aab405 }</p>
 	                            <p>选项B：${ins1.aab409 }</p>
 	                            <p>B押注：${ins1.aab404 }  B赔率：${ins1.aab406 }</p>
-	
+	                            
+	                            
 	                            <div id="person">
-	                            	
-	                                <input id="btnSelect" type="button" value="参与竞猜" onclick="showSelectBox()"/>
-	                                
-	                                <input id="btnSelect2" type="button" value="结束竞猜" onclick="showSelectBox2()"/>
+	                            <c:choose>
+	                            	<c:when test="${ins1.aab410 ==1 }">
+		                            	<c:choose>
+		                            		<c:when test="${ins1.aab101!=userId}">
+		                                		<input id="btnSelect" type="button" value="参与竞猜" onclick="showSelectBox()"/>
+		                                	</c:when>
+		                                	<c:otherwise>
+		                                		<input id="btnSelect2" type="button" value="结束竞猜" onclick="showSelectBox2()"/>
+		                                	</c:otherwise>
+		                                </c:choose>
+	                                </c:when>
+	                                <c:otherwise>
+	                                	<p>正在审核中</p>
+	                                </c:otherwise>
+                                </c:choose>
 	                                <div id="selectBox" class="selectBox">
 	
 	                                    <form id="personGamble_add" action="userAddPersonGamble.html" method="post">

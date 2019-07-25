@@ -201,6 +201,7 @@
 						</c:when>
 						<c:otherwise>
 							<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
+							<a href="<%=path%>/userLoginout.html">退出登录</a>
 						</c:otherwise>
 					</c:choose>
 		</div>
@@ -254,9 +255,22 @@
    </div>
 
 
-
+<c:set var="userId" scope="session" value='<%=session.getAttribute("aab101") %>'/>
 
 	<div id="section">
+		
+		<c:if test="${rows[1].userid==userId }">
+			<form action="<%=path%>/adminAddSchedule.html" method="post" >
+				<input type="hidden" name="aaf101" value="${param.aaf101 }">
+		        <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
+	    		<input type="submit" name="next" value="自动生成赛程">
+			</form>
+		
+			<form enctype="multipart/form-data" action="<%=path%>/uploadExcel" method="post">
+			    <input type="file" id="excel" name="excel">
+			    <input type="submit" name="next" value="提交">
+			</form>
+		</c:if>
 		<div >
 			<div style="float: left;width: 1100px">
 			    <table>

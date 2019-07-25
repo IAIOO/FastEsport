@@ -7,6 +7,6 @@ public class JudgeExportExcelServlet extends Ac05ControllerSupport {
     public String execute() throws Exception
     {
         this.update("query2Excel1", "ÐÞ¸Ä");
-        return "af01QueryEmp";
+        return "player";
     }
 }

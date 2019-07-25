@@ -8,6 +8,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.jdt.internal.compiler.ast.ThisReference;
+
 public class Ac05ServicesImpl extends JdbcServicesSupport {
 
     static int gameId=11;//aaf101
@@ -19,10 +21,12 @@ public class Ac05ServicesImpl extends JdbcServicesSupport {
         System.out.println("µ÷ÓÃaaf101" + this.get("aaf101"));
 
         StringBuilder sql = new StringBuilder()
-                .append("select   a.aac501,a.aab101,b.aab102,b.aab103,c.fvalue ab108val")
-                .append("    from ac05 a,ab01 b,syscode c")
+                .append("select   a.aac501,a.aab101,b.aab102,b.aab103,c.fvalue ab108val,d.aab101 userid")
+                .append("    from ac05 a,ab01 b,syscode c,af01 d")
                 .append("   where a.aab101 = b.aab101")
                 .append("     and b.aab108 = c.fcode and c.fname = 'aab108'")
+                .append("     and d.aaf101 = ")
+                .append(this.get("aaf101"))
                 .append("     and a.aaf101 = ")
                 .append(this.get("aaf101"));
 

@@ -155,6 +155,7 @@
 						</c:when>
 						<c:otherwise>
 							<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
+							<a href="<%=path%>/userLoginout.html">ÍË³öµÇÂ¼</a>
 						</c:otherwise>
 					</c:choose>
 		</div>

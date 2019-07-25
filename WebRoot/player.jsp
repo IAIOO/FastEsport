@@ -199,7 +199,7 @@
 <!-- banner -->
 </head>
 <body>
-
+<c:set var="userId" scope="session" value='<%=session.getAttribute("aab101") %>'/>
 <div>
 	<c:if test="${ins.aav103!=null }">
 	    <div id="header">
@@ -242,6 +242,13 @@
 	    </div>
    </div>
    <div id="section"> 
+   		
+        <c:if test="${rows[1].userid==userId}">
+   		<form action="<%=path%>/judgeExportExcel.html">
+   			<input type="hidden" name="aaf101" value="${param.aaf101 }">
+			<input type="submit" value="导出比赛报名表">
+		</form>
+		</c:if>
    		<div>
 			<div style="float: left;width: 1100px">
 			    <table>

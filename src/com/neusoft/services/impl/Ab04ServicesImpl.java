@@ -2,9 +2,12 @@ package com.neusoft.services.impl;
 
 import com.neusoft.services.JdbcServicesSupport;
 import com.neusoft.system.tools.Tools;
+import com.sun.org.apache.xpath.internal.operations.And;
 
 import java.util.List;
 import java.util.Map;
+
+import org.eclipse.jdt.internal.compiler.ast.ThisReference;
 
 public class Ab04ServicesImpl extends JdbcServicesSupport {
     
@@ -35,11 +38,14 @@ public class Ab04ServicesImpl extends JdbcServicesSupport {
     	
     	System.out.println("1234   "+this.get("aaf101"));
         StringBuilder sql=new StringBuilder()
-                .append("select  a.aab401,a.aab402,a.aab403,a.aab404,a.aab405,a.aab406,")
-                .append("        a.aab407,a.aab408,a.aab409")
-                .append("  from  ab04 a")
-                .append("  where aaf101 = ")
-                .append(         this.get("aaf101"))
+                .append("select  a.aaf101,a.aab401,a.aab402,a.aab403,a.aab404,a.aab405,a.aab406,")
+                .append("        a.aab407,a.aab408,a.aab409,a.aab410,b.aab101,c.aab110")
+                .append("  from  ab04 a,af01 b,ab01 c")
+                .append("  where b.aaf101 = a.aaf101 ")
+                .append("  and a.aaf101 =")
+                .append(   this.get("aaf101"))
+                .append("  and c.aab101 =")
+                .append(this.get("aab101"))
                 .append("   order by a.aab401")
                 //.append("    and a.aab410 = 1")
                 ;

@@ -140,7 +140,7 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
     public Map<String,String> findById()throws Exception{
         //1.±‡–¥SQL”Ôæ‰
         StringBuilder sql=new StringBuilder()
-                .append("select a.aaf102,a.aaf103,a.aaf104,a.aaf105,")
+                .append("select a.aab101,a.aaf102,a.aaf103,a.aaf104,a.aaf105,")
                 .append("       a.aaf107,a.aaf108,a.aaf109,a.aaf110,a.aaf111,")
                 .append("       a.aaf112,a.aaf113,")
                 .append("       b.fvalue aaf109val,c.fvalue aaf105val,d.fvalue aaf102val")

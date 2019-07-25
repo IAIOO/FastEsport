@@ -34,6 +34,7 @@ public class ExcelExportNImport {
 
         //文件保存路径
         String path="D:/";
+
         //创建HSSFWorkbook对象
         HSSFWorkbook hssfWorkbook=new HSSFWorkbook();
         //创建工作簿
@@ -60,8 +61,10 @@ public class ExcelExportNImport {
         String fileName=aaf101+"比赛报名人员表.xls";
         //获取输出流对象
 
+        String fileName2=path+fileName;
 
-        FileOutputStream fileOutputStream=new FileOutputStream(path+fileName);
+        FileOutputStream fileOutputStream=new FileOutputStream(fileName2);
+        System.out.println(fileName2);
         hssfWorkbook.write(fileOutputStream);
         hssfWorkbook.close();
 
@@ -70,8 +73,9 @@ public class ExcelExportNImport {
     //将赛程表导出
     public static void List2ExcelS(List<Map<String,String>> rows,String aaf101)throws Exception{
 
+    	//String path=System.getProperty("user.dir");
         //文件保存路径
-        String path="D:/";
+		String path="D:/"; 
         //创建HSSFWorkbook对象
         HSSFWorkbook hssfWorkbook=new HSSFWorkbook();
         //创建工作簿
@@ -104,8 +108,10 @@ public class ExcelExportNImport {
         String fileName=aaf101+"已完成赛程表.xls";
         //获取输出流对象
 
+        String fileName2=path+fileName;
 
-        FileOutputStream fileOutputStream=new FileOutputStream(path+fileName);
+        FileOutputStream fileOutputStream=new FileOutputStream(fileName2);
+        System.out.println(fileName2);
         hssfWorkbook.write(fileOutputStream);
         hssfWorkbook.close();
 
@@ -207,7 +213,9 @@ public class ExcelExportNImport {
 
     public static void main(String args[])throws Exception{
 
-        String filePath="/在服务器上的相对路径";
-        List<List<String>> rows=excel2List(filePath);
+        //String path=Class.class.getClass().getResource("/").getPath();
+    	String path=System.getProperty("user.dir");
+    //	String filePath=path+"\WebRoot\";
+        //System.out.println(filePath);
     }
 }
