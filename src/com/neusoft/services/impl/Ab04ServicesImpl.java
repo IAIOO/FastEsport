@@ -40,7 +40,8 @@ public class Ab04ServicesImpl extends JdbcServicesSupport {
                 .append("  from  ab04 a")
                 .append("  where aaf101 = ")
                 .append(         this.get("aaf101"))
-                .append("    and a.aab410 = 1")
+                .append("   order by a.aab401")
+                //.append("    and a.aab410 = 1")
                 ;
         return this.queryForList(sql.toString());
     }

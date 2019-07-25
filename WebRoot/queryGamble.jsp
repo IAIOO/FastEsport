@@ -284,10 +284,10 @@
     <div id="game_message" align="center">
 	    <div>
 	    	
-	        <form id="myform1">
+	        <form id="myform1" action="<%=path%>/playerAc05Add.html">
 				<input type="hidden" name="aaf101" value="${param.aaf101 }">
 				<input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
-	            <input id="buttonn" type="submit" value="立刻报名"  onclick="onMake()">  
+	            <input id="buttonn" type="submit" value="立刻报名" >  
 	        </form>
 	        
 		    <form id="myform2" action="<%=path%>/userQueryPlayer.html">
@@ -323,6 +323,8 @@
 	    </div>
    </div>
 	<div id="section">
+		<%=session.getAttribute("aab101") %>
+		<%=session.getAttribute("aab110") %>
 	    <c:choose>
 	        <c:when test="${rows !=null}">
 	            <c:forEach items="${rows }" var="ins1" varStatus="vs">
@@ -342,7 +344,7 @@
 	                                <input id="btnSelect2" type="button" value="结束竞猜" onclick="showSelectBox2()"/>
 	                                <div id="selectBox" class="selectBox">
 	
-	                                    <form id="personGamble_add">
+	                                    <form id="personGamble_add" action="userAddPersonGamble.html" method="post">
 	                                        <select name="aab502">
 	                                            <option value="A">${ins1.aab408 }</option>
 	                                            <option value="B">${ins1.aab409 }</option>
@@ -357,11 +359,11 @@
 	                                            <%--${ins1.aab409 }<input name="aab404" value="${ins1.aab404 }"/>--%>
 	                                            <%--<input type="hidden" name="aab401" value="${ins1.aab401 }">--%>
 	                                            <%--<a onclick="ok()">OK</a>&nbsp;&nbsp;&nbsp;<a onclick="cancel()">Cancel</a>--%>
-	                                        <input type="submit" value="提交" onclick="joinQ()">&nbsp;&nbsp;&nbsp;<a onclick="cancel()">取消</a>
+	                                        <input type="submit" value="提交">&nbsp;&nbsp;&nbsp;<a onclick="cancel()">取消</a>
 	                                    </form>
 	                                </div>
 	                                <div id="selectBox2" class="selectBox2">
-	                                    <form id="endGamble">
+	                                    <form id="endGamble" action="adminEndGamble.html" method="post">
 	                                        <input name="aab101" value="<%=session.getAttribute("aab101") %>" type="hidden"/>
 	                                        <input name="aab401" value="${ins1.aab401 }" type="hidden"/>
 	                                        <input name="aab405" value="${ins1.aab405}" type="hidden"/>
@@ -372,7 +374,7 @@
 	                                            <option value="B">${ins1.aab409 }</option>
 	                                        </select>
 	                                        <br>
-	                                        <input type="submit" value="结束竞猜" onclick="endQ()">&nbsp;&nbsp;&nbsp;<a onclick="cancel2()">取消</a>
+	                                        <input type="submit" value="结束竞猜">&nbsp;&nbsp;&nbsp;<a onclick="cancel2()">取消</a>
 	                                    </form>
 	                                </div>
 	                            </div>

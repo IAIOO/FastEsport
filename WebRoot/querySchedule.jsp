@@ -220,10 +220,10 @@
     <div id="game_message" align="center">
 	    <div>
 	    	
-	        <form id="myform1">
+	        <form id="myform1" action="<%=path%>/playerAc05Add.html">
 				<input type="hidden" name="aaf101" value="${param.aaf101 }">
 				<input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
-	            <input id="buttonn" type="submit" value="立刻报名"  onclick="onMake()">  
+	            <input id="buttonn" type="submit" value="立刻报名">  
 	        </form>
 	        
 		    <form id="myform2" action="<%=path%>/userQueryPlayer.html">
