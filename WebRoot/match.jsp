@@ -4,7 +4,7 @@
 <% String path = request.getContextPath(); %>
 <html>
 <head>
-<title>È«²¿ÈüÊÂ</title>
+<title>å…¨éƒ¨èµ›äº‹</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,7 +23,7 @@
 <link title="style1" rel="stylesheet" href="css/style1.css" type="text/css" />
 <script type="text/javascript">
   function toinfo(vaaf101){
-	  //ÊµÏÖÒ³ÃæµÄÌø×ª
+	  //å®ç°é¡µé¢çš„è·³è½¬
 	  window.location.href='game.jsp?aaf101='+vaaf101;
   }
   
@@ -34,7 +34,7 @@
   function toPage() {
 	  var vpageNum = document.getElementById("pageNum").value;
 	  if(vpageNum < 1 || vpageNum > ${pageBean.totalPage}){
-		  alert("ÊäÈëÒ³ÂëÓĞÎó");
+		  alert("è¾“å…¥é¡µç æœ‰è¯¯");
 	  }
 	  else{
 	      window.location.href='<%=path%>/competitionQueryForUser.html?now=' + vpageNum;
@@ -60,65 +60,65 @@
 					</div>
 				</div>
 				
-<!-- µ¼º½À¸ -->
+<!-- å¯¼èˆªæ  -->
 <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 	<nav class="cl-effect-5" id="cl-effect-5">												
 		<ul class="nav navbar-nav">	
 		 
-<!-- Ê×Ò³ -->																							
+<!-- é¦–é¡µ -->																							
 <li class="dropdown menu__item">
-<a href="index.jsp" class="dropdown-toggle menu__link">Ê×Ò³			
+<a href="index.jsp" class="dropdown-toggle menu__link">é¦–é¡µ			
 </a>
 </li>
 		
-<!-- È«²¿ÈüÊÂ -->	
+<!-- å…¨éƒ¨èµ›äº‹ -->	
 <li class="dropdown menu__item">
-<a href="<%=path %>/competitionQueryForUser.html" class="dropdown-toggle menu__link">È«²¿ÈüÊÂ
+<a href="<%=path %>/competitionQueryForUser.html" class="dropdown-toggle menu__link">å…¨éƒ¨èµ›äº‹
 </a>
 </li>
 						
-<!-- ÈüÊÂ¹ÜÀí -->
+<!-- èµ›äº‹ç®¡ç† -->
 <li class="dropdown menu__item">
-<a href="competitionQueryGame.html?aab101=<%=session.getAttribute("aab101") %>" class="dropdown-toggle menu__link">ÈüÊÂ¹ÜÀí
+<a href="competitionQueryGame.html?aab101=<%=session.getAttribute("aab101") %>" class="dropdown-toggle menu__link">èµ›äº‹ç®¡ç†
 </a>
 </li>
 							
-<!-- Õ½¶Ó¹ÜÀí -->
+<!-- æˆ˜é˜Ÿç®¡ç† -->
 <li class="dropdown menu__item">
-<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Õ½¶Ó¹ÜÀí
+<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">æˆ˜é˜Ÿç®¡ç†
 	<span class="caret"></span>
 </a>
 <ul class="dropdown-menu">
 	<li>
-		<a href="makeTeam.jsp">´´½¨Õ½¶Ó</a>
+		<a href="makeTeam.jsp">åˆ›å»ºæˆ˜é˜Ÿ</a>
 	</li>
 	<li>
-		<a href="teamMyTeam.html">ÎÒµÄÕ½¶Ó</a>
+		<a href="teamMyTeam.html">æˆ‘çš„æˆ˜é˜Ÿ</a>
 	</li>
 	<li>
-		<a href="enlistTeam.jsp">·¢²¼ÕĞÄ¼</a>
+		<a href="enlistTeam.jsp">å‘å¸ƒæ‹›å‹Ÿ</a>
 	</li>
 	<li>
-		<a href="queryForMyEnlist.jsp">ÉóºËÕĞÄ¼</a>
+		<a href="queryForMyEnlist.jsp">å®¡æ ¸æ‹›å‹Ÿ</a>
 	</li>
 	<li>
-		<a href="queryForTeam.jsp">±¨ÃûÕ½¶Ó</a>
+		<a href="queryForTeam.jsp">æŠ¥åæˆ˜é˜Ÿ</a>
 	</li>
 	<li>
-		<a href="userProId.jsp">Ö°ÒµÈÏÖ¤</a>
+		<a href="userProId.jsp">èŒä¸šè®¤è¯</a>
 	</li>
 </ul>
 </li>
 
-<!-- ÂÛÌ³ÌìµØ -->							
+<!-- è®ºå›å¤©åœ° -->							
 <li class="dropdown menu__item">
-<a href="<%=path %>/bbsQuery.html" class="dropdown-toggle menu__link">ÂÛÌ³ÌìµØ
+<a href="<%=path %>/bbsQuery.html" class="dropdown-toggle menu__link">è®ºå›å¤©åœ°
 </a>
 </li>
 	
-<!-- ÉÌ³ÇÖĞĞÄ -->							
+<!-- å•†åŸä¸­å¿ƒ -->							
 <li class="dropdown menu__item">
-<a href="usershop.jsp" class="dropdown-toggle menu__link">ÉÌ³ÇÖĞĞÄ
+<a href="usershop.jsp" class="dropdown-toggle menu__link">å•†åŸä¸­å¿ƒ
 </a>
 </li>																					
 					</ul>																					
@@ -141,7 +141,7 @@
 		<div class="w3layouts_header_right">
 			 	<c:choose>
 					<c:when test="${empty sessionScope.aab101}">
-						<a href="#" onclick="gotoLogin()">µÇÂ¼/×¢²á</a>
+						<a href="#" onclick="gotoLogin()">ç™»å½•/æ³¨å†Œ</a>
 					</c:when>
 					<c:otherwise>
 						<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
@@ -152,65 +152,65 @@
 		<div class="clearfix"> </div>
 	</div>
 <!-- banner -->
-<form id="myform" action="<%=path%>/matchQuery.html" method="post">
-  <!-- ²éÑ¯Ìõ¼şÇø -->
+<form id="myform" action="<%=path%>/competitionQueryForUser.html" method="post">
+  <!-- æŸ¥è¯¢æ¡ä»¶åŒº -->
 		<table width="95%" align="center">
 			<tr>
-				<td colspan="4">ÈüÊÂËÑË÷</td>
+				<td colspan="4">èµ›äº‹æœç´¢</td>
 			</tr>
 			<tr>
-				<td>ÈüÊÂÃû³Æ</td>
+				<td>èµ›äº‹åç§°</td>
 				<td><e:text name="aaf103" /></td>
-				<td>ÈüÊÂÀàĞÍ</td>
+				<td>èµ›äº‹ç±»å‹</td>
 				<td><e:select name="aaf102"
-						value="DOTA2:01,LOL:02,ÍõÕßÈÙÒ«:03,CSGO:04,PUBG:05,OW:06,ĞÇ¼ÊÕù°Ô2:07,Ä§ÊŞÕù°Ô3:08,Â¯Ê¯´«Ëµ:09"
+						value="DOTA2:01,LOL:02,ç‹è€…è£è€€:03,CSGO:04,PUBG:05,OW:06,æ˜Ÿé™…äº‰éœ¸2:07,é­”å…½äº‰éœ¸3:08,ç‚‰çŸ³ä¼ è¯´:09"
 						header="true" /></td>
-				<td>ÈüÊÂ×´Ì¬</td>
-				<td><e:select name="aaf109" value="ÉóºËÖĞ:1,ÉóºËÍ¨¹ı:2,±¨ÃûÖĞ:3,½øĞĞÖĞ:4,ÒÑ½áÊø:5"
+				<td>èµ›äº‹çŠ¶æ€</td>
+				<td><e:select name="aaf109" value="å®¡æ ¸ä¸­:1,å®¡æ ¸é€šè¿‡:2,æŠ¥åä¸­:3,è¿›è¡Œä¸­:4,å·²ç»“æŸ:5"
 						header="true"/></td>
-				<td><input type="submit" name="findmatch" value="ËÑË÷"></td>
+				<td><input type="submit" name="findmatch" value="æœç´¢"></td>
 			</tr>
 		</table>
 		<br></br>
-		<!-- Êı¾İµü´úÇø -->
+		<!-- æ•°æ®è¿­ä»£åŒº -->
 	<table border="0" width="95%" align="center" style="border-collapse:separate; border-spacing:0px 20px;">
 	<tr>
-	    <td>ÈüÊÂÃû³Æ</td>
-	    <td>ÈüÊÂÀàĞÍ</td>
-	    <td>±¨Ãû½ØÖ¹Ê±¼ä</td>
-	    <td>ÈËÊıÏŞÖÆ</td>
-	    <td>ÈüÊÂ×´Ì¬</td>
+	    <td>èµ›äº‹åç§°</td>
+	    <td>èµ›äº‹ç±»å‹</td>
+	    <td>æŠ¥åæˆªæ­¢æ—¶é—´</td>
+	    <td>äººæ•°é™åˆ¶</td>
+	    <td>èµ›äº‹çŠ¶æ€</td>
 	  </tr>
 	  <!--
-	         ×¢ÒâÊÂÏî
-	    1.$¼°´óÀ¨ºÅµÄ½áÊø±ê¼Ç }ÓëË«ÒıºÅÖ®¼ä,²»ÔÊĞí³öÏÖ¿Õ¸ñ
-	    2.ËùÓĞµÄÊôĞÔÖ®¼äÖÁÉÙÒªÓĞÒ»¸ö¿Õ¸ñ,·ñÔò±¨´í
-	    3.var ÊôĞÔ,Ïàµ±ÓÚÔÚÒ³Ãæ¶¨Òå±äÁ¿Ãû³Æ,Òò´Ë  ins²»ÔÊĞíÔÙÓÃ$ {  }
+	         æ³¨æ„äº‹é¡¹
+	    1.$åŠå¤§æ‹¬å·çš„ç»“æŸæ ‡è®° }ä¸åŒå¼•å·ä¹‹é—´,ä¸å…è®¸å‡ºç°ç©ºæ ¼
+	    2.æ‰€æœ‰çš„å±æ€§ä¹‹é—´è‡³å°‘è¦æœ‰ä¸€ä¸ªç©ºæ ¼,å¦åˆ™æŠ¥é”™
+	    3.var å±æ€§,ç›¸å½“äºåœ¨é¡µé¢å®šä¹‰å˜é‡åç§°,å› æ­¤  insä¸å…è®¸å†ç”¨$ {  }
 	   -->
 	   <c:choose>
 	     <c:when test="${rows!=null }">
-	         <!-- ÏÔÊ¾Êµ¼Ê²éÑ¯µ½µÄÊı¾İ -->
+	         <!-- æ˜¾ç¤ºå®é™…æŸ¥è¯¢åˆ°çš„æ•°æ® -->
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr onclick="toinfo(${ins.aaf101})">
 				    <td>${ins.aaf103 }</td>
 				    
 				    <c:if test="${ins.aaf102 == 01}"><td>Dota2</td></c:if>
 				    <c:if test="${ins.aaf102 == 02}"><td>LOL</td></c:if>
-				    <c:if test="${ins.aaf102 == 03}"><td>ÍõÕßÈÙÒ«</td></c:if>
+				    <c:if test="${ins.aaf102 == 03}"><td>ç‹è€…è£è€€</td></c:if>
 				    <c:if test="${ins.aaf102 == 04}"><td>CSGO</td></c:if>
 				    <c:if test="${ins.aaf102 == 05}"><td>PUBG</td></c:if>
 				    <c:if test="${ins.aaf102 == 06}"><td>OW</td></c:if>
-				    <c:if test="${ins.aaf102 == 07}"><td>ĞÇ¼ÊÕù°Ô2</td></c:if>
-				    <c:if test="${ins.aaf102 == 08}"><td>Ä§ÊŞÕù°Ô3</td></c:if>
-				    <c:if test="${ins.aaf102 == 09}"><td>Â¯Ê¯´«Ëµ</td></c:if>
+				    <c:if test="${ins.aaf102 == 07}"><td>æ˜Ÿé™…äº‰éœ¸2</td></c:if>
+				    <c:if test="${ins.aaf102 == 08}"><td>é­”å…½äº‰éœ¸3</td></c:if>
+				    <c:if test="${ins.aaf102 == 09}"><td>ç‚‰çŸ³ä¼ è¯´</td></c:if>
 				    
 				    <td>${ins.aaf107 }</td>
 				    <td>${ins.aaf110 }</td>
-				    <c:if test="${ins.aaf109 == 1}"><td>ÉóºËÖĞ</td></c:if>
-				    <c:if test="${ins.aaf109 == 2}"><td>ÉóºËÍ¨¹ı</td></c:if>
-				    <c:if test="${ins.aaf109 == 3}"><td>±¨ÃûÖĞ</td></c:if>
-				    <c:if test="${ins.aaf109 == 4}"><td>½øĞĞÖĞ</td></c:if>
-				    <c:if test="${ins.aaf109 == 5}"><td>ÒÑ½áÊø</td></c:if>
+				    <c:if test="${ins.aaf109 == 1}"><td>å®¡æ ¸ä¸­</td></c:if>
+				    <c:if test="${ins.aaf109 == 2}"><td>å®¡æ ¸é€šè¿‡</td></c:if>
+				    <c:if test="${ins.aaf109 == 3}"><td>æŠ¥åä¸­</td></c:if>
+				    <c:if test="${ins.aaf109 == 4}"><td>è¿›è¡Œä¸­</td></c:if>
+				    <c:if test="${ins.aaf109 == 5}"><td>å·²ç»“æŸ</td></c:if>
 				  </tr>
 		      </c:forEach>
 	     </c:when>
@@ -219,11 +219,11 @@
 	   <tfoot id="tfootID">
          <tr>
              <td colspan="10">
-                 <a href="javascript:void(0)" onclick="doPage(1)">Ê×Ò³</a>&nbsp;
-                 <a href="javascript:void(0)" onclick="doPage(${pageBean.pageNo-1})">ÉÏÒ»Ò³</a>&nbsp;
-                 <a href="javascript:void(0)" onclick="doPage(${pageBean.pageNo+1})">ÏÂÒ»Ò³</a>&nbsp;
-                 <a href="javascript:void(0)" onclick="doPage(${pageBean.totalPage})">Ä©Ò³</a>&nbsp;
-                 	µÚ${pageBean.pageNo}Ò³/µÚ${pageBean.totalPage}Ò³&nbsp;
+                 <a href="javascript:void(0)" onclick="doPage(1)">é¦–é¡µ</a>&nbsp;
+                 <a href="javascript:void(0)" onclick="doPage(${pageBean.pageNo-1})">ä¸Šä¸€é¡µ</a>&nbsp;
+                 <a href="javascript:void(0)" onclick="doPage(${pageBean.pageNo+1})">ä¸‹ä¸€é¡µ</a>&nbsp;
+                 <a href="javascript:void(0)" onclick="doPage(${pageBean.totalPage})">æœ«é¡µ</a>&nbsp;
+                 	ç¬¬${pageBean.pageNo}é¡µ/ç¬¬${pageBean.totalPage}é¡µ&nbsp;
                  <input type="text" id="pageNum">&nbsp;
                  <button onclick="toPage()">go</button>
              </td>
