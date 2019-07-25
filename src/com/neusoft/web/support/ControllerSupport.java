@@ -166,6 +166,7 @@ public abstract class ControllerSupport implements BaseController
 			this.saveAttribute("aab102", this.dto.get("aab102"));
 			this.saveAttribute("aac114", ins.get("aac114"));
 			this.saveAttribute("aac101", ins.get("aac101"));	
+			this.saveAttribute("aab110", ins.get("aab110"));
 		}
 		else
 		{
@@ -253,6 +254,19 @@ public abstract class ControllerSupport implements BaseController
 		if(ins!=null)
 		{
 			this.saveAttribute("ins",  ins);
+		}
+		else
+		{
+			this.saveAttribute("msg", "提示:该数据已删除或禁止访问!");
+		}	
+	}
+	
+	protected final void retMoney()throws Exception
+	{
+		Map<String,String> ins=this.services.findById();
+		if(ins!=null)
+		{
+			this.saveAttribute("aab110",  ins.get("aab110"));
 		}
 		else
 		{

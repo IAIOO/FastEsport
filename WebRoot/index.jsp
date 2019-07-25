@@ -6,6 +6,7 @@ String path = request.getContextPath();
 if(session.getAttribute("aab101") == null){
 	session.setAttribute("aab101", request.getAttribute("aab101"));
 	session.setAttribute("aab102", request.getAttribute("aab102"));	
+	session.setAttribute("aab110", request.getAttribute("aab110"));
 	session.setAttribute("aac114", request.getAttribute("aac114"));
 	session.setAttribute("aac101", request.getAttribute("aac101"));
 }else{
@@ -237,19 +238,19 @@ window.onload=function(){
 		
 <!-- 全部赛事 -->	
 <li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link">全部赛事
+<a href="#" onclick="gotoLogin()" class="dropdown-toggle menu__link">全部赛事
 </a>
 </li>
 						
 <!-- 赛事管理 -->
 <li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link" >赛事管理
+<a href="#" onclick="gotoLogin()" class="dropdown-toggle menu__link" >赛事管理
 </a>
 </li>
 							
 <!-- 战队管理 -->
 <li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link">战队管理
+<a href="#" onclick="gotoLogin()" class="dropdown-toggle menu__link">战队管理
 	<span class="caret"></span>
 </a>
 <ul class="dropdown-menu">
@@ -276,13 +277,13 @@ window.onload=function(){
 
 <!-- 论坛天地 -->							
 <li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link" >论坛天地
+<a href="#" onclick="gotoLogin()" class="dropdown-toggle menu__link" >论坛天地
 </a>
 </li>
 	
 <!-- 商城中心 -->							
 <li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link" >商城中心
+<a href="#" onclick="gotoLogin()" class="dropdown-toggle menu__link" >商城中心
 </a>
 </li>																					
 					</ul>																					
@@ -339,14 +340,15 @@ window.onload=function(){
 		
 		<div class="w3layouts_header_right">
 			 	<c:choose>
-						<c:when test="${empty sessionScope.aab101}">
-							<a href="#" onclick="gotoLogin()">登录/注册</a>
-						</c:when>
-						<c:otherwise>
-							<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
-							<a href="<%=path%>/userLoginout.html">退出登录</a>
-						</c:otherwise>
-					</c:choose>
+					<c:when test="${empty sessionScope.aab101}">
+						<a href="#" onclick="gotoLogin()">登录/注册</a>
+					</c:when>
+					<c:otherwise>
+						<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
+						<a href="<%=path%>/userLoginout.html">退出登录</a>
+						<p>代币数量：<%=session.getAttribute("aab110") %></p>
+					</c:otherwise>
+				</c:choose>
 		</div>	
 		<div class="clearfix"> </div>
 	</div>

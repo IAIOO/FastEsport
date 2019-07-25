@@ -88,7 +88,7 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
 	 */
 	public Map<String,String> findById()throws Exception{
 		StringBuilder sql=new StringBuilder()
-				.append("select c.aac101,c.aac114,b.aab101,b.aab104")
+				.append("select c.aac101,c.aac114,b.aab101,b.aab104,b.aab110")
 				.append("   from ac01 c,ab01 b")
 				.append("  where c.aab101 = b.aab101")
 				.append("   and b.aab102 = ?")
@@ -102,7 +102,7 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
 		else
 		{
 			StringBuilder sql_1=new StringBuilder()
-					.append("select b.aab101,b.aab104")
+					.append("select b.aab101,b.aab104,b.aab110")
 					.append("   from ab01 b")
 					.append("  where b.aab102 = ?")
 					;
