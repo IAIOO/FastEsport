@@ -292,6 +292,7 @@
 		        <table>
 		            <c:forEach items="${rows }" var="ins" varStatus="vs">
 		
+						
 		                <tr style="height: 60px;margin-top: 0px">
 		                	<td>${vs.count}</td>
 		                    <td width="200px" align="center">

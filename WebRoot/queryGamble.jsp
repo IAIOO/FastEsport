@@ -326,7 +326,7 @@
    </div>
    
 	<div id="section">
-	<p>当前代币数量：${rows[1].aab110 }</p>
+	<p>当前代币数量：${rows[0].aab110 }</p>
 	    <c:choose>
 	        <c:when test="${rows !=null}">
 	            <c:forEach items="${rows }" var="ins1" varStatus="vs">
