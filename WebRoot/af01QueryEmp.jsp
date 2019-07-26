@@ -160,9 +160,10 @@ tr {
 		<div class="content-wrapper">
 			<div class="container-fluid">
 				<!-- Breadcrumbs-->
-
-				<div class="row">
-					<div class="col-12">
+				
+				<div class="card mb-3">                										
+						<div class="card-body">
+          				<div class="table-responsive">
 
 						<!-- 查询条件区 -->
 
@@ -170,16 +171,19 @@ tr {
 
 
 						<!-- 数据迭代区 -->
-						<table border="0" width="95%" align="center" rules="none" class="table1">
-							<tr>
-								<td></td>
-								<!-- <td>序列号</td> -->
-								<td>赛事类型</td>
-								<td>赛事名称</td>
-								<td>赛制</td>
-								<td>比赛开始时间</td>
-								<td>赛事状态</td>
-							</tr>
+						<table border="0" width="95%" align="center" rules="none" class="table1" id="dataTable">
+							<thead>
+								<tr>
+								<th></th>
+								<th>赛事序列号</th>
+								<th>赛事类型</th>
+								<th>赛事名称</th>
+								<th>赛制</th>
+								<th>比赛开始时间</th>
+								<th>赛事状态</th>
+																
+								</tr>
+							</thead>
 							<!--
 	         注意事项
 	    1.$及大括号的结束标记 }与双引号之间,不允许出现空格
@@ -194,6 +198,7 @@ tr {
 
 
 											<td>${vs.count }</td>
+											<td>${ins.aaf101 }</td>
 
 											<td>${ins.vaaf102 }</td>
 
@@ -208,14 +213,16 @@ tr {
 
 
 											<td>${ins.vaaf109 }</td>
+											 
 
 
 
 										</tr>
 									</c:forEach>
 									<!-- 补充空行 -->
-									<c:forEach begin="${fn:length(rows)+1 }" step="1" end="15">
+									<c:forEach begin="${fn:length(rows)+1 }" step="1" end="7">
 										<tr>
+											<td></td>
 											<td></td>
 											<td></td>
 											<td></td>
@@ -235,10 +242,11 @@ tr {
 											<td></td>
 											<td></td>
 											<td></td>
+											<td></td>
 
 										</tr>
 									</c:forEach>
-								</c:otherwise>
+								</c:otherwise> 
 							</c:choose>
 						</table>
 
@@ -258,6 +266,8 @@ tr {
 					</div>
 				</div>
 			</div>
+			</div>
+			
 			<!-- /.container-fluid-->
 			<!-- /.content-wrapper-->
 
@@ -322,14 +332,18 @@ tr {
 			</div>
 			<!-- Bootstrap core JavaScript-->
 			<script src="vendor/jquery/jquery.min.js"></script>
-			<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-			<!-- Core plugin JavaScript-->
-			<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-			<!-- Custom scripts for all pages-->
-			<script src="js/sb-admin.min.js"></script>
+			    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+			    <!-- Core plugin JavaScript-->
+			    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+			    <!-- Page level plugin JavaScript-->
+			    <script src="vendor/datatables/jquery.dataTables.js"></script>
+			    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+			    <!-- Custom scripts for all pages-->
+			    <script src="js/sb-admin.min.js"></script>
+			    <!-- Custom scripts for this page-->
+			    <script src="js/sb-admin-datatables.min.js"></script>
 		</div>
-		<input type="hidden" name="aad305"
-			value="<%=session.getAttribute("aad305") %>"> out.print(<%=session.getAttribute("aad305")%>);
+		
 	</form>
 
 

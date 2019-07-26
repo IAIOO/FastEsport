@@ -163,27 +163,31 @@ background: transparent;
 		<div class="content-wrapper">
 			<div class="container-fluid">
 				<!-- Breadcrumbs-->
-
-				<div class="row">
-					<div class="col-12">
-
-
-
-
-						<!-- 数据迭代区 -->
+				
+				<div class="card mb-3">                										
 						<div class="card-body">
-          <div class="table-responsive">
-						<table border="0" width="95%" align="center" rules="none" class="table1">
-							<tr>
-								<td></td>
+          				<div class="table-responsive">
+
+				
+										
+
+ 
+
+						 
+          				<!-- 数据迭代区 -->
+						<table border="0" width="95%" align="center" rules="none" class="table1" id="dataTable">
+							<thead>
+								<tr>
+								<th></th>
 								<!-- <td>序列号</td> -->
-								<td>赛事序列号</td>
-								<td>选手A</td>
-								<td>选手B</td>
-								<td>比赛开始时间</td>
-								<td>A得分</td>
-								<td>B得分</td>
-							</tr>
+								<th>赛事序列号</th>
+								<th>选手A</th>
+								<th>选手B</th>
+								<th>比赛开始时间</th>
+								<th>A得分</th>
+								<th>B得分</th>
+								</tr>
+							</thead>
 							<!--
 	         注意事项
 	    1.$及大括号的结束标记 }与双引号之间,不允许出现空格
@@ -242,7 +246,7 @@ background: transparent;
 
 
 
-					</div>
+					
 				</div>
 			</div>
 			</div>
@@ -311,11 +315,16 @@ background: transparent;
 			</div>
 			<!-- Bootstrap core JavaScript-->
 			<script src="vendor/jquery/jquery.min.js"></script>
-			<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-			<!-- Core plugin JavaScript-->
-			<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-			<!-- Custom scripts for all pages-->
-			<script src="js/sb-admin.min.js"></script>
+			    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+			    <!-- Core plugin JavaScript-->
+			    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+			    <!-- Page level plugin JavaScript-->
+			    <script src="vendor/datatables/jquery.dataTables.js"></script>
+			    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+			    <!-- Custom scripts for all pages-->
+			    <script src="js/sb-admin.min.js"></script>
+			    <!-- Custom scripts for this page-->
+			    <script src="js/sb-admin-datatables.min.js"></script>
 		</div>
 		 out.print(<%=session.getAttribute("aad305")%>);
 	</form>
