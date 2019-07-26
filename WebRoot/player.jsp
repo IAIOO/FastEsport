@@ -30,7 +30,7 @@
 	    function onMake1() {
 	    	$.ajax({
 	        	type: 'post',
-	            url: "<%=path%>/userQueryPlayer",   
+	            url: "<%=path%>/userQueryPlayer.html",   
 	            data: $('#myform2').serialize(),
 	            /* success: function(dates) {
 	            	$("#section").html(dates)
@@ -288,6 +288,7 @@
 		        </table>
 		    </div>
 		</div>
+		
 	    
    </div>
 </div>

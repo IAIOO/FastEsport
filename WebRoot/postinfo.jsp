@@ -216,7 +216,7 @@ function cancel(){
 	   <fieldset>
 		<div class="form-row">
 	           <div class="field-label"><label for="field1">»Ø¸´</label>:</div>
-	           <div class="field-widget"><input name="aab203" id="field1" class="required" title="Enter your name" /></div>
+	           <div class="field-widget"><input name="aab203" id="field1" class="required" title="Enter your name" required="required"/></div>
 	       </div>
 	       <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101")%>">
 	       <input type="hidden" name="aab204" value="<%=request.getParameter("aab201")%>">

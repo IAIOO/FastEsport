@@ -111,7 +111,7 @@
 	    function joinQ(){
 	        $.ajax({
 	            type: 'post',
-	            url: "/FastEsport/userAddPersonGamble.html?aaf101=${param.aaf101 }",  
+	            url: "<%=path%>/userAddPersonGamble.html?aaf101=${param.aaf101 }",  
 	            data: $('#personGamble_add').serialize(),
 	            
 	            success: function () {
@@ -125,7 +125,7 @@
 	    function endQ(){
 	    	$.ajax({
 	            type: 'post',
-	            url: "/FastEsport/adminEndGamble.html?aaf101=${param.aaf101 }",   
+	            url: "<%=path%>/adminEndGamble.html?aaf101=${param.aaf101 }",   
 	            data: $('#endGamble').serialize(),
 	            success: function () {
 	   				alert("ok");
@@ -326,19 +326,21 @@
    </div>
    
 	<div id="section">
-	<p>当前代币数量：${rows[0].aab110 }</p>
+		<c:if test="${rows[0].aab101!=userId}">
+			<p style="font-size: 20">当前代币数量：${rows[0].aab110 }</p>
+		</c:if>
 	    <c:choose>
 	        <c:when test="${rows !=null}">
 	            <c:forEach items="${rows }" var="ins1" varStatus="vs">
-	                <table frame="box" align="center">
+	                <table frame="box" align="center" width="300px" htight="200px" >
 	                    <tr>
 	                        <td>
 	                        
-					                            竞猜主题：${ins1.aab402 }<br>
-	                            <p>选项A：${ins1.aab408 }</p>
-	                            <p>A押注：${ins1.aab403 }  A赔率：${ins1.aab405 }</p>
-	                            <p>选项B：${ins1.aab409 }</p>
-	                            <p>B押注：${ins1.aab404 }  B赔率：${ins1.aab406 }</p>
+	                            <p style="font-size: 20">竞猜主题：${ins1.aab402 }</p>
+	                            <p style="font-size: 20">选项A：${ins1.aab408 }</p>
+	                            <p style="font-size: 20">A押注：${ins1.aab403 }  A赔率：${ins1.aab405 }</p>
+	                            <p style="font-size: 20">选项B：${ins1.aab409 }</p>
+	                            <p style="font-size: 20">B押注：${ins1.aab404 }  B赔率：${ins1.aab406 }</p>
 	                            
 	                            
 	                            <div id="person">
