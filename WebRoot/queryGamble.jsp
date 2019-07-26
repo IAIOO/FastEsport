@@ -14,8 +14,8 @@
     <title></title>
     <style>a{TEXT-DECORATION:none}</style>
     <style>
-        div.selectBox{display:none;position:fixed;top:30%;left:30%;width:300px;height:300px;border:3px solid black;background-color:white;z-index:1002}
-        div.selectBox2{display:none;position:fixed;top:30%;left:30%;width:300px;height:300px;border:3px solid black;background-color:white;z-index:1002}
+        div.selectBox{display:none;position:fixed;top:30%;left:30%;width:300px;height:150px;border:3px solid black;background-color:white;z-index:1002}
+        div.selectBox2{display:none;position:fixed;top:30%;left:30%;width:300px;height:150px;border:3px solid black;background-color:white;z-index:1002}
     </style>
     <style>
     	div.selectBox{
@@ -312,7 +312,7 @@
 		        <input id="buttonn" type="submit" name="next" value="查看竞猜"
 		               formaction="<%=path%>/userQueryGamble.html">
 	        </form>
-	        <c:if test="${rows[1].aab101==userId}">
+	        <c:if test="${rows[1].aab101==userId ||rows[1].aab101==null}">
 	        <form action="addGamble.jsp">
 	        	<input type="hidden" name="aaf101" value="${param.aaf101 }">
 		        <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
@@ -343,6 +343,9 @@
 	                            
 	                            <div id="person">
 	                            <c:choose>
+	                            	<c:when test="${ins1.aab407 !=null }">
+	                            		<p>竞猜已结束</p>
+	                            	</c:when>
 	                            	<c:when test="${ins1.aab410 ==1 }">
 		                            	<c:choose>
 		                            		<c:when test="${ins1.aab101!=userId}">
