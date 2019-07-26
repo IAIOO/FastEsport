@@ -203,8 +203,8 @@ background: transparent;
 												<!-- #  ¿ÕÃª --> <a href="#" onclick="onEdit('${ins.aaf201}')">${ins.aaf101 }</a>
 											</td>
 
-											<td>${ins.aaf202 }</td>
-											<td>${ins.aaf203 }</td>
+											<td>${ins.aab102a }</td>
+											<td>${ins.aab102b }</td>
 											<td>${ins.aaf204 }</td>
 											<td>${ins.aaf205 }</td>
 											<td>${ins.aaf206 }</td>
