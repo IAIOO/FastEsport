@@ -30,7 +30,7 @@
 	    function onMake1() {
 	    	$.ajax({
 	        	type: 'post',
-	            url: "/FastEsport/userQueryPlayer.html",   
+	            url: "<%=path%>/userQueryPlayer",   
 	            data: $('#myform2').serialize(),
 	            /* success: function(dates) {
 	            	$("#section").html(dates)
@@ -47,7 +47,7 @@
 	    function onMake(){
 	        $.ajax({
 	            type: 'post',
-	            url: "/FastEsport/playerAc05Add.html",   
+	            url: "<%=path%>/playerAc05Add",   
 	            data: $('#myform1').serialize(),
 	            success: function () {
 	   				alert("ok");
@@ -244,12 +244,12 @@
    </div>
    <div id="section"> 
    		
-        <c:if test="${rows[1].userid==userId}">
+        <%-- <c:if test="${rows[1].userid==userId}">
    		<form action="<%=path%>/judgeExportExcel.html">
    			<input type="hidden" name="aaf101" value="${param.aaf101 }">
 			<input type="submit" value="导出比赛报名表">
 		</form>
-		</c:if>
+		</c:if> --%>
    		<div>
 			<div style="float: left;width: 1100px">
 			    <table>
@@ -270,8 +270,9 @@
 		    <div id="myform" style="float: left;width: 1100px">
 		        <table>
 		            <c:forEach items="${rows }" var="ins" varStatus="vs">
-		
+						
 		                <tr style="height: 60px;margin-top: 0px">
+		                	<td>${vs.count }</td>
 		                    <td width="200px" align="center">
 		                        	${ins.aab102 }
 		                    </td>
