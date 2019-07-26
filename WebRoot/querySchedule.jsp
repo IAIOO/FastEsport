@@ -259,7 +259,7 @@
 
 	<div id="section">
 		
-		<c:if test="${rows[1].userid==userId }">
+		<c:if test="${userId!=null }">
 			<form action="<%=path%>/adminAddSchedule.html" method="post" >
 				<input type="hidden" name="aaf101" value="${param.aaf101 }">
 		        <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101") %>">
