@@ -80,7 +80,7 @@ ${msg }
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr>
 				 
-				    <td>${ins.aad201 }</td>
+				    
 				    <td>${ins.aad202 }</td>
 				    <td>${ins.aad203 }</td>
 				    <td>${ins.aad204 }</td>
