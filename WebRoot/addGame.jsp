@@ -165,7 +165,7 @@
        </div>
        <div class="form-row">
            <div class="field-label"><label for="field1">比赛名称</label>:</div>
-           <div class="field-widget"><input name="aaf103" id="field1" class="required" title="Enter your name" /></div>
+           <div class="field-widget"><input name="aaf103" id="field1" class="required" title="Enter your name"  required="required"/></div>
        </div>
        
        <div class="form-row">
@@ -180,23 +180,23 @@
        </div>
        <div class="form-row">
            <div class="field-label"><label for="field1">报名结束时间</label>:</div>
-           <div class="field-widget"><input type="date" name="aaf107" id="field1" class="required" title="Enter your name" /></div>
+           <div class="field-widget"><input type="date" name="aaf107" id="field1" class="required" title="Enter your name"  required="required"/></div>
        </div>
        <div class="form-row">
            <div class="field-label"><label for="field1">比赛开始时间</label>:</div>
-           <div class="field-widget"><input type="date" name="aaf108" id="field1" class="required" title="Enter your name" /></div>
+           <div class="field-widget"><input type="date" name="aaf108" id="field1" class="required" title="Enter your name"  required="required"/></div>
        </div>
        <div class="form-row">
            <div class="field-label"><label for="field1">人数限制</label>:</div>
-           <div class="field-widget"><input name="aaf110" id="field1" class="required" title="Enter your name" /></div>
+           <div class="field-widget"><input name="aaf110" id="field1" class="required" title="Enter your name"  required="required"/></div>
        </div>
        <div class="form-row">
            <div class="field-label"><label for="field1">地址</label>:</div>
-           <div class="field-widget"><input name="aaf111" id="field1" class="required" title="Enter your name" /></div>
+           <div class="field-widget"><input name="aaf111" id="field1" class="required" title="Enter your name"  required="required"/></div>
        </div>
        <div class="form-row">
            <div class="field-label"><label for="field3">比赛规则</label>:</div>
-           <div class="field-widget"><textarea class="required" name="aaf112"></textarea></div>
+           <div class="field-widget"><textarea class="required" name="aaf112" required="required"></textarea></div>
        </div>
        <!-- <div class="form-row">
            <div class="field-label"><label for="field1">密码</label>:</div>

@@ -251,11 +251,11 @@
    </div>
    <div id="section"> 
    		<form id="addGamble" action="<%=path%>/userAddGamble.html">
-    		竞猜主题:<input type="text" name="aab402">
+    		竞猜主题:<input type="text" name="aab402" required="required">
 			    <br>
-			    选项A:<input type="text" name="aab408">
+			    选项A:<input type="text" name="aab408" required="required">
 			    <br>
-			    选项B:<input type="text" name="aab409">
+			    选项B:<input type="text" name="aab409" required="required">
 			    <br>
 				<input type="hidden" name="aaf101" value="${param.aaf101 }">
 			    <input type="submit" name="next" onclick="addGamble()" value="添加">
