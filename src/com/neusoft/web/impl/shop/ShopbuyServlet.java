@@ -9,6 +9,7 @@ public class ShopbuyServlet extends Ad02ControllerSupport
 	{
 		this.update("shopbuy", "¹ºÂò");
 		this.update("coindelete", "´ú±Ò¿Û³ý");
+	    this.retMoney();
 		return "usershop";
 	}
 }

@@ -19,10 +19,10 @@
    
    <script type="text/javascript">
    var count=0;
-   function onDel(vaab601)
+   function onDel(vaab102)
    {
  	 var vform = document.getElementById("myform");
- 	 vform.action="<%=path%>/adminUserdelete.html?aab601="+vaab601;
+ 	 vform.action="<%=path%>/adminUserdelete.html?aab102="+vaab102;
  	 //alert(vform.action);
  	 vform.submit();
    } 
@@ -60,9 +60,8 @@ ${msg }
 	<!-- 数据迭代区 -->
 	<table border="1" width="90%" align="right">
 	  <tr>
-	    
-	    <td>举报流水号</td>
-	    <td>帖子序列号</td>
+	    <td>被检举用户序列号</td>
+	    <td>用户名</td>
 	    <td>举报描述</td>
 	    <td>操作</td>
 	  </tr>
@@ -77,18 +76,19 @@ ${msg }
 	         <!-- 显示实际查询到的数据 -->
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr>
-				   
-				    <td>${ins.aab601 }</td>
-				    <td>${ins.aab201 }</td>
+	    	   	    
+				    <td>${ins.aab101b }</td>
+				    <td>${ins.aab102 }</td>
 				    <td>${ins.aab603 }</td>
 				    <td>
-				     <a href="#" onclick="onDel('${ins.aab601}')">删除</a>
-				    </td>
+				     <a href="#" onclick="onDel('${ins.aab102}')">删除</a>
+				    </td><td><input type="hidden" name="aab601" value="${ins.aab601 }"></td>
 				  </tr>
 		      </c:forEach>
 		      <!-- 补充空行 -->
 		      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="10">
 			          <tr>
+			            <td></td>
 			            <td></td>
 			            <td></td>
 			            <td></td>
@@ -99,6 +99,7 @@ ${msg }
 	     <c:otherwise>
 	        <c:forEach begin="1" step="1" end="10">
 	           <tr>
+	             <td></td>
 	             <td></td>
 	             <td></td>
 	             <td></td>

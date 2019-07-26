@@ -36,7 +36,7 @@
    function onPur(vaad201,vaad205)
    {
  	 var vform = document.getElementById("myform");
- 	 vform.action="<%=path%>/shopbuy.html?aad201="+vaad201+"&aab110=100&aab101=1&aad205="+vaad205;
+ 	 vform.action="<%=path%>/shopbuy.html?aad201="+vaad201+"&aab110="+<%=request.getAttribute("aab110") %>+"&aab101="+<%=session.getAttribute("aab101") %>+"&aad205="+vaad205;
  	 //alert(vform.action);
  	 vform.submit();
    } 
@@ -118,7 +118,7 @@
 	
 <!-- 商城中心 -->							
 <li class="dropdown menu__item">
-<a href="usershop.jsp" class="dropdown-toggle menu__link">商城中心
+<a href="<%=path %>/shopUsershop.html?aab101=<%=session.getAttribute("aab101") %>" class="dropdown-toggle menu__link" >商城中心
 </a>
 </li>																					
 					</ul>																					
@@ -145,6 +145,7 @@
 						</c:when>
 						<c:otherwise>
 							<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
+							<p>代币数量：<%=request.getAttribute("aab110") %></p>
 						</c:otherwise>
 					</c:choose>
 		</div>
@@ -225,6 +226,7 @@ ${msg }
 	        </c:forEach>
 	     </c:otherwise>
 	   </c:choose>
+	   
 	   </tbody>
 	</table>
 	</div>
@@ -235,6 +237,7 @@ ${msg }
 	    <td align="center">
 	       <input type="submit" name="next" value="查询">
 	    </td>
+	    
 	  </tr>
 	</table>
 	

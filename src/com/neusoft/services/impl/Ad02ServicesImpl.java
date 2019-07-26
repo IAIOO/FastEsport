@@ -46,6 +46,12 @@ public class Ad02ServicesImpl extends JdbcServicesSupport
 	  		
 	  	return this.queryForList(sql.toString());
 	  }
+	 public Map<String,String> findById()throws Exception{
+		 String sql="select aab110 from ab01 where aab101=?";
+		 return this.queryForMap(sql, this.get("aab101"));
+	 }
+		 
+	 
 	  
 	private boolean goodsadd()throws Exception
 	{

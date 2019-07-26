@@ -199,7 +199,7 @@ window.onload=function(){
 	
 <!-- 商城中心 -->							
 <li class="dropdown menu__item">
-<a href="<%=path %>/shopUsershop.html" class="dropdown-toggle menu__link" >商城中心
+<a href="<%=path %>/shopUsershop.html?aab101=<%=session.getAttribute("aab101") %>" class="dropdown-toggle menu__link" >商城中心
 </a>
 </li>																					
 					</ul>																					
