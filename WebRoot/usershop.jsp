@@ -159,7 +159,7 @@ ${msg }
 <!-- 查询条件区 -->
 <table border="1" width="95%" align="center">
 	  <caption>
-<font color=black>商品购买</font>
+
 	    <hr width="160">
 	  </caption>
 	 </table>
