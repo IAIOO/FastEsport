@@ -7,24 +7,28 @@
 </head>
 
 <body>
-	<form action="<%=path%>/adminLogin.html">
-		<table align="center" width=30%>
-		<div class="login-form">
-		
-			<tr>
-				<td>”√ªß√˚</td>
-				<td><input type="text" name="aad102"/></td>
-			</tr>
-			<tr>
-				<td>√‹¬Î</td>
-				<td><input type="password" name="aad103"/></td>
-			</tr>
-			<tr>
-				<td><input type="submit" name="login" value="µ«¬º"></td>
-			</tr>
-		</table>
+	<!--SIGN UP-->
+<div class="login-form">
+	<div class="close"> </div>
+		<div class="head-info">
+			<label class="lbl-1"> </label>
+			<label class="lbl-2"> </label>
+			<label class="lbl-3"> </label>
 		</div>
+
+	<form action="<%=path%>/adminLogin.html">
+			
+				
+				<input type="text" name="aad102"/>
+			
+				<input type="password" name="aad103"/>
+			<div class="signin">
+				<input type="submit" name="login" value="µ«¬º">
+				</div>
+			
+		
 	</form>
+	</div>
 	${msg}
 </body>
 

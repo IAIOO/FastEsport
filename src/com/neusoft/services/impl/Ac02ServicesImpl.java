@@ -45,14 +45,19 @@ public class Ac02ServicesImpl extends JdbcServicesSupport {
     	String sql="update ab01 set aab108=1 where aab101=?";
     	return this.executeUpdate(sql, this.get("aab101"))>0;
     }
+	private boolean delprocheck()throws Exception
+    {
+    	String sql="delete from ac02 where aac201=?";
+    	return this.executeUpdate(sql, this.get("aac201"))>0;
+    }
 	 public List<Map<String,String>> query()throws Exception
 	  {
 	  		//还原页面查询条件
 	  		
 	  		//定义SQL主体
 	  		StringBuilder sql=new StringBuilder()
-	  				.append("select a.aac201,a.aab101,a.aac202,a.aac203,a.aac205,a.aac206,")
-	  				.append("a.aac207,a.aac208,b.aab101,b.aab108")
+	  				.append("select a.aac201,a.aab101,a.aac202,a.aac203,a.aac204,a.aac205,")
+	  				.append("a.aac206,a.aac207,a.aac208,b.aab101,b.aab108")
 	  				.append("  from ac02 a,ab01 b ")
 	  				.append(" where a.aab101=b.aab101")
 	  				.append(" and b.aab108=0")

@@ -65,7 +65,7 @@ ${msg }
 	<!-- 数据迭代区 -->
 	<table border="1" width="90%" align="right">
 	  <tr>
-	    <td>赛事序列号</td>
+	    
 	    <td>赛事类型</td>
 	    <td>赛事名称</td>
 	    <td>赛事编号</td>
@@ -89,11 +89,21 @@ ${msg }
 		     
 	    	   	  <tr>
 				    
-				    <td>${ins.aaf101 }</td>
-				    <td>${ins.aaf102 }</td>
+				    
+				    <c:if test="${ins.aaf102 == 01}"><td>Dota2</td></c:if>
+				    <c:if test="${ins.aaf102 == 02}"><td>LOL</td></c:if>
+				    <c:if test="${ins.aaf102 == 03}"><td>王者荣耀</td></c:if>
+				    <c:if test="${ins.aaf102 == 04}"><td>CSGO</td></c:if>
+				    <c:if test="${ins.aaf102 == 05}"><td>PUBG</td></c:if>
+				    <c:if test="${ins.aaf102 == 06}"><td>OW</td></c:if>
+				    <c:if test="${ins.aaf102 == 07}"><td>星际争霸2</td></c:if>
+				    <c:if test="${ins.aaf102 == 08}"><td>魔兽争霸3</td></c:if>
+				    <c:if test="${ins.aaf102 == 09}"><td>炉石传说</td></c:if>
 				    <td>${ins.aaf103 }</td>
 				    <td>${ins.aaf104 }</td>
-				    <td>${ins.aaf105 }</td>
+				    <c:if test="${ins.aaf105 == 1}"><td>单败淘汰赛</td></c:if>
+				    <c:if test="${ins.aaf105 == 2}"><td>小组循环单败淘汰赛</td></c:if>
+				    <c:if test="${ins.aaf105 == 3}"><td>小组循环双败淘汰赛</td></c:if>
 				    <td>${ins.aaf108 }</td>
 				    <td>${ins.aaf110 }</td>
 				    <td>${ins.aaf111 }</td>
@@ -115,7 +125,7 @@ ${msg }
 			            <td></td>
 			            <td></td>
 			            <td></td>
-			            <td></td>
+			            
 		
 			          </tr>
 		      </c:forEach>
@@ -132,7 +142,7 @@ ${msg }
 	             <td></td>
 	             <td></td>
 	             <td></td>
-	             <td></td>
+	             
 	           
 	           </tr>
 	        </c:forEach>

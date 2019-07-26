@@ -28,6 +28,14 @@
     	 vform.action="<%=path%>/adminAddprocheck.html?aab101="+vaab101;
     	 //alert(vform.action);
     	 vform.submit();
+    	 }
+    	 var count=0;
+         function onno(vaac201)
+         {
+       	 var vform = document.getElementById("myform");
+       	 vform.action="<%=path%>/adminDelprocheck.html?aac201="+vaac201;
+       	 //alert(vform.action);
+       	 vform.submit();
       } 
       function race(){
   		window.location.href="<%=path%>/adminRacecheck.html";
@@ -68,7 +76,7 @@ ${msg }
 	<div class="ui_content">
 	<table border="1" width="88%" align="right">
 	  <tr>
-	    <td>申请认证号</td>
+	    
 	    <td>用户序列号</td>
 	    <td>申请图片资料</td>
 	    <td>职业履历</td>
@@ -77,6 +85,7 @@ ${msg }
 	    <td>身份证号</td>
 	    <td>身份证图片</td>
 	    <td>操作</td>
+	   
 	  </tr>
 	  <!--
 	         注意事项
@@ -89,17 +98,20 @@ ${msg }
 	         <!-- 显示实际查询到的数据 -->
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr>
-				    <td>${ins.aac201 }</td>
+				    
 				    <td>${ins.aab101 }</td>
-				    <td><img src="${ins.aac202 }" style=height:80;weight:80></td>
+				    <td><img src="${ins.aac202 }" style=height:50;weight:50></td>
 				    <td>${ins.aac203 }</td>
 				    <td>${ins.aac204 }</td>
 				    <td>${ins.aac205 }</td>
 				    <td>${ins.aac206 }</td>
-				    <td><img src="${ins.aac207 }" style=height:80;weight:80></td>
+				    <td><img src="${ins.aac207 }" style=height:50;weight:50></td>
 				    <td>
-				      <a href="#" onclick="onadd('${ins.aab101}')">认证</a>
-				    </td>
+				      <a href="#" onclick="onadd('${ins.aab101}')">通过</a>
+				     
+				      <a href="#" onclick="onno('${ins.aac201}')">不通过</a>
+				      </td>
+				    
 				  </tr>
 		      </c:forEach>
 		      <!-- 补充空行 -->
@@ -113,7 +125,7 @@ ${msg }
 			            <td></td>
 			            <td></td>
 			            <td></td>
-			            <td></td>
+			            
 			            
 			          </tr>
 		      </c:forEach>
@@ -129,7 +141,7 @@ ${msg }
 	             <td></td>
 	             <td></td>
 	             <td></td>
-	             <td></td>
+	             
 	             
 	           </tr>
 	        </c:forEach>

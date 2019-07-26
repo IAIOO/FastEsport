@@ -61,7 +61,7 @@ ${msg }
 	<table border="1" width="90%" align="right">
 	  <tr>
 	    
-	    <td>商品序列号</td>
+	    
 	    <td>商品名称</td>
 	    <td>商品信息</td>
 	    <td>商品数量</td>
@@ -98,7 +98,7 @@ ${msg }
 			            <td></td>
 			            <td></td>
 			            <td></td>
-			            <td></td>
+			           
 			            
 			            
 			          </tr>
@@ -112,7 +112,7 @@ ${msg }
 	             <td></td>
 	             <td></td>
 	             <td></td>
-	             <td></td>
+	             
 	             
 	             
 	           </tr>

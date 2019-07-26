@@ -27,8 +27,10 @@ public class Ab06ServicesImpl extends JdbcServicesSupport
 	
 	private boolean postdelete()throws Exception
     {
-    	String sql="delete from ab06 where aab601=?";
-    	return this.executeUpdate(sql, this.get("aab601"))>0;
+		
+    	String sql=" delete from ab01 where aab102=?";
+    	
+    	return this.executeUpdate(sql, this.get("aab102"))>0;
     }
 	/**
      * 批量查询
@@ -41,10 +43,10 @@ public class Ab06ServicesImpl extends JdbcServicesSupport
 	  		
 	  		//定义SQL主体
 	  		StringBuilder sql=new StringBuilder()
-	  				.append("select a.aab601,b.aab201,a.aab603")
-	  				.append("  from ab06 a,ab02 b ")
-	  				.append(" where a.aab201=b.aab201")
-	  		        .append(" order by a.aab601");
+	  				.append("select a.aab601,a.aab101b,a.aab603,b.aab101,b.aab102")
+	  				.append("  from ab06 a,ab01 b ")
+	  				.append(" where a.aab101b=b.aab101")
+	  		        .append(" order by a.aab101b");
 	  		
 	  	return this.queryForList(sql.toString());
 	  }

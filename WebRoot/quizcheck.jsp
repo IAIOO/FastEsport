@@ -61,11 +61,10 @@ ${msg }
 	<table border="1" width="90%" align="right">
 	  <tr>
 	    
-	    <td>竞猜序列号</td>
+	   
 	    <td>竞猜主题</td>
 	    <td>选项A</td>
 	    <td>选项B</td>
-	    <td>审核状态</td>
 	    <td>操作</td>
 	  </tr>
 	  <!--
@@ -80,10 +79,9 @@ ${msg }
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr>
 				  
-				    <td>${ins.aab401 }</td>
+				    
 				    <td>${ins.aab402 }</td>
 				    <td>${ins.aab408 }</td>
-				    <td>${ins.aab409 }</td>
 				    <td>${ins.aab410 }</td>
 				   
 				    <td>
@@ -98,8 +96,8 @@ ${msg }
 			            <td></td>
 			            <td></td>
 			            <td></td>
-			            <td></td>
-			            <td></td>
+			          
+			            
 			            
 			            
 			          </tr>
@@ -112,8 +110,8 @@ ${msg }
 	             <td></td>
 	             <td></td>
 	             <td></td>
-	             <td></td>
-	             <td></td>
+	             
+	             
 	            
 	             
 	           </tr>
