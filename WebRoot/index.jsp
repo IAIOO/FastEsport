@@ -5,8 +5,7 @@
 String path = request.getContextPath(); 
 if(session.getAttribute("aab101") == null){
 	session.setAttribute("aab101", request.getAttribute("aab101"));
-	session.setAttribute("aab102", request.getAttribute("aab102"));	
-	session.setAttribute("aab110", request.getAttribute("aab110"));
+	session.setAttribute("aab102", request.getAttribute("aab102"));
 	session.setAttribute("aac114", request.getAttribute("aac114"));
 	session.setAttribute("aac101", request.getAttribute("aac101"));
 }else{
@@ -346,7 +345,7 @@ window.onload=function(){
 					<c:otherwise>
 						<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
 						<a href="<%=path%>/userLoginout.html">退出登录</a>
-						<p>代币数量：<%=session.getAttribute("aab110") %></p>
+						<p>代币数量：<%=request.getAttribute("aab110") %></p>
 					</c:otherwise>
 				</c:choose>
 		</div>	
