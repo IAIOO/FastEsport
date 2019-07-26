@@ -13,7 +13,7 @@ import org.eclipse.jdt.internal.compiler.ast.ThisReference;
 public class Ac05ServicesImpl extends JdbcServicesSupport {
 
     static int gameId=11;//aaf101
-    static String gameDate="2019-07-26";
+    static String gameDate="2019-07-28";
     
     
     public List<Map<String,String>> query() throws Exception {
