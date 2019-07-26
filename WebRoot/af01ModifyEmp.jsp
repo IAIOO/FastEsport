@@ -115,11 +115,12 @@ msg {
 							</caption>
 							<tr>
 								<td>赛事状态</td>
-								<td><input type="text" name="aaf109"></td>
+									
+								<td><e:select name="aaf109" value="进行中:4,已结束:5" defval="${ins.aaf109 }" /></td>
 							</tr>
 							<tr>
-								<td><input type="submit" value="修改"> <input
-									type="submit" value="返回"
+								<td><input type="submit" value="修改" formaction="<%=path%>/judgeAf01ModifyEmp.html"> 
+								<input type="submit" value="返回"
 									formaction="<%=path%>/judgeAf01QueryEmp.html"></td>
 							</tr>
 						</table>
@@ -129,7 +130,7 @@ msg {
 						
 						
 						
-		<div align="center">
+		<%-- <div align="center">
 			<form action="<%=path%>/adminAddSchedule.html" method="post" >
 			
 			<input type="hidden" name="aaf101" value="${param.aaf101}">
@@ -146,7 +147,7 @@ msg {
 			    <input type="submit" name="next" value="提交">
 			</form>
 		</div>
-
+ --%>
 					</div>
 				</div>
 			</div>

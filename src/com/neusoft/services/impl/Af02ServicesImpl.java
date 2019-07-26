@@ -211,7 +211,7 @@ public class Af02ServicesImpl extends JdbcServicesSupport {
         {
         	//1.±‡–¥SQL”Ôæ‰
         	StringBuilder sql=new StringBuilder()
-        			.append("select a.aaf101")
+        			.append("select a.aaf101,a.aaf205,a.aaf206")
         			.append("  from af02 a")
         			.append(" where a.aaf201=?")
         			;

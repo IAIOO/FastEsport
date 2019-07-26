@@ -66,6 +66,27 @@ tr {
       } 
       
    </script>
+   
+   <script type="text/javascript">
+    var rows = document.getElementsByTagName('tr');//取得行
+        for(var i=0 ;i<rows.length; i++)
+        {
+            rows[i].onmouseover = function(){//鼠标移上去,添加一个类'hilite'
+                this.className += 'hilite';
+            }
+            rows[i].onmouseout = function(){//鼠标移开,改变该类的名称
+                this.className = this.className.replace('hilite','');
+            }
+        }
+    </script>
+        
+        <style type="text/css">
+            .table1 tr:hover,.table1 tr.hilite
+            {
+            background-color:pink;
+            color:#0000CC;
+            }
+        </style>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -149,13 +170,13 @@ tr {
 
 
 						<!-- 数据迭代区 -->
-						<table border="0" width="95%" align="center" rules="none">
+						<table border="0" width="95%" align="center" rules="none" class="table1">
 							<tr>
 								<td></td>
 								<!-- <td>序列号</td> -->
 								<td>赛事类型</td>
 								<td>赛事名称</td>
-								<td>赛事编号</td>
+								<td>赛制</td>
 								<td>比赛开始时间</td>
 								<td>赛事状态</td>
 							</tr>
@@ -174,19 +195,19 @@ tr {
 
 											<td>${vs.count }</td>
 
-											<td>${ins.aaf102 }</td>
+											<td>${ins.vaaf102 }</td>
 
 											<td>
 												<!-- #  空锚 --> <a href="#" onclick="onEdit('${ins.aaf101}')">${ins.aaf103 }</a>
 											</td>
 
-											<td>${ins.aaf104 }</td>
+											<td>${ins.vaaf105 }</td>
 											<td>${ins.aaf108 }</td>
 
 
 
 
-											<td>${ins.aaf109 }</td>
+											<td>${ins.vaaf109 }</td>
 
 
 

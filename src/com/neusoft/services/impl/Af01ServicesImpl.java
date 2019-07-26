@@ -194,11 +194,14 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
 	  		//还原页面查询条件
 	  		
 	  		//定义SQL主体
-	  		StringBuilder sql=new StringBuilder()
-	  				.append("select aaf101,aaf102,aaf103,aaf104,aaf105,aaf108,")
-	  				.append("       aaf109,aaf110,aaf111,aaf112")
-	  				.append("  from af01 ")
-	  				
+		  StringBuilder sql=new StringBuilder()
+	  				.append("select a.aaf101,b.fvalue vaaf102,a.aaf103,a.aaf104,c.fvalue vaaf105,a.aaf108,")
+	  				.append("   x.fvalue vaaf109,a.aaf110,a.aaf111,a.aaf112")
+	  				.append("   from af01 a,syscode x,syscode b,syscode c")
+	  				.append("   where a.aaf109=x.fcode and x.fname='aaf109' ")
+	  				.append("   and a.aaf102=b.fcode and b.fname='aaf102' ")	  	
+	  				.append("   and a.aaf105=c.fcode and c.fname='aaf105' ")
+	  				.append("   and (a.aaf109=4 or a.aaf109=2 or a.aaf109=5) ")
 	  				;
 	  		return this.queryForList(sql.toString());
 	  }

@@ -114,14 +114,21 @@ msg {
 							<tr>
 								<td>赛程结果</td>
 								<td>A得分</td>
-								<td><input type="text" name="aaf205"></td>
+								<td>
+									<e:number step="1" name="aaf205" defval="${ins.aaf205 }"/>
+								</td>
+								<!-- <td><input type="text" name="aaf205"></td> -->
 							</tr>
 							<tr>
-								<td><input type="submit" value="修改"> <input
-									type="submit" value="返回"
-									formaction="<%=path%>/judgeAf02QueryEmp.html"></td>
+								<td><input type="submit" value="修改"> 
+								
+									<input type="submit" value="返回" formaction="<%=path%>/judgeAf02QueryEmp.html">
+									</td>
 								<td>B得分</td>
-								<td><input type="text" name="aaf206"></td>
+								<td>
+									<e:number step="1" name="aaf206" defval="${ins.aaf206 }"/>
+								</td>
+								<!-- <td><input type="text" name="aaf206"></td> -->
 							</tr>
 						</table>
 						<input type="hidden" name="aaf201" value="${param.aaf201}">

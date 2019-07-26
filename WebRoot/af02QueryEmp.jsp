@@ -73,6 +73,27 @@ background: transparent;
 }   
 
 </style>
+
+<script type="text/javascript">
+    var rows = document.getElementsByTagName('tr');//取得行
+        for(var i=0 ;i<rows.length; i++)
+        {
+            rows[i].onmouseover = function(){//鼠标移上去,添加一个类'hilite'
+                this.className += 'hilite';
+            }
+            rows[i].onmouseout = function(){//鼠标移开,改变该类的名称
+                this.className = this.className.replace('hilite','');
+            }
+        }
+    </script>
+        
+        <style type="text/css">
+            .table1 tr:hover,.table1 tr.hilite
+            {
+            background-color:pink;
+            color:#0000CC;
+            }
+        </style>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -150,7 +171,9 @@ background: transparent;
 
 
 						<!-- 数据迭代区 -->
-						<table border="0" width="95%" align="center" rules="none">
+						<div class="card-body">
+          <div class="table-responsive">
+						<table border="0" width="95%" align="center" rules="none" class="table1">
 							<tr>
 								<td></td>
 								<!-- <td>序列号</td> -->
@@ -216,21 +239,13 @@ background: transparent;
 							</c:choose>
 						</table>
 
-						<!-- 功能按钮区 -->
-						<%-- <table border="0" width="95%" align="center" rules="none">
-	  <tr>
-	    <td align="center">
-	       <input type="submit" name="next" value="查询" formaction="<%=path%>/judgeAf02QueryEmp.html">
-	       <input type="submit" name="next" value="返回" formaction="<%=path%>/judgeGame.jsp">
 
-	    </td>
-	  </tr>
-	</table> --%>
-						<%-- <input type="hidden" name="aaf101" value="${param.aaf101 }"> --%>
 
 
 					</div>
 				</div>
+			</div>
+			</div>
 			</div>
 			<!-- /.container-fluid-->
 			<!-- /.content-wrapper-->
