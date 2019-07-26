@@ -171,9 +171,9 @@ public class Af02ServicesImpl extends JdbcServicesSupport {
         public List<Map<String,String>> query2()throws Exception{
             //1.±‡–¥SQL”Ôæ‰
             StringBuilder sql = new StringBuilder()
-                    .append("select a.aaf101,a.aaf201,b.aab102 aab102a,b.aab102 aab102b,a.aaf204,a.aaf205,a.aaf206")
-                    .append("  from af02 a,ab01 b")
-                    .append("  where a.aaf202=b.aab101  or a.aaf203=b.aab101")
+                    .append("select a.aaf101,a.aaf201,b.aab102 aab102a,c.aab102 aab102b,a.aaf204,a.aaf205,a.aaf206")
+                    .append("  from af02 a,ab01 b,ab01 c")
+                    .append("  where a.aaf202=b.aab101  and a.aaf203=c.aab101")
                     ;
             //÷¥––≤È—Ø
 
