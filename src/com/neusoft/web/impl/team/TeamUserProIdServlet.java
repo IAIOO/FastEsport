@@ -7,7 +7,7 @@ public class TeamUserProIdServlet extends Ac02ControllerSupport {
 	@Override
 	public String execute() throws Exception {
 		update("updateProId", "提交认证申请");
-		return "userProId";
+		return "inCheck";
 	}
 
 }

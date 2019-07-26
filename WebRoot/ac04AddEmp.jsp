@@ -32,9 +32,11 @@ function ale()
 function onEnlist(){
 	var vform = document.getElementById("form1");
 	vform.action="<%=path%>/teamAc04AddEmp.html";
-	vfrom.submit(); 
+	vform.submit();
+	alert("报名成功！");
 }
 function onPass(sval){
+	alert("通过该队员！");
 	var vfrom = document.getElementById("form2");
 	vfrom.action="<%=path%>/teamUpdateEnlist.html?aac301="+sval;	 
 	vfrom.submit(); 
@@ -246,13 +248,15 @@ function onPass(sval){
 		
 		<div class="w3layouts_header_right">
 			 	<c:choose>
-						<c:when test="${empty sessionScope.aab101}">
-							<a href="#" onclick="gotoLogin()">登录/注册</a>
-						</c:when>
-						<c:otherwise>
-							<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
-						</c:otherwise>
-					</c:choose>
+					<c:when test="${empty sessionScope.aab101}">
+						<a href="#" onclick="gotoLogin()">登录/注册</a>
+					</c:when>
+					<c:otherwise>
+						<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
+						<a href="<%=path%>/userLoginout.html">退出登录</a>
+						<p>代币数量：<%=session.getAttribute("aab110") %></p>
+					</c:otherwise>
+				</c:choose>
 		</div>
 		
 		<div class="clearfix"> </div>
@@ -267,7 +271,12 @@ function onPass(sval){
     <form id="form1" name="form1">
   	<input type="hidden" id="aab101" name="aab101" value="<%=session.getAttribute("aab101") %>">
     <fieldset>
-        <legend>报名参与战队</legend>        
+        <c:if test="${param.aac401==null }">
+        <legend>报名参与战队</legend>  
+        </c:if>
+        <c:if test="${param.aac401!=null }">  
+        <legend>队员资料</legend>  
+        </c:if>   
           <c:choose>
 			 <c:when test="${!empty ins.aab102 }">
 			 <div class="form-row">
@@ -321,11 +330,12 @@ function onPass(sval){
              <div class="field-widget"><e:textarea rows="5" cols="45" name="aac407" defval="${ins.aac407 }"/></div>
              </div>
              <div class="form-row">
-             <c:if test="${empty ins.aac401 }">
+             <c:if test="${ins.aac401==null&&param.aac401==null }">
 			        <input type="hidden" name="aac409" value="0">
-			   		<input type="hidden" name="aac301" value="${param.aac301 }">
+			        <input type="hidden" name="aab101" value="<%=session.getAttribute("aab101")%>">
+ 			   		<input type="hidden" name="aac301" value="${param.aac301 }">
 			        <input class="submit" type="submit" name="next" value="提交" onclick="onEnlist()">  
-			        <input class="reset" type="button" onclick="javascript:location.href='<%=path%>/index.jsp'" value="返回" />                        
+			        <input class="reset" type="button" onclick="javascript:location.href='<%=path%>/teamQueryForTeam.html'" value="返回" />                        
              </c:if> 
              </div>
              </fieldset>
@@ -334,12 +344,23 @@ function onPass(sval){
              <fieldset>
 			 <input type="hidden" name="aac301" value="${ins.aac301 }">
 			 <input type="hidden" name="aac401" value="${ins.aac401 }">
-		   	 <c:if test="${ins.aac409==0 }">
+		   	 <c:if test="${ins.aac409==0&&param.sign=='checkTeamMates' }">
 			 <div class="form-row">
 			  <input class="submit" type="submit" name="next" value="通过" onclick="onPass('${ins.aac301 }')">
 			  <input class="reset" type="button" onclick="javascript:location.href='<%=path%>/index.jsp'" value="返回" />                        
 			 </div>
 			 </c:if>
+			 
+			 <c:if test="${ins.aac409==1&&param.aac401==null}">
+			 <div class="form-row">
+			  <input class="reset" type="button" onclick="javascript:window.history.go(-1);" value="返回" />                        
+			 </div>
+			 </c:if>
+			 
+		     <c:if test="${param.aac401!=null&&param.sign=='checkTeamMates'&&ins.aac409==1}">
+		     <input class="reset" type="button" onclick="javascript:location.href='<%=path%>/teamDeleteTeamMates.html?aac401=${ins.aac401 }';alert('删除成功');" value="删除成员" /> 
+       		 <input class="reset" type="button" onclick="javascript:location.href='<%=path%>/teamQueryForOnEnlist.html?aac101=<%=session.getAttribute("aac101")%>&qaac409=1'" value="返回" /> 
+       		 </c:if>
 			 </fieldset>
              </form>
              </div>

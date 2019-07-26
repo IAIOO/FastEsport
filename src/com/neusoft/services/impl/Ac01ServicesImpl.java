@@ -97,7 +97,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport {
  		Object aac114=this.get("qaac114");		  //ÉóºË×´Ì¬
  		
  		StringBuilder sql = new StringBuilder()
- 				 .append("select aac101,aac102,aac103,aac110")
+ 				 .append("select aac101,aac102,aac103,aac110,aac114")
  				 .append("  from ac01")
  				 .append(" where 1=1")
  				 ;

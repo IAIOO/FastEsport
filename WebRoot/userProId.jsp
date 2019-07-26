@@ -129,7 +129,6 @@ function onMake() {
 	<li>
 		<a href="teamMyTeam.html?aab101=<%=session.getAttribute("aab101") %>">我的战队</a>
 	</li>
-	</c:if>
 	<li>
 		<a href="teamFindForEnlist.html?aab101=<%=session.getAttribute("aab101") %>">发布招募</a>
 	</li>
@@ -139,6 +138,8 @@ function onMake() {
 	<li>
 		<a href="teamQueryForOnEnlist.html?aac101=<%=session.getAttribute("aac101")%>&qaac409=1">我的队员</a>
 	</li>
+	</c:if>
+
 	<li>
 		<a href="queryForTeam.jsp">报名战队</a>
 	</li>
@@ -179,13 +180,15 @@ function onMake() {
 		
 		<div class="w3layouts_header_right">
 			 	<c:choose>
-						<c:when test="${empty sessionScope.aab101}">
-							<a href="#" onclick="gotoLogin()">登录/注册</a>
-						</c:when>
-						<c:otherwise>
-							<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
-						</c:otherwise>
-					</c:choose>
+					<c:when test="${empty sessionScope.aab101}">
+						<a href="#" onclick="gotoLogin()">登录/注册</a>
+					</c:when>
+					<c:otherwise>
+						<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
+						<a href="<%=path%>/userLoginout.html">退出登录</a>
+						<p>代币数量：<%=session.getAttribute("aab110") %></p>
+					</c:otherwise>
+				</c:choose>
 		</div>
 		
 		<div class="clearfix"> </div>
@@ -261,7 +264,7 @@ function onMake() {
 	</form>
 	<div class="from-row">
 	    <input class="submit" type="button" onclick="onMake()" value="申请职业认证">
-	    <input class="reset" type="button" value="返回" onclick="valid.reset(); return false" />	
+	   <input class="reset" type="button" onclick="javascript:location.href='<%=path%>/index.jsp'" value="返回" />
 	</div>
 </div>
 <!-- 自由修改区域 -->

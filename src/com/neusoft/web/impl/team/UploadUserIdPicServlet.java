@@ -38,7 +38,7 @@ public class UploadUserIdPicServlet extends HttpServlet {
 		{
 			PrintWriter out = response.getWriter();
 			response.setContentType("text");
-			out.write("./img/idPic/"+uuid+fileName); //保留小数点后一位
+			out.write("./img/userIdPic/"+uuid+fileName); //保留小数点后一位
 			out.flush();
 			out.close();
 		}

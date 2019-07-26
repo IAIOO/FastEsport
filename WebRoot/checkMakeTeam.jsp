@@ -27,8 +27,9 @@
 <script type="text/javascript">
 function onLook(vaac101)
 {	 
+	 var aac114=${rows[0].aac114};
 	 var vform = document.getElementById("myform");
-	 vform.action="<%=path%>/teamMyTeam.html?aac101="+vaac101;
+	 vform.action="<%=path%>/teamMyTeam.html?aac101="+vaac101+"&sign=checkTeam"+"&aac114="+aac114;
 	 vform.submit();
 }
 </script>
@@ -206,11 +207,16 @@ function onLook(vaac101)
     	   	  <tr>
 			    <td>${vs.count }</td>
 			    <td>${ins.aac103 }</td>
-			    <td>${ins.aac102 }</td>
+			    <td><c:if test="${ins.aac102=='1' }">职业战队</c:if><c:if test="${ins.aac102=='2' }">高校战队</c:if><c:if test="${ins.aac102=='3' }">网吧战队</c:if><c:if test="${ins.aac102=='4' }">自由战队</c:if></td>
 			    <td>${ins.aac110 }</td>
 			    <td>
 			      <!-- #  空锚 -->
+			      <c:if test="${ins.aac114==0 }">
 			      <a href="#" onclick="onLook('${ins.aac101 }')">审核</a>
+			      </c:if>
+			      <c:if test="${ins.aac114==1 }">
+			      <a href="#" onclick="onLook('${ins.aac101 }')">查看</a>
+			      </c:if>
 			    </td>
 			  </tr>
 	      </c:forEach>
@@ -241,7 +247,7 @@ function onLook(vaac101)
 </table>
 <div class="form-row">  
 <input class="submit" type="submit" name="next" value="查询">
-<input class="reset" type="button" value="返回" onclick="valid.reset(); return false" />
+<input class="reset" type="button" value="返回" onclick="javascript:location.href='<%=path %>/adminindex.jsp'" />
 </div>     
      </fieldset>
 

@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@page import="javafx.scene.control.Alert"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -23,20 +24,8 @@
 <link rel="stylesheet" href="css/style1.css" type="text/css" />
 <link rel="stylesheet" href="css/table.css" type="text/css" />
 
-<!-- �༭���script -->
+<!-- 编辑你的script -->
 <script type="text/javascript">
-function onLook(vaac301)
-{	 
-	 var vform = document.getElementById("myform");
-	 vform.action="<%=path%>/teamFindByIdEnlist.html?aac301="+vaac301;
-	 vform.submit();
-}
-function onLooks(vaac101)
-{	 
-	 var vform = document.getElementById("myform");
-	 vform.action="<%=path%>/teamMyTeam.html?aac101="+vaac101;
-	 vform.submit();
-}
 function onMoney(){
 	var bMoney=Number($("#qaac305").val());
 	var eMoney=Number($("#qaac310").val());	
@@ -46,11 +35,17 @@ function onMoney(){
 		}
 	if(bMoney<0||eMoney<0)
 		{
-			alert('��ʾ:���ʲ���Ϊ��!')
+			alert('提示:工资不能为负!')
 			$("#qaac305").val('');
 			$("#qaac310").val('');
 		}
 }
+function onFind()
+{
+	 var vform = document.getElementById("form1");
+	 vform.action="<%=path%>/teamQueryForTeam.html";
+	 vform.submit();
+	}
 </script>
 </head>
 	
@@ -74,82 +69,82 @@ function onMoney(){
 					</div>
 				</div>
 				
-<!-- ������ -->
+<!-- 导航栏 -->
 <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 	<nav class="cl-effect-5" id="cl-effect-5">												
 		<ul class="nav navbar-nav">	
 		
-<!-- ��ҳ -->																							
+<!-- 首页 -->																							
 <li class="dropdown menu__item">
-<a href="index.jsp">��ҳ			
+<a href="index.jsp">首页			
 </a>
 </li>
 		
-<!-- ȫ������ -->	
+<!-- 全部赛事 -->	
 <li class="dropdown menu__item">
-<a href="<%=path %>/competitionQueryForUser.html" class="dropdown-toggle menu__link">ȫ������
+<a href="<%=path %>/competitionQueryForUser.html" class="dropdown-toggle menu__link">全部赛事
 </a>
 </li>
 						
-<!-- ���¹��� -->
+<!-- 赛事管理 -->
 <li class="dropdown menu__item">
-<a href="competitionQueryGame.html?aab101=<%=session.getAttribute("aab101") %>" class="dropdown-toggle menu__link" >���¹���
+<a href="competitionQueryGame.html?aab101=<%=session.getAttribute("aab101") %>" class="dropdown-toggle menu__link" >赛事管理
 </a>
 </li>
 							
-<!-- ս�ӹ��� -->
+<!-- 战队管理 -->
 <li class="dropdown menu__item">
-<a href="index.jsp" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ս�ӹ���
+<a href="index.jsp" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">战队管理
 	<span class="caret"></span>
 </a>
 <ul class="dropdown-menu">
-	<!-- 	�ж��Ƿ��Ѵ���ս�� -->
+	<!-- 	判断是否已创建战队 -->
 	<c:set var="teamId" scope="session" value='<%=session.getAttribute("aac114") %>'/>
 	<c:if test="${teamId==null }">
 	<li>
-		<a href="makeTeam.jsp">����ս��</a>
+		<a href="makeTeam.jsp">创建战队</a>
 	</li>
 	</c:if>
 	<c:if test="${teamId==0 }">
 	<li>
-		<a href="inCheck.jsp">�ҵ�ս��</a>
+		<a href="inCheck.jsp">我的战队</a>
 	</li>
 	</c:if>
 	<c:if test="${teamId==1 }">
 	<li>
-		<a href="teamMyTeam.html?aab101=<%=session.getAttribute("aab101") %>">�ҵ�ս��</a>
+		<a href="teamMyTeam.html?aab101=<%=session.getAttribute("aab101") %>">我的战队</a>
+	</li>
+	<li>
+		<a href="teamFindForEnlist.html?aab101=<%=session.getAttribute("aab101") %>">发布招募</a>
+	</li>
+	<li>
+		<a href="queryForMyEnlist.jsp">审核招募</a>
+	</li>
+	<li>
+		<a href="teamQueryForOnEnlist.html?aac101=<%=session.getAttribute("aac101")%>&qaac409=1">我的队员</a>
 	</li>
 	</c:if>
+
 	<li>
-		<a href="teamFindForEnlist.html?aab101=<%=session.getAttribute("aab101") %>">������ļ</a>
+		<a href="queryForTeam.jsp">报名战队</a>
 	</li>
 	<li>
-		<a href="queryForMyEnlist.jsp">�����ļ</a>
+		<a href="teamQueryForTeam.html?aab101=<%=session.getAttribute("aab101") %>">我加入的战队</a>
 	</li>
 	<li>
-		<a href="teamQueryForOnEnlist.html?aac101=<%=session.getAttribute("aac101")%>&qaac409=1">�ҵĶ�Ա</a>
-	</li>
-	<li>
-		<a href="queryForTeam.jsp">����ս��</a>
-	</li>
-	<li>
-		<a href="teamQueryForTeam.html?aab101=<%=session.getAttribute("aab101") %>">�Ҽ����ս��</a>
-	</li>
-	<li>
-		<a href="teamFindByIdForPro.html?aab101=<%=session.getAttribute("aab101") %>">ְҵ��֤</a>
+		<a href="teamFindByIdForPro.html?aab101=<%=session.getAttribute("aab101") %>">职业认证</a>
 	</li>
 </ul>
 </li>
-
-<!-- ��̳��� -->							
+<!-- 论坛天地 -->							
 <li class="dropdown menu__item">
-<a href="<%=path %>/bbsQuery.html" class="dropdown-toggle menu__link" >��̳���
+<a href="<%=path %>/bbsQuery.html" class="dropdown-toggle menu__link" >论坛天地
 </a>
 </li>
 	
-<!-- �̳����� -->							
+<!-- 商城中心 -->							
 <li class="dropdown menu__item">
-<a href="<%=path %>/shopUsershop.html" class="dropdown-toggle menu__link" >�̳�����
+<a href="<%=path %>/shopUsershop.html" class="dropdown-toggle menu__link" >商城中心
 </a>
 </li>																					
 					</ul>																					
@@ -175,65 +170,65 @@ function onMoney(){
 					</div>
 				</div>
 				
-<!-- ������ -->
+<!-- 导航栏 -->
 <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 	<nav class="cl-effect-5" id="cl-effect-5">												
 		<ul class="nav navbar-nav">	
 		
-<!-- ��ҳ -->																							
+<!-- 首页 -->																							
 <li class="dropdown menu__item">
-<a href="index.jsp" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">��ҳ			
+<a href="index.jsp" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">首页			
 </a>
 </li>
 		
-<!-- ȫ������ -->	
+<!-- 全部赛事 -->	
 <li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link">ȫ������
+<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link">全部赛事
 </a>
 </li>
 						
-<!-- ���¹��� -->
+<!-- 赛事管理 -->
 <li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link" >���¹���
+<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link" >赛事管理
 </a>
 </li>
 							
-<!-- ս�ӹ��� -->
+<!-- 战队管理 -->
 <li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link">ս�ӹ���
+<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link">战队管理
 	<span class="caret"></span>
 </a>
 <ul class="dropdown-menu">
 	<li>
-		<a href="makeTeam.jsp">����ս��</a>
+		<a href="makeTeam.jsp">创建战队</a>
 	</li>
 	<li>
-		<a href="teamMyTeam.html?aab101=<%=session.getAttribute("aab101") %>">�ҵ�ս��</a>
+		<a href="teamMyTeam.html?aab101=<%=session.getAttribute("aab101") %>">我的战队</a>
 	</li>
 	<li>
-		<a href="teamFindForEnlist.html?aab101=<%=session.getAttribute("aab101") %>">������ļ</a>
+		<a href="teamFindForEnlist.html?aab101=<%=session.getAttribute("aab101") %>">发布招募</a>
 	</li>
 	<li>
-		<a href="queryForMyEnlist.jsp">�����ļ</a>
+		<a href="queryForMyEnlist.jsp">审核招募</a>
 	</li>
 	<li>
-		<a href="queryForTeam.jsp">����ս��</a>
+		<a href="queryForTeam.jsp">报名战队</a>
 	</li>
 	<li>
-		<a href="teamFindByIdForPro.html?aab101=<%=session.getAttribute("aab101")%>">ְҵ��֤</a>
+		<a href="teamFindByIdForPro.html?aab101=<%=session.getAttribute("aab101")%>">职业认证</a>
 	</li>
 </ul>
 </li>
 
-<!-- ��̳��� -->							
+<!-- 论坛天地 -->							
 <li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link" >��̳���
+<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link" >论坛天地
 </a>
 </li>
 	
-<!-- �̳����� -->							
+<!-- 商城中心 -->							
 <li class="dropdown menu__item">
-<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link" >�̳�����
+<a href="<%=path%>/userLogin.html" class="dropdown-toggle menu__link" >商城中心
 </a>
 </li>																					
 					</ul>																					
@@ -256,13 +251,15 @@ function onMoney(){
 		
 		<div class="w3layouts_header_right">
 			 	<c:choose>
-						<c:when test="${empty sessionScope.aab101}">
-							<a href="#" onclick="gotoLogin()">��¼/ע��</a>
-						</c:when>
-						<c:otherwise>
-							<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
-						</c:otherwise>
-					</c:choose>
+					<c:when test="${empty sessionScope.aab101}">
+						<a href="#" onclick="gotoLogin()">登录/注册</a>
+					</c:when>
+					<c:otherwise>
+						<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
+						<a href="<%=path%>/userLoginout.html">退出登录</a>
+						<p>代币数量：<%=session.getAttribute("aab110") %></p>
+					</c:otherwise>
+				</c:choose>
 		</div>
 		
 		<div class="clearfix"> </div>
@@ -270,45 +267,45 @@ function onMoney(){
 <!-- banner -->
 
 
-<!-- �����޸����� -->
-<!-- �����޸����� -->
-<!-- �����޸����� -->
+<!-- 自由修改区域 -->
+<!-- 自由修改区域 -->
+<!-- 自由修改区域 -->
 
 <div class="form_content2">
-<form id="myform" action="<%=path%>/teamQueryForTeam.html" method="post">
+<form id="form1">
 <fieldset>
 <c:choose>
-		<c:when test="${rows[0].aac101==null}">
-        <legend>ս����ļ��Ϣ��ѯ</legend>
+		<c:when test="${rows[0].aac101==null&&param.sign!='joinTeam'}">
+        <legend>战队招募信息查询</legend>
         <div class="form-row">
-            <div class="field-label"><label for="field4">ս������</label>:</div>
+            <div class="field-label"><label for="field4">战队名称</label>:</div>
             <div class="field-widget">
             <e:text name="qaac103" style=" width:175px;height: 27px;" />
 			</div>
-			<div class="field-label"><label for="field4">��Ϸ����</label>:</div>
+			<div class="field-label"><label for="field4">游戏类型</label>:</div>
             <div class="field-widget">
-            <e:groupbox name="qaac304" value="DOTA2:1,LOL:2,������ҫ:3,CSGO:4,PUBG:5,OW:6,�Ǽ�����2:7,ħ������3:8,¯ʯ��˵:9" newLineNumber="5"/>
+            <e:groupbox name="qaac304" value="DOTA2:1,LOL:2,王者荣耀:3,CSGO:4,PUBG:5,OW:6,星际争霸2:7,魔兽争霸3:8,炉石传说:9" newLineNumber="5"/>
 			</div>
         </div>
         <div class="form-row">
-		    <div class="field-label"><label for="field4">ְҵ/��ְҵս��</label>:</div>
+		    <div class="field-label"><label for="field4">职业/非职业战队</label>:</div>
             <div class="field-widget">
-            <e:radio name="qaac111" value="��ְҵս��:0,ְҵս��:1" defval="0" />&nbsp;
+            <e:radio name="qaac111" value="非职业战队:0,职业战队:1" defval="" />&nbsp;
 			</div>
-            <div class="field-label"><label for="field4">н�ʷ�Χ</label>:</div>
+            <div class="field-label"><label for="field4">薪资范围</label>:</div>
             <div class="field-widget">
             <div>
-            <input type="number"  step="100" id="qaac305" name="qaac305" defval="${ins.aac305 }" onchange="onMoney()"/>���� 
-            <input type="number"  step="100" id="qaac310" name="qaac310" defval="${ins.aac310 }" onchange="onMoney()"/>(RMB)
+            <e:number step="100" id="qaac305" name="qaac305" defval="${ins.aac305 }" onchange="onMoney()"/>—— 
+            <e:number step="100" id="qaac310" name="qaac310" defval="${ins.aac310 }" onchange="onMoney()"/>(RMB)
 			</div>
 			</div>
         </div>
         <div class="form-row">
-		    <div class="field-label"><label for="field4" her>��ļ��������ǰ</label>:</div>
+		    <div class="field-label"><label for="field4" her>招募截至日期前</label>:</div>
             <div class="field-widget">
             <e:date name="eaac307" style="height: 27px;" />
 			</div>
-            <div class="field-label"><label for="field4">ս�����ڵ���</label>:</div>
+            <div class="field-label"><label for="field4">战队所在地区</label>:</div>
             <div class="field-widget">
             <div>
 			<select id="province" name="qaac104" onchange="selectprovince(this.value);" style="width: 125px;height: 27px;"></select>
@@ -318,41 +315,46 @@ function onMoney(){
         </div>
         </c:when>
         <c:otherwise>
-        <legend>�Ҽ����ս��</legend>
+        <legend>我加入的战队</legend>
         </c:otherwise>
         </c:choose>   
 </fieldset>
+<c:if test="${rows[0].aac101==null&&param.sign=='joinTeam' }">
+<div class="form_content">
+       <span style="color:#00cc00">你还未加入任何战队！请先报名战队！</span>
+</div>
+</c:if>
 
  		    
 <fieldset>
 <table> 
     <thead> 
-    <c:if test="${rows[0].aac303!=null }">
+    <c:if test="${rows[0].aac303!=null&&param.sign!='joinTeam'}">
     <tr>
 	<td></td>
-	<td>ս������</td>
-	<td>ʣ����ļ����</td>
-	<td>��͹���</td>
-	<td>��߹���</td>
-	<td>ְҵ/��ְҵս��</td>
-	<td>��ļ��������</td>
-	<td>ս�����ڵ���</td>
-	<td>�鿴������Ϣ</td>
+	<td>战队名称</td>
+	<td>剩余招募人数</td>
+	<td>最低工资</td>
+	<td>最高工资</td>
+	<td>职业/非职业战队</td>
+	<td>招募结束日期</td>
+	<td>战队所在地区</td>
+	<td>查看具体信息</td>
 	</tr>
 	</c:if>
-	<c:if test="${rows[0].aac101!=null }">
+	<c:if test="${rows[0].aac101!=null&&param.sign=='joinTeam'}">
     <tr>
 	<td></td>
-	<td>ս������</td>
-	<td>ְҵ/��ְҵս��</td>
-	<td>ս�����ڵ���</td>
-	<td>�鿴ս����Ϣ</td>
+	<td>战队名称</td>
+	<td>职业/非职业战队</td>
+	<td>战队所在地区</td>
+	<td>查看战队信息</td>
 	</tr>	
 	</c:if>
     </thead> 
     <tbody> 
-     <c:if test="${rows[0].aac303!=null }">
-         <!-- ��ʾʵ�ʲ�ѯ�������� -->
+     <c:if test="${rows[0].aac303!=null&&param.sign!='joinTeam'}">
+         <!-- 显示实际查询到的数据 -->
 	     <c:forEach items="${rows }" var="ins" varStatus="vs">
     	   	  <tr>
 			    <td>${vs.count }</td>
@@ -364,12 +366,12 @@ function onMoney(){
 			    <td>${ins.aac307 }</td>
 			    <td>${ins.aac104 }</td>
 			    <td>
-			      <!-- #  ��ê -->
-			      <a href="#" onclick="onLook('${ins.aac301 }')">�鿴</a>
+			      <!-- #  空锚 -->
+			      <a href="<%=path%>/teamFindByIdEnlist.html?aac301=${ins.aac301}">查看</a>
 			    </td>
 			  </tr>
 	      </c:forEach>
-	      <!-- ������� -->
+	      <!-- 补充空行 -->
 	      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="15">
 		          <tr>
 		            <td></td>
@@ -384,21 +386,21 @@ function onMoney(){
 		          </tr>
 	      </c:forEach>
      </c:if>
-     <c:if test="${rows[0].aac101!=null }">
-          <!-- ��ʾʵ�ʲ�ѯ�������� -->
+     <c:if test="${rows[0].aac101!=null&&param.sign=='joinTeam' }">
+          <!-- 显示实际查询到的数据 -->
 	     <c:forEach items="${rows }" var="ins" varStatus="vs">
     	   	  <tr>
 			    <td>${vs.count }</td>
 			    <td>${ins.aac103 }</td>
-			    <td>${ins.aac111 }</td>
+			    <td><c:if test="${ins.aac111==0}">非职业战队</c:if><c:if test="${ins.aac111==1}">职业战队</c:if></td>
 			    <td>${ins.aac104 }</td>
 			    <td>
-			      <!-- #  ��ê -->
-			      <a href="#" onclick="onLooks('${ins.aac101 }')">�鿴</a>
+			      <!-- #  空锚 -->
+			      <a href="<%=path%>/teamFindMyTeam.html?aac101=${ins.aac101}">查看</a>
 			    </td>
 			  </tr>
 	      </c:forEach>
-	      <!-- ������� -->
+	      <!-- 补充空行 -->
 	      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="15">
 		          <tr>
 		            <td></td>
@@ -424,7 +426,7 @@ function onMoney(){
 		           </tr>
 		        </c:forEach>
 		     </c:if>
-		      <c:if test="${rows[0].aac101!=null }">
+		      <c:if test="${rows[0].aac101!=null&&param.sign=='joinTeam'}">
 		        <c:forEach begin="1" step="1" end="15">
 		           <tr>
 		             <td></td>
@@ -438,18 +440,19 @@ function onMoney(){
     </tbody> 
 </table>
 <div class="form-row">  
-<input class="submit" type="submit" name="next" value="��ѯ">
-<input class="reset" type="button" value="����" onclick="valid.reset(); return false" />
+<c:if test="${rows[0].aac101==null&&param.sign!='joinTeam'}">
+<input class="submit" type="submit" name="next" value="查询" onclick="onFind()">
+</c:if>
+<input class="reset" type="button" onclick="javascript:location.href='<%=path%>/index.jsp'" value="返回" />
 </div>     
      </fieldset>
-        		</form>
-        				
+        		</form>   				
 		</div>
 
                           
-<!-- �����޸����� -->
-<!-- �����޸����� -->
-<!-- �����޸����� -->
+<!-- 自由修改区域 -->
+<!-- 自由修改区域 -->
+<!-- 自由修改区域 -->
 
 
 <!-- Modal1 -->

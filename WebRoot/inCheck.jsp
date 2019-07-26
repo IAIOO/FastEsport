@@ -68,21 +68,26 @@
 							
 <!-- 战队管理 -->
 <li class="dropdown menu__item">
-<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">战队管理
+<a href="index.jsp" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">战队管理
 	<span class="caret"></span>
 </a>
 <ul class="dropdown-menu">
-	<c:set var="teamId" scope="session" value='<%=session.getAttribute("aac101") %>'/>
+	<!-- 	判断是否已创建战队 -->
+	<c:set var="teamId" scope="session" value='<%=session.getAttribute("aac114") %>'/>
 	<c:if test="${teamId==null }">
 	<li>
 		<a href="makeTeam.jsp">创建战队</a>
 	</li>
 	</c:if>
-	<c:if test="${teamId!=null }">
+	<c:if test="${teamId==0 }">
+	<li>
+		<a href="inCheck.jsp">我的战队</a>
+	</li>
+	</c:if>
+	<c:if test="${teamId==1 }">
 	<li>
 		<a href="teamMyTeam.html?aab101=<%=session.getAttribute("aab101") %>">我的战队</a>
 	</li>
-	</c:if>
 	<li>
 		<a href="teamFindForEnlist.html?aab101=<%=session.getAttribute("aab101") %>">发布招募</a>
 	</li>
@@ -90,10 +95,18 @@
 		<a href="queryForMyEnlist.jsp">审核招募</a>
 	</li>
 	<li>
+		<a href="teamQueryForOnEnlist.html?aac101=<%=session.getAttribute("aac101")%>&qaac409=1">我的队员</a>
+	</li>
+	</c:if>
+
+	<li>
 		<a href="queryForTeam.jsp">报名战队</a>
 	</li>
 	<li>
-		<a href="teamFindByIdForPro.html?aab101=<%=session.getAttribute("aab101")%>">职业认证</a>
+		<a href="teamQueryForTeam.html?aab101=<%=session.getAttribute("aab101") %>">我加入的战队</a>
+	</li>
+	<li>
+		<a href="teamFindByIdForPro.html?aab101=<%=session.getAttribute("aab101") %>">职业认证</a>
 	</li>
 </ul>
 </li>
@@ -128,13 +141,15 @@
 		
 		<div class="w3layouts_header_right">
 			 	<c:choose>
-						<c:when test="${empty sessionScope.aab101}">
-							<a href="#" onclick="gotoLogin()">登录/注册</a>
-						</c:when>
-						<c:otherwise>
-							<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
-						</c:otherwise>
-					</c:choose>
+					<c:when test="${empty sessionScope.aab101}">
+						<a href="#" onclick="gotoLogin()">登录/注册</a>
+					</c:when>
+					<c:otherwise>
+						<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
+						<a href="<%=path%>/userLoginout.html">退出登录</a>
+						<p>代币数量：<%=session.getAttribute("aab110") %></p>
+					</c:otherwise>
+				</c:choose>
 		</div>
 		
 		<div class="clearfix"> </div>
@@ -147,7 +162,7 @@
 <!-- 自由修改区域 -->
 	<div class="form_content">
 	<form>
-        <span style="color:#00cc00">你创建的战队还在审核中。。。。别急</span>
+        <span style="color:#00cc00">管理员还在审核中。。。。别急！！</span>
         <%session.setAttribute("aac114",0); %>
         <input class="reset" type="button" onclick="javascript:location.href='<%=path%>/index.jsp'" value="返回" /> 
     </form>

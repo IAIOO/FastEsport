@@ -155,7 +155,7 @@ window.onload=function(){
 	<c:set var="teamId" scope="session" value='<%=session.getAttribute("aac114") %>'/>
 	<c:if test="${teamId==null }">
 	<li>
-		<a href="makeTeam.jsp">创建战队</a>
+		<a href="makeTeam.jsp?sign=myTeam">创建战队</a>
 	</li>
 	</c:if>
 	<c:if test="${teamId==0 }">
@@ -165,13 +165,13 @@ window.onload=function(){
 	</c:if>
 	<c:if test="${teamId==1 }">
 	<li>
-		<a href="teamMyTeam.html?aab101=<%=session.getAttribute("aab101") %>">我的战队</a>
+		<a href="teamMyTeam.html?aab101=<%=session.getAttribute("aab101") %>&sign=myTeam">我的战队</a>
 	</li>
 	<li>
 		<a href="teamFindForEnlist.html?aab101=<%=session.getAttribute("aab101") %>">发布招募</a>
 	</li>
 	<li>
-		<a href="queryForMyEnlist.jsp">审核招募</a>
+		<a href="queryForMyEnlist.jsp">查看/审核招募</a>
 	</li>
 	<li>
 		<a href="teamQueryForOnEnlist.html?aac101=<%=session.getAttribute("aac101")%>&qaac409=1">我的队员</a>
@@ -179,10 +179,10 @@ window.onload=function(){
 	</c:if>
 
 	<li>
-		<a href="queryForTeam.jsp">报名战队</a>
+		<a href="queryForTeam.jsp?sign=findTeam">报名战队</a>
 	</li>
 	<li>
-		<a href="teamQueryForTeam.html?aab101=<%=session.getAttribute("aab101") %>">我加入的战队</a>
+		<a href="teamQueryForTeam.html?aab101=<%=session.getAttribute("aab101") %>&sign=joinTeam">我加入的战队</a>
 	</li>
 	<li>
 		<a href="teamFindByIdForPro.html?aab101=<%=session.getAttribute("aab101") %>">职业认证</a>

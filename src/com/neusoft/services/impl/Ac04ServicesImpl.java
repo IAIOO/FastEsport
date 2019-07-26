@@ -11,12 +11,13 @@ public class Ac04ServicesImpl extends JdbcServicesSupport {
 	    {
 	    	
 	    	StringBuilder sql=new StringBuilder()
-	    			.append("insert into ac04(aac301,aac402,aac403,aac404,aac405,")
+	    			.append("insert into ac04(aab101,aac301,aac402,aac403,aac404,aac405,")
 	    			.append("                 aac406,aac407,aac408,aac409)")
 	    			.append("          values(?,?,?,?,?,")
 	    			.append("                 ?,?,?,?)");
 	    	
 	    	Object args[]={
+	    			this.get("aab101"),
 	    			this.get("aac301"),
 	    			this.get("aac402"),
 	    			this.get("aac403"),
@@ -84,9 +85,12 @@ public class Ac04ServicesImpl extends JdbcServicesSupport {
 					paramList.add(aac301);
 				}
 				return this.queryForList(sql.toString(), paramList.toArray()); 	
-			}
-
-			
-
+			}	
 	  }
+	  
+	    public boolean deleteTeamMates()throws Exception
+	    {
+	    	String sql="delete from ac04 where aac401=?";
+	    	return this.executeUpdate(sql, this.get("aac401"))>0;
+	    }
 }

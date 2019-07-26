@@ -30,10 +30,11 @@ public class Ac0302ServicesImpl extends JdbcServicesSupport {
 	  				
 	  		//定义SQL主体
 	  		StringBuilder sql=new StringBuilder()
-	  				.append("select b.aac301,b.aac302,b.aac303,b.aac307")
-	  				.append("  from ac01 a,ac03 b")
+	  				.append("select b.aac301,c.fvalue vaac302,b.aac303,b.aac307")
+	  				.append("  from ac01 a,ac03 b,syscode c")
 	  				.append("  where true")
 	  				.append("  and a.aac101=b.aac101")
+	  				.append("  and c.fname='aac302' and c.fcode=b.aac302")
 	  				;
 	  		
 	  		//参数列表

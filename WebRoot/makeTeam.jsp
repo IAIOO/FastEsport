@@ -62,20 +62,14 @@ function onTeam(){
 	               alert("异常！");
 	           }
 	    });	
+	    
+	 
 }
 function onCheck(){ 
-	$.ajax({
-        type: 'post',
-        url: '<%=path%>/teamCheckTeam.html',
-        data: $("#form4").serialize(),
-        dataType: "text",
-        success: function () {
-        	alert("已通过！");    	
-        },
-           error : function() {
-               alert("异常！");
-           }
-    });	
+		 var vform = document.getElementById("form4");
+	  		 vform.action="<%=path%>/teamCheckTeam.html";
+	  		 vform.submit();
+      	 alert("审核通过!");      	 
 }
 </script>
 </head>
@@ -142,7 +136,6 @@ function onCheck(){
 	<li>
 		<a href="teamMyTeam.html?aab101=<%=session.getAttribute("aab101") %>">我的战队</a>
 	</li>
-	</c:if>
 	<li>
 		<a href="teamFindForEnlist.html?aab101=<%=session.getAttribute("aab101") %>">发布招募</a>
 	</li>
@@ -152,6 +145,7 @@ function onCheck(){
 	<li>
 		<a href="teamQueryForOnEnlist.html?aac101=<%=session.getAttribute("aac101")%>&qaac409=1">我的队员</a>
 	</li>
+	</c:if>
 	<li>
 		<a href="queryForTeam.jsp">报名战队</a>
 	</li>
@@ -194,13 +188,15 @@ function onCheck(){
 		
 		<div class="w3layouts_header_right">
 			 	<c:choose>
-						<c:when test="${empty sessionScope.aab101}">
-							<a href="#" onclick="gotoLogin()">登录/注册</a>
-						</c:when>
-						<c:otherwise>
-							<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
-						</c:otherwise>
-					</c:choose>
+					<c:when test="${empty sessionScope.aab101}">
+						<a href="#" onclick="gotoLogin()">登录/注册</a>
+					</c:when>
+					<c:otherwise>
+						<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
+						<a href="<%=path%>/userLoginout.html">退出登录</a>
+						<p>代币数量：<%=session.getAttribute("aab110") %></p>
+					</c:otherwise>
+				</c:choose>
 		</div>
 		
 		<div class="clearfix"> </div>
@@ -215,8 +211,10 @@ function onCheck(){
     <form id="form1" name="form1">
   	<input type="hidden" id="aab101" name="aab101" value="<%=session.getAttribute("aab101") %>">
     <fieldset>
-        <c:if test="${ins.aac114==null||ins.aac114==1}"><legend>${empty ins.aac102?'创建':'我的' }战队</legend></c:if>
-        <c:if test="${ins.aac114==0}"><legend>审核战队</legend></c:if>         
+        <c:if test="${param.sign=='myTeam'}"><legend>${empty ins.aac102?'创建':'我的' }战队</legend></c:if>
+        <c:if test="${param.sign!='myTeam'}"><legend>我加入的战队</legend></c:if>
+        <c:if test="${param.sign==checkTeam&&param.aac114==0}"><legend>审核战队</legend></c:if>
+        <c:if test="${param.sign==checkTeam&&param.aac114==1}"><legend>已审核战队</legend></c:if>          
         <div class="form-row">
             <div class="field-label"><label for="field6">战队类型</label>:</div>
             <div class="field-widget">
@@ -253,7 +251,7 @@ function onCheck(){
             <div class="field-widget"><input  style="height:23px;width: 145px;" type="text" name="aac105" value="${ins.aac105 }" class="required"/></div>
             </div>
             <div class="form-row">
-            <div class="field-label"><label for="field4">所属院校</label>:</div>
+            <div class="field-label"><label for="field4">所属院系</label>:</div>
             <div class="field-widget"><input  style="height:23px;width: 145px;" type="text" name="aac112" value="${ins.aac112 }" class="required"/></div>
             </div>
         </div>
@@ -291,7 +289,7 @@ function onCheck(){
 	</form> 
 	
 	<c:choose>
-		<c:when test="${ins.aac114==1 }">
+		<c:when test="${ins.aac114==1&&param.aac101==null }">
 		<form id="form3" enctype="multipart/form-data">
 		<fieldset>
 			<div>
@@ -327,8 +325,8 @@ function onCheck(){
 		    </div>
 		</c:when>
 	</c:choose>   
-		<c:if test="${ins==null }">
-		    <input class="submit" type="submit" value="申请创建战队" onclick="onMake()" /> 
+		<c:if test="${ins==null&&param.sign==makeTeam }">
+		    <input class="reset" type="button" onclick="javascript:location.href='<%=path%>/teamQueryForTeam.html?aab101=<%=session.getAttribute("aab101") %>'" value="返回" />
 		</c:if>
 		<div class="from-row">
 		<c:if test="${ins.aac114==0 }">
@@ -337,7 +335,16 @@ function onCheck(){
 		<input class="submit" type="submit" value="通过" onclick="onCheck()"/>
 		</form>
 		</c:if>
-		<input class="reset" type="button" onclick="javascript:location.href='<%=path%>/index.jsp'" value="返回" />  
+		<c:if test="${param.sign=='myTeam'&&ins==null }">
+		    <input class="submit" type="submit" value="申请创建战队" onclick="onMake()" />
+		    <input class="reset" type="button" onclick="javascript:history.go(-1);" value="返回" /> 
+		</c:if> 
+		<c:if test="${param.sign=='checkTeam'&&ins.aac114!=0 }">
+		    <input class="reset" type="button" onclick="javascript:history.go(-1);" value="返回" /> 
+		</c:if> 
+		<c:if test="${ins!=null }">
+		<input class="reset" type="button" onclick="javascript:history.go(-1);" value="返回" />
+		</c:if>  
 		</div>  
     </div>
 

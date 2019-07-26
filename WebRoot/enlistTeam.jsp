@@ -54,6 +54,19 @@ function onMoney(){
 			$("#eaac310").val('');
 		}
 }
+function onMake(){
+	
+	var vform = document.getElementById("form1");
+	vform.action="<%=path %>/teamEnlistTeam.html";
+	vform.submit();
+	alert("发布招募成功!");
+}
+function onEnlist(){	
+	var vform = document.getElementById("form1");
+	vform.action="<%=path %>/teamFindByIdForEnlist.html?aab101=<%=session.getAttribute("aab101")%>";
+	vform.submit();
+	alert("完善报名信息！");
+}
 </script>
 </head>
 	
@@ -169,13 +182,15 @@ function onMoney(){
 		
 		<div class="w3layouts_header_right">
 			 	<c:choose>
-						<c:when test="${empty sessionScope.aab101}">
-							<a href="#" onclick="gotoLogin()">登录/注册</a>
-						</c:when>
-						<c:otherwise>
-							<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
-						</c:otherwise>
-					</c:choose>
+					<c:when test="${empty sessionScope.aab101}">
+						<a href="#" onclick="gotoLogin()">登录/注册</a>
+					</c:when>
+					<c:otherwise>
+						<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
+						<a href="<%=path%>/userLoginout.html">退出登录</a>
+						<p>代币数量：<%=session.getAttribute("aab110") %></p>
+					</c:otherwise>
+				</c:choose>
 		</div>
 		
 		<div class="clearfix"> </div>
@@ -200,7 +215,7 @@ function onMoney(){
             <div class="field-widget"><input  class="required" type="text" name="aac103" value="${ins.aac103 }"/></div>
         </div>  
         </c:if>            
-        <div class="form-row">
+       <div class="form-row">
             <div class="field-label"><label for="field4">招募队员类型</label>:</div>
             <div class="field-widget">
             <e:radio name="aac302" value="任意选手:0,职业选手:1" defval="${empty param.aac301?'0':ins.aac302 }"/>
@@ -242,22 +257,24 @@ function onMoney(){
             <div class="field-label"><label for="field3">招募要求补充：</label>:</div>
             <div class="field-widget"><e:textarea rows="5" cols="45" name="aac308" defval="${ins.aac308 }"/></div>
         </div>
+
         		<!--     招募表发布审核状态 -->
 		<input style="display:none" name="aac309" value="0">
 		<div class="form-row">
 			<c:choose>
 				<c:when test="${ins.aac301==null }">
 				<tr>
-				<td><input class="submit" type="submit" value="创建" formaction="<%=path %>/teamEnlistTeam.html"></td>
+				<td><input class="submit" type="submit" value="创建" onclick="onMake()"></td>
 				</tr>
+				<input class="reset" type="button" onclick="javascript:location.href='<%=path%>/index.jsp'" value="返回" /> 
 				</c:when>
 				<c:otherwise>
 				<tr>
-				<td><input class="submit" type="submit" value="报名" formaction="<%=path %>/teamFindByIdForEnlist.html"></td>
+				<td><input class="submit" type="submit" value="报名" onclick="onEnlist()"></td>
 				</tr>
+				<input class="reset" type="button" onclick="javascript:location.href='<%=path%>/teamQueryForTeam.html'" value="返回" />
 				</c:otherwise>
-			</c:choose>  
-			<input class="reset" type="button" onclick="javascript:location.href='<%=path%>/index.jsp'" value="返回" /> 
+			</c:choose>   
 			</div>
 			</fieldset>
 			</form>

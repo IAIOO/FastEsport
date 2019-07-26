@@ -35,7 +35,7 @@
 function onLook(vaac401)
 {
 	 var vform = document.getElementById("myform");
-	 vform.action="<%=path%>/teamFindByIdOnEnlist.html?aac401="+vaac401;
+	 vform.action="<%=path%>/teamFindByIdOnEnlist.html?aac401="+vaac401+"&sign=checkTeamMates&sign1=myTeamMates";
 	 vform.submit();
 }
 </script>
@@ -114,7 +114,6 @@ function onLook(vaac401)
 	<li>
 		<a href="teamMyTeam.html?aab101=<%=session.getAttribute("aab101") %>">我的战队</a>
 	</li>
-	</c:if>
 	<li>
 		<a href="teamFindForEnlist.html?aab101=<%=session.getAttribute("aab101") %>">发布招募</a>
 	</li>
@@ -124,6 +123,8 @@ function onLook(vaac401)
 	<li>
 		<a href="teamQueryForOnEnlist.html?aac101=<%=session.getAttribute("aac101")%>&qaac409=1">我的队员</a>
 	</li>
+	</c:if>
+
 	<li>
 		<a href="queryForTeam.jsp">报名战队</a>
 	</li>
@@ -251,13 +252,15 @@ function onLook(vaac401)
 		
 		<div class="w3layouts_header_right">
 			 	<c:choose>
-						<c:when test="${empty sessionScope.aab101}">
-							<a href="#" onclick="gotoLogin()">登录/注册</a>
-						</c:when>
-						<c:otherwise>
-							<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
-						</c:otherwise>
-					</c:choose>
+					<c:when test="${empty sessionScope.aab101}">
+						<a href="#" onclick="gotoLogin()">登录/注册</a>
+					</c:when>
+					<c:otherwise>
+						<a href="<%=path%>/home.jsp"><%=session.getAttribute("aab102") %></a>
+						<a href="<%=path%>/userLoginout.html">退出登录</a>
+						<p>代币数量：<%=session.getAttribute("aab110") %></p>
+					</c:otherwise>
+				</c:choose>
 		</div>
 		
 		<div class="clearfix"> </div>
@@ -353,9 +356,18 @@ function onLook(vaac401)
 		   </c:choose>
     </tbody> 
 </table>
-<div class="form-row">  
+<div class="form-row"> 
+<c:if test="${param.aac101==null }">
 <input class="submit" type="submit" name="next" value="查询">
-<input class="reset" type="button" onclick="javascript:location.href='<%=path%>/index.jsp'" value="返回" />
+</c:if>
+<c:choose>
+<c:when test="${param.aac101!=null&&param.qaac409!=null }">
+<input class="reset" type="button" onclick="javascript:location.href='<%=path %>/index.jsp';" value="返回" />
+</c:when>
+<c:otherwise>
+<input class="reset" type="button" onclick="javascript:location.href='<%=path %>/queryForMyEnlist.jsp';" value="返回" />
+</c:otherwise>
+</c:choose>
 </div>     
      </fieldset>
 

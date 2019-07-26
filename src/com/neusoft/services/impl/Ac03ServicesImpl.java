@@ -12,17 +12,16 @@ public class Ac03ServicesImpl extends JdbcServicesSupport
 	private boolean enlistTeam()throws Exception 	  
     {
     	StringBuilder sql=new StringBuilder()
-		.append("insert into ac03(aac101,aac301,aac302,aac303,aac304,")
+		.append("insert into ac03(aac101,aac302,aac303,aac304,")
 		.append("                 aac305,aac306,aac307,aac308,aac309,")
 		.append("                 aac310)")
-		.append("            values(?,?,?,?,?,")
+		.append("            values(?,?,?,?,")
 		.append("                   ?,?,?,?,?,")
 		.append("                   ?)")
 		;
     	//2.编写参数数组
    	Object args[]={
-   				this.get("aac101"),
-    			this.get("aac301"),
+   				this.get("aac101"),		
     			this.get("aac302"),
     			this.get("aac303"),
     			Tools.joinArray(this.get("aac304")),
@@ -53,11 +52,10 @@ public class Ac03ServicesImpl extends JdbcServicesSupport
   		{
   			StringBuilder sql=new StringBuilder()
   					.append("select ac01.aac101,ac01.aac103,ac01.aac104,ac01.aac111")
-  	  				.append("  from syscode b,(ab01 left join ac04 on ac04.aab101=ab01.aab101)")
+  	  				.append("  from (ab01 left join ac04 on ac04.aab101=ab01.aab101)")
   	  				.append("  left join ac03 on ac03.aac301=ac04.aac301")
   	  				.append("  left join ac01 on ac01.aac101=ac03.aac101")
-  	  				.append("  where ac01.aac111=b.fcode and b.fname='ac01.aac111'")
-  	  			    .append("  and ab01.aab101=?")
+  	  				.append("  where ab01.aab101=?")
   	  				;
   			List<Object> paramList=new ArrayList<>();
   			paramList.add(aab101);

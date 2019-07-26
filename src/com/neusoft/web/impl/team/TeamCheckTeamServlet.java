@@ -7,7 +7,7 @@ public class TeamCheckTeamServlet extends Ac01ControllerSupport {
 	@Override
 	public String execute() throws Exception {
 		this.update("updateCheck","Í¨¹ý");
-		return "makeTeam";
+		return "checkMakeTeam";
 	}
 
 }

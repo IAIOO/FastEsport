@@ -8,7 +8,7 @@ public class TeamUpdateEnlistServlet extends Ac03ControllerSupport {
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		this.update("updateEnlist", "Í¨¹ý");
-		return "ac04AddEmp";
+		return "queryForOnEnlist";
 	}
 
 }
